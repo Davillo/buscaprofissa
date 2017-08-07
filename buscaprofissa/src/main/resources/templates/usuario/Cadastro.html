@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Buscaprofissa | Cadastro Inicial</title>
+<title>Buscaprofissa | Cadastro de Usuário</title>
 
 <link href="layout/cssBP/stylo.css" rel="stylesheet">
 
@@ -50,31 +52,31 @@
 
 			<div class="btn">
 
-				<form class="m-t" role="form" action="index.html">
+				<form class="m-t" role="form" method="POST" th:object="${usuario}">
 					<div class="form-group">
 						<a href="#" title="Facebook"
 							class="btn btn-facebook full-width btn-lg"><i
 							class=" btn fa fa-facebook"></i>FACEBOOK</a>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="NOME"
-							required="">
+						<input type="text" class="form-control" th:field="*{nome}" placeholder="NOME"
+							>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="SOBRENOME"
-							required="">
+						<input type="text" class="form-control" th:field="*{sobrenome}" placeholder="SOBRENOME"
+							>
 					</div>
 					<div class="form-group">
-						<input type="email" class="form-control" placeholder="E-MAIL"
-							required="">
+						<input type="email" class="form-control" th:field="*{email}" placeholder="E-MAIL"
+							>
 					</div>
 					<div class="form-group">
-						<input type="password" class="form-control" placeholder="SENHA"
-							required="">
+						<input type="password" class="form-control" th:field="*{senha}" placeholder="SENHA"
+							>
 					</div>
 					<div class="form-group">
 						<input type="password" class="form-control"
-							placeholder="SENHA (NOVAMENTE)" required="">
+							placeholder="SENHA (NOVAMENTE)" th:field="*{confirmacaoSenha}" >
 					</div>
 
 					<div class="box-termo">
