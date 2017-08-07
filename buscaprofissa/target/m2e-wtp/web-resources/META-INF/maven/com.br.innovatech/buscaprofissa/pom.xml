@@ -13,6 +13,10 @@
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- Flyway - gerenciador de alterações do banco -->
+		<flyway-maven-plugin.version>4.0.2</flyway-maven-plugin.version>
+		<!-- MySQL -->
+		<mysql-connector-java.version>5.1.39</mysql-connector-java.version>
 
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 
@@ -49,6 +53,16 @@
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			
+			
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>${flyway-maven-plugin.version}</version>
+				<configuration>
+					<driver>com.mysql.jdbc.Driver</driver>
 				</configuration>
 			</plugin>
 			
@@ -141,7 +155,13 @@
             <scope>compile</scope>
         </dependency>
 	
-		
+		<!-- MySQL Driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-connector-java.version}</version>
+			<scope>provided</scope>
+		</dependency>
 	
 		
 		

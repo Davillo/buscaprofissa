@@ -11,4 +11,16 @@
 		</dir>
 	</classpath>
 
+	<web>
+		<link target="/">
+			<dir name="C:/Users/davil/git/buscaprofissa/buscaprofissa/target/m2e-wtp/web-resources">
+				<exclude name="/"/>
+			</dir>
+		</link>
+		<link target="/">
+			<dir name="C:/Users/davil/git/buscaprofissa/buscaprofissa/src/main/webapp">
+			</dir>
+		</link>
+	</web>
+
 </application>

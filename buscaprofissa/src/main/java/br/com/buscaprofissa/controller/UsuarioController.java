@@ -2,6 +2,7 @@ package br.com.buscaprofissa.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,9 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.buscaprofissa.model.Usuario;
+import br.com.buscaprofissa.service.CadastroUsuarioService;
 
 @Controller
 public final class UsuarioController {
+	
+	@Autowired
+	private CadastroUsuarioService service;
 	
 	@RequestMapping("/cadastro")
 	public ModelAndView cadastro(Usuario usuario){
@@ -27,6 +32,7 @@ public final class UsuarioController {
 			return cadastro(usuario);
 		}
 		
+		service.salvar(usuario);
 	
 		return new ModelAndView("redirect:/cadastro");
 		

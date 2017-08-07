@@ -1,5 +1,9 @@
 package br.com.buscaprofissa.repository;
 
-public interface UsuarioRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import br.com.buscaprofissa.model.Usuario;
+
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
 }

@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "usuario")
@@ -16,14 +17,19 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotBlank(message = "O campo nome é obrigatório")
 	private String nome;
 	
+	@NotBlank(message = "O campo sobrenome é obrigatório")
 	private String sobrenome;
 	
+	@Email(message = "Informe um e-mail válido")
 	private String email;
 	
+	@NotBlank(message = "O campo senha é obrigatório")
 	private String senha;
 	
+	@NotBlank(message = "O campo confirmação de senha é obrigatório")
 	private String confirmacaoSenha;
 
 	
