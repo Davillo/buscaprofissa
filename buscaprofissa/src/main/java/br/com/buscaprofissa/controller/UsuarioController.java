@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.buscaprofissa.model.Usuario;
 import br.com.buscaprofissa.service.CadastroUsuarioService;
+import br.com.buscaprofissa.service.exception.EmailUsuarioJaCadastradoException;
 
 @Controller
 public final class UsuarioController {
@@ -32,10 +33,21 @@ public final class UsuarioController {
 			return cadastro(usuario);
 		}
 		
+		try{
+			
+		}catch (EmailUsuarioJaCadastradoException e) {
+			result.rejectValue("email", e.getMessage(),e.getMessage());
+			return cadastro(usuario);
+		}
 		service.salvar(usuario);
 	
 		return new ModelAndView("redirect:/cadastro");
 		
+	}
+	
+	@RequestMapping("/teste")
+	public String teste(){
+		return "/usuario/Index";
 	}
 	
 }
