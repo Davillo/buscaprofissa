@@ -45,9 +45,5 @@ public final class UsuarioController {
 		
 	}
 	
-	@RequestMapping("/teste")
-	public String teste(){
-		return "/usuario/Index";
-	}
 	
 }
