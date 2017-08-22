@@ -12,14 +12,11 @@ public class LoginController {
 	@GetMapping("/login")
 	public String login(@AuthenticationPrincipal User user){
 		if(user != null){
-			return "redirect:/teste";
+			return "usuario/Index";
 		}
 		return "Login";
 	}
 	
-	@RequestMapping("/teste")
-	public String teste(){
-		return "usuario/Index";
-	}
+
 	
 }
