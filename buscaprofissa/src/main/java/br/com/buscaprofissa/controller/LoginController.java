@@ -12,9 +12,15 @@ public class LoginController {
 	@GetMapping("/login")
 	public String login(@AuthenticationPrincipal User user){
 		if(user != null){
-			return "usuario/Index";
+			return home();
 		}
 		return "Login";
+	}
+	
+	
+	@RequestMapping("/home")
+	public String home(){
+		return "Home";
 	}
 	
 

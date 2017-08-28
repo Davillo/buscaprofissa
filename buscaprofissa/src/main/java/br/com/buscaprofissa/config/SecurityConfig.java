@@ -32,6 +32,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		web.ignoring().antMatchers("/layout/**")
 		.antMatchers("/images/**")
 		.antMatchers("/cadastro")
+		.antMatchers("/index")
+		.antMatchers("/home")
+		
 		;
 	}
 

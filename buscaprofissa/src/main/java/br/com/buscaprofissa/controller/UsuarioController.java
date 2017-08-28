@@ -19,10 +19,10 @@ public final class UsuarioController {
 	
 	@Autowired
 	private CadastroUsuarioService service;
-	
+
 	@RequestMapping("/cadastro")
 	public ModelAndView cadastro(Usuario usuario){
-		ModelAndView mv = new ModelAndView("/usuario/Cadastro");
+		ModelAndView mv = new ModelAndView("usuario/Cadastro");
 		return mv;
 	}
 	
@@ -44,6 +44,8 @@ public final class UsuarioController {
 		return new ModelAndView("redirect:/cadastro");
 		
 	}
+	
+	
 	
 	
 }
