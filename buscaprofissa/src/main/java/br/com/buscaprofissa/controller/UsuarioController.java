@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.buscaprofissa.model.Categoria;
 import br.com.buscaprofissa.model.Usuario;
+import br.com.buscaprofissa.repository.CategoriaRepository;
 import br.com.buscaprofissa.service.CadastroUsuarioService;
 import br.com.buscaprofissa.service.exception.EmailUsuarioJaCadastradoException;
 
@@ -19,10 +21,19 @@ public final class UsuarioController {
 	
 	@Autowired
 	private CadastroUsuarioService service;
+	
+	@Autowired
+	private CategoriaRepository categoriaRepository;
+
 
 	@RequestMapping("/cadastro")
 	public ModelAndView cadastro(Usuario usuario){
 		ModelAndView mv = new ModelAndView("usuario/Cadastro");
+		
+		Long cod =(long) 1;
+		Categoria cat = categoriaRepository.findOne(cod);
+		System.out.println(cat.getNome());
+	
 		return mv;
 	}
 	

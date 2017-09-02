@@ -33,9 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/images/**")
 		.antMatchers("/cadastro")
 		.antMatchers("/index")
-		.antMatchers("/home")
-		
-		;
+		.antMatchers("/home");
 	}
 
 	@Override
