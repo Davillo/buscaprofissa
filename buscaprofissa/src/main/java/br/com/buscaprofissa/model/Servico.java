@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "usuario_categoria")
-public class UsuarioCategoria implements Serializable {
+@Table(name = "servico")
+public class Servico implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
@@ -40,7 +40,7 @@ public class UsuarioCategoria implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UsuarioCategoria other = (UsuarioCategoria) obj;
+		Servico other = (Servico) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

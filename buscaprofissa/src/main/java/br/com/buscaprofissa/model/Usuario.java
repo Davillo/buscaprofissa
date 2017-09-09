@@ -1,13 +1,18 @@
 package br.com.buscaprofissa.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -20,9 +25,7 @@ import br.com.buscaprofissa.validation.AtributoConfirmacao;
 @Table(name = "usuario")
 public class Usuario implements Serializable{
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -45,6 +48,12 @@ public class Usuario implements Serializable{
 	@Transient
 	private String confirmacaoSenha;
 
+	
+	@ManyToMany
+	@Size(min = 0)
+	@JoinTable(name = "servico", joinColumns = @JoinColumn(name = "id_usuario"),
+	inverseJoinColumns = @JoinColumn(name = "id_categoria"))
+	private List<Categoria> categorias;
 	
 	//getters e setters
 	public Long getId() {

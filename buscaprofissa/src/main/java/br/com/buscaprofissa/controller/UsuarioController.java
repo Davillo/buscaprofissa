@@ -30,9 +30,7 @@ public final class UsuarioController {
 	public ModelAndView cadastro(Usuario usuario){
 		ModelAndView mv = new ModelAndView("usuario/Cadastro");
 		
-		Long cod =(long) 1;
-		Categoria cat = categoriaRepository.findOne(cod);
-		System.out.println(cat.getNome());
+	
 	
 		return mv;
 	}
