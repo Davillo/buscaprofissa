@@ -3,6 +3,7 @@ package br.com.buscaprofissa.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -48,6 +49,10 @@ public class Usuario implements Serializable{
 	@Transient
 	private String confirmacaoSenha;
 
+	private String foto;
+	
+	@Column(name = "content_type")
+	private String contentType;
 	
 	@ManyToMany
 	@Size(min = 0)
@@ -104,6 +109,29 @@ public class Usuario implements Serializable{
 		this.confirmacaoSenha = confirmacaoSenha;
 	}
 	
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
+	}
+
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
 
 	@Override
 	public int hashCode() {
