@@ -22,8 +22,6 @@ public final class UsuarioController {
 	@Autowired
 	private CadastroUsuarioService service;
 	
-	@Autowired
-	private CategoriaRepository categoriaRepository;
 
 
 	@RequestMapping("/cadastro")
