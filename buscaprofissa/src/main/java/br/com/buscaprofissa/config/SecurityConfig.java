@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		web.ignoring()
 		.antMatchers("/index")
 		.antMatchers("/images/**")
-		.antMatchers("/vendors/**")
+		.antMatchers("/sourcetemplate/**")
 		.antMatchers("/home");
 	}
 
