@@ -29,10 +29,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/layout/**")
-		.antMatchers("/images/**")
-		.antMatchers("/cadastro")
+		web.ignoring()
 		.antMatchers("/index")
+		.antMatchers("/images/**")
+		.antMatchers("/vendors/**")
 		.antMatchers("/home");
 	}
 
