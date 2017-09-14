@@ -8,7 +8,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>BuscaProfissa</title>
+        <title>BuscaProfissa - Página inicial</title>
 
       
 
@@ -16,13 +16,13 @@
 		 
 		 
         <!-- Custom styles for this template -->
-        <link th:href="@{/sourceindex/css/full-slider.css}" rel="stylesheet"><!-- ok -->
+        <link th:href="@{/sourceindex/css/full-slider.css}" rel="stylesheet">
         
-        <link th:href="@{/sourceindex/css/logo-nav.css}" rel="stylesheet"> <!-- ok -->
+        <link th:href="@{/sourceindex/css/logo-nav.css}" rel="stylesheet"> 
         
-        <link th:href="@{/sourceindex/css/font-awesome.css}" rel="stylesheet">  <!-- ok -->
-        <link th:href="@{/sourceindex/css/animate.css}" rel="stylesheet"><!-- ok -->
-        <link th:href="@{/sourceindex/css/style.css}" rel="stylesheet"><!-- ok -->
+        <link th:href="@{/sourceindex/css/font-awesome.css}" rel="stylesheet"> 
+        <link th:href="@{/sourceindex/css/animate.css}" rel="stylesheet">
+        <link th:href="@{/sourceindex/css/style.css}" rel="stylesheet">
         
     </head>
 
@@ -60,7 +60,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Entrar
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLogin">Entrar
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -254,10 +254,10 @@
                         </div>
                     </div>
                 </div>
-
+				
             </div>
-
-        </section>
+		
+        	</section>
 
         <!-- Footer -->
         <footer class="py-5 bg-dark">
@@ -266,7 +266,7 @@
             </div>
             <!-- /.container -->
         </footer>
-
+		<div th:replace="login/LoginModal :: modalDeLogin"></div>
         <!-- Bootstrap core JavaScript -->
         <script th:src="@{/sourceindex/js/jquery.min.js}"></script>
         <script th:src="@{/sourceindex/js/popper.min.js}"></script>
