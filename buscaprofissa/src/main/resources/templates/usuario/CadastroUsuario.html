@@ -13,7 +13,7 @@
 
      <link th:href="@{/sourceindex/css/bootstrap.min.css}" rel="stylesheet">
    	<link th:href="@{/sourceindex/css/font-awesome.css}" rel="stylesheet">
-   <!--  <link href="css/plugins/iCheck/custom.css" rel="stylesheet"> -->
+    <link th:href="@{/sourcetemplate/css/plugins/iCheck/custom.css}" rel="stylesheet"> 
    <link th:href="@{/sourceindex/css/animate.css}" rel="stylesheet">
     <link th:href="@{/sourceindex/css/style.css}" rel="stylesheet">
 
@@ -63,12 +63,18 @@
             <p class="m-t"> <small>INNOVATECH - 2017</small> </p>
         </div>
     </div>
-
+	
+	<script th:src="@{/sourceindex/js/popper.min.js}"></script>
+           <script th:src="@{/sourceindex/js/popper.js}"></script>
     <!-- Mainly scripts -->
     <script th:src="@{/sourceindex/js/jquery-2.1.1.js}"></script>
     <script th:src="@{/sourceindex/js/bootstrap.min.js}"></script>
+      <script th:src="@{/sourceindex/js/bootstrap.min.js}"></script>
+        
+       
+    
     <!-- iCheck -->
-  <!--   <script src="js/plugins/iCheck/icheck.min.js"></script> -->
+   <script th:src="@{/sourcetemplate/js/plugins/iCheck/icheck.min.js}"></script>
     <script>
         $(document).ready(function(){
             $('.i-checks').iCheck({

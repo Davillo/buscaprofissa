@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.buscaprofissa.model.Categoria;
 import br.com.buscaprofissa.model.Usuario;
-import br.com.buscaprofissa.repository.CategoriaRepository;
 import br.com.buscaprofissa.service.CadastroUsuarioService;
 import br.com.buscaprofissa.service.exception.EmailUsuarioJaCadastradoException;
 
