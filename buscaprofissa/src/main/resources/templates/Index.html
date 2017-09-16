@@ -24,6 +24,7 @@
         <link th:href="@{/sourceindex/css/animate.css}" rel="stylesheet">
         <link th:href="@{/sourceindex/css/style.css}" rel="stylesheet">
         
+        
     </head>
 
     <body>
@@ -60,7 +61,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLogin">Entrar
+                            <a class="nav-link" th:href="@{/login}">Entrar
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -266,9 +267,9 @@
             </div>
             <!-- /.container -->
         </footer>
-		<div th:replace="login/LoginModal :: modalDeLogin"></div>
         <!-- Bootstrap core JavaScript -->
         <script th:src="@{/sourceindex/js/jquery.min.js}"></script>
+         
         <script th:src="@{/sourceindex/js/popper.min.js}"></script>
         <script th:src="@{/sourceindex/js/bootstrap.min.js}"></script>
 

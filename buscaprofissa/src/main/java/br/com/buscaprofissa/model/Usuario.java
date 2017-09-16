@@ -51,6 +51,9 @@ public class Usuario implements Serializable{
 
 	private String foto;
 	
+	
+	private Boolean status;
+	
 	@Column(name = "content_type")
 	private String contentType;
 	

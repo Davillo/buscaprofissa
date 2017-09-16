@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BuscaProfissa | Login</title>
+
+    <link th:href="@{/sourceindex/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/sourceindex/css/font-awesome.css}" rel="stylesheet">
+
+    <link th:href="@{/sourceindex/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/sourceindex/css/style.css}" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+
+    <div class="middle-box text-center loginscreen  animated fadeInDown">
+        <div>
+            <div>
+
+                <!-- <h1 class="logo-name">IN+</h1> -->
+                <img vspace="15px" hspace="15px" width="150px" height="100px" th:src="@{/images/logobp.png}" />
+
+            </div>
+            <h3>Bem-vindo ao BuscaProfissa</h3>
+            <p>Faça seu login e busque profissionais capacitados ou divulgue seu serviço
+                <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
+            </p>
+            <p th:if="${#bools.isTrue(param.error)}"><font color="red">E-mail ou senha inválidos!</font></p>
+            <form class="m-t" role="form" method="POST" th:action="@{/login}">
+                <div class="form-group">
+                    <input type="text" id="email" class="form-control" name="username" placeholder="E-mail">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="senha" class="form-control" name="password" placeholder="Senha">
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+                <a th:href="@{/index}"><small>Página inicial</small></a>
+                <p class="text-muted text-center"><small>Não tem uma conta?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="register.html">Criar uma conta</a>
+            </form>
+            <p class="m-t"> <small>INNOVATECH - 2017</small> </p>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script th:src="@{/sourceindex/js/jquery-2.1.1.js}"></script>
+    <script th:src="@{/sourceindex/js/bootstrap.min.js}"></script>
+
+</body>
+
+</html>

@@ -31,15 +31,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring()
 		.antMatchers("/index")
-		.antMatchers("/images/**")
-		.antMatchers("/sourcetemplate/**")
+		.antMatchers("/sourcebusca/**")
 		.antMatchers("/sourceindex/**")
-		.antMatchers("/home");
+		.antMatchers("/sourcetemplate/**")
+		.antMatchers("/images/**");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and()
+		http.authorizeRequests()
+		.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and()
 				.csrf().disable();
 	}
 
