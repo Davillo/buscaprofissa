@@ -22,6 +22,8 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import br.com.buscaprofissa.controller.UsuarioController;
+import br.com.buscaprofissa.thymeleaf.BuscaProfissaDialect;
+import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 @Configuration
 @ComponentScan(basePackageClasses = { UsuarioController.class })
@@ -48,6 +50,8 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		SpringTemplateEngine engine = new SpringTemplateEngine();
 		engine.setEnableSpringELCompiler(true);
 		engine.setTemplateResolver(templateResolver());
+		engine.addDialect(new LayoutDialect());
+		engine.addDialect(new BuscaProfissaDialect());
 		return engine;
 	}
 

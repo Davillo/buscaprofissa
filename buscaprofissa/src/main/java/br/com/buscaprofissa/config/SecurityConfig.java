@@ -31,6 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring()
 		.antMatchers("/index")
+		.antMatchers("/cadastro")
 		.antMatchers("/sourcebusca/**")
 		.antMatchers("/sourceindex/**")
 		.antMatchers("/sourcetemplate/**")

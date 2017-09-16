@@ -33,26 +33,25 @@ public class Usuario implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message = "O campo nome é obrigatório")
+	@NotBlank(message = "O nome é obrigatório!")
 	private String nome;
 	
-	@NotBlank(message = "O campo sobrenome é obrigatório")
+	@NotBlank(message = "O sobrenome é obrigatório!")
 	private String sobrenome;
 	
-	@Email(message = "Informe um e-mail válido")
+	@NotBlank(message = "E-mail é obrigatório!")
+	@Email(message = "Informe um e-mail válido!")
 	private String email;
 	
-	@NotBlank(message = "O campo senha é obrigatório")
+	@NotBlank(message = "A senha é obrigatória!")
 	private String senha;
 	
-	@NotBlank(message = "O campo confirmação de senha é obrigatório")
 	@Transient
 	private String confirmacaoSenha;
 
 	private String foto;
 	
 	
-	private Boolean status;
 	
 	@Column(name = "content_type")
 	private String contentType;
@@ -160,6 +159,7 @@ public class Usuario implements Serializable{
 			return false;
 		return true;
 	}
+
 	
 	
 	

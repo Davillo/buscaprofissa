@@ -26,7 +26,7 @@ public final class UsuarioController {
 
 	@RequestMapping("/cadastro")
 	public ModelAndView cadastro(Usuario usuario){
-		ModelAndView mv = new ModelAndView("usuario/Cadastro");
+		ModelAndView mv = new ModelAndView("usuario/CadastroUsuario");
 		
 	
 	
@@ -41,13 +41,14 @@ public final class UsuarioController {
 		}
 		
 		try{
+			service.salvar(usuario);
 			
 		}catch (EmailUsuarioJaCadastradoException e) {
 			result.rejectValue("email", e.getMessage(),e.getMessage());
 			return cadastro(usuario);
 		}
-		service.salvar(usuario);
-	
+		
+		attributes.addFlashAttribute("mensagem","Cadastrado com sucesso!");
 		return new ModelAndView("redirect:/cadastro");
 		
 	}
