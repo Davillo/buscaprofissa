@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<head>
+
+<meta charset="UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>BuscaProfissa</title>
+
+
+<link th:href="@{/sourceindex/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/sourceindex/css/full-slider.css}" rel="stylesheet">
+<link th:href="@{/sourceindex/css/logo-nav.css}" rel="stylesheet">
+<link th:href="@{/sourceindex/css/font-awesome.css}" rel="stylesheet">
+<link th:href="@{/sourceindex/css/animate.css}" rel="stylesheet">
+<link th:href="@{/sourceindex/css/style.css}" rel="stylesheet">
+<link th:href="@{/sourcebusca/buscaprofissa.css}" rel="stylesheet">
+
+
+<link rel="shortcut icon" th:href="@{/images/favicon.png}" />
+</head>
+<body>
+
+	<div th:replace="layout/externo/BarraNavegacao :: barranavegacao"></div>
+	<div layout:fragment="conteudo"></div>
+	<div th:replace="layout/externo/Rodape :: rodape"></div>
+
+</body>
+
+
+<script th:src="@{/sourceindex/js/popper.min.js}"></script>
+<script th:src="@{/sourceindex/js/popper.js}"></script>
+<script th:src="@{/sourceindex/js/jquery-2.1.1.js}"></script>
+<script th:src="@{/sourceindex/js/bootstrap.min.js}"></script>
+<script th:src="@{/sourceindex/js/bootstrap.min.js}"></script>
+<script th:src="@{/sourceindex/js/bootstrap.min.js}"></script>
+<th:block layout:fragment="javascript-extra"></th:block>
+</html>
