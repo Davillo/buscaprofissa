@@ -7,7 +7,15 @@
 }
 
 .form-cadastro-inicial{
-	margin-top:100px;
+	margin-top:130px;
+	width: 300px;
+	align:center;
+	height: 500px;
+	margin-bottom: 50px;
+}
+
+.form-login{
+	margin-top:130px;
 	width: 300px;
 	align:center;
 	height: 400px;
@@ -18,3 +26,10 @@
 	
 }
 
+.containerCentro{
+	
+}
+
+.inputCadastro{
+	width: 100px;
+}

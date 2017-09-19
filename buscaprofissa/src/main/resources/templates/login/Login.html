@@ -12,14 +12,16 @@ layout:decorate="layout/externo/Padrao">
 
 </head>
 
-	<div layout:fragment="conteudo" align="center">
+	<div layout:fragment="conteudo" align="center" id="containerCentro">
     <div class="form-control">
-        <div class="form-cadastro-inicial">
-          
+        <div class="form-login">
+          	
             <h3>Bem-vindo ao BuscaProfissa</h3>
-            <p>Faça seu login e busque profissionais capacitados ou divulgue seu serviço
-             
+            <p>Faça seu login e busque profissionais capacitados ou divulgue seu serviço  
             </p>
+            
+            
+            
             <p th:if="${#bools.isTrue(param.error)}">
             <font color="red">E-mail ou senha inválidos!</font>
             </p>
@@ -39,7 +41,7 @@ layout:decorate="layout/externo/Padrao">
         </div>
     </div>
 	</div>
-
+	
 
 
 </html>
