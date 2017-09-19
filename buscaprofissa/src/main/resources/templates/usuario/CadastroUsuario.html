@@ -16,9 +16,9 @@ layout:decorate="layout/externo/Padrao">
    
 
 </head>
-
-	<div layout:fragment="conteudo" align="center" >
-    <div class="form-control">
+	<body id="corpo">
+	<div layout:fragment="conteudo" align="center">
+    <div class="form-control container-cadastro">
         <div class="form-cadastro-inicial">
            
             <h3>Cadastro de novo usuário</h3>
@@ -45,33 +45,18 @@ layout:decorate="layout/externo/Padrao">
                     <input type="password" class="form-control" th:field="*{confirmacaoSenha}" placeholder="Confirmação de senha" >
                 </div>
                 
-                <div class="form-group">
-                        <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> Concordo com os termos de uso </label></div>
-                </div>
+             
                 <button type="submit" class="btn btn-primary block full-width m-b">Efetuar Cadastro</button>
 
                 <p class="text-muted text-center"><small>Já possui conta?</small></p>
-                <a class="btn btn-sm btn-white btn-block" th:href="@{/login}">Login</a>
+                <a class="btn  btn-white btn-block" th:href="@{/login}">Login</a>
             </form>
         </div>
     </div>
 	</div>
 	
+   </body>
    
-   
-       
-    <th:block th:fragment="javascript-extra">
-     <!-- iCheck -->
-   <script th:src="@{/sourcetemplate/js/plugins/iCheck/icheck.min.js}"></script>
-    <script>
-        $(document).ready(function(){
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-green',
-            });
-        });
-    </script>
-    </th:block>
    
 
 </html>

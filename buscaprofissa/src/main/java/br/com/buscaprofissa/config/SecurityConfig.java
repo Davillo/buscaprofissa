@@ -33,6 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/index")
 		.antMatchers("/cadastro")
 		.antMatchers("/categorias")
+		.antMatchers("/")
 		.antMatchers("/sourcebusca/**")
 		.antMatchers("/sourceindex/**")
 		.antMatchers("/sourcetemplate/**")

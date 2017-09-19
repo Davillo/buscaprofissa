@@ -3,7 +3,7 @@
 	 width: 1125px;
 	align:center;
 	margin-top: 50px;
-
+	
 }
 
 .form-cadastro-inicial{
@@ -23,13 +23,24 @@
 
 .rodape{
 	margin-top: 100px;
-	
+	color: graytext;
 }
 
-.containerCentro{
-	
+.bp-glyphicon-large{
+	font-size: 18px;
 }
 
-.inputCadastro{
-	width: 100px;
+.bp-field-action__icon{
+	margin: 6px 0 0 5px;
 }
+
+.text-busca{
+	font-family: arial;
+	font-weight: 400;
+}
+
+
+
+
+
+
