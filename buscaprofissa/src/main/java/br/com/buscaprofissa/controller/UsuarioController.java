@@ -52,10 +52,7 @@ public final class UsuarioController {
 	}
 	
 	
-	@RequestMapping("/home")
-	public String home(){
-		return "Home";
-	}
+	
 	
 	
 	
