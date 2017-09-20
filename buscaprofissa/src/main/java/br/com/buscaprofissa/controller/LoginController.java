@@ -5,32 +5,32 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
 public class LoginController {
 	
 	@GetMapping("/login")
-	public ModelAndView login(@AuthenticationPrincipal User user) {
-		ModelAndView mv = new ModelAndView("login/Login");
-		
+	public String login(@AuthenticationPrincipal User user) {
 		if (user != null) {
-			return new ModelAndView("redirect:/home");
+			return "redirect:/";
 		}
 		
-		return mv;
+		return "login/Login";
 	}
 	
 	
-	@RequestMapping("/home")
-	public String home(){
-		return "Home";
+	@RequestMapping("/")
+	public String inicial(){
+		return "Inicial";
 	}
+	
 
 	
+	
+
+
 	
 	
 

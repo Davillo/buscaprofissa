@@ -12,7 +12,7 @@
 </head>
 
 
-<div layout:fragment="conteudo">
+<div layout:fragment="conteudo" id="conteudoCategorias">
 
 
 	<!-- begin -->
@@ -23,7 +23,7 @@
 					<div class="ibox">
 						<div class="ibox-title">
 							<h5>
-								BuscaProfissa <small>Categorias</small>
+								BuscaProfissa -<small> Áreas de Atuação</small>
 							</h5>
 						</div>
 						<div class="ibox-content">
@@ -31,11 +31,10 @@
 							<div class="row">
 								<div class="col-lg-2">
 									<div class="panel panel-default">
-										<div class="panel-heading" align="center">Assistência Técnica</div>
 										<div class="panel-body text-center">
-											<a href="#assistencia" data-toggle="tooltip" 
-											data-placement="right" title="Assistência técnica">
-											<img vspace="15px" hspace="15px" width="100px" height="100px"
+											<a href="#assistencia" data-toggle="tooltip"
+												data-placement="right" title="Assistência técnica"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
 												th:src="@{images/categorias/assistenciatecnica.png}" /></a>
 										</div>
 
@@ -43,10 +42,10 @@
 								</div>
 								<div class="col-lg-2">
 									<div class="panel panel-default">
-										<div class="panel-heading" align="center">Aulas</div>
 										<div class="panel-body text-center">
-											<a href="#aulas">
-											<img vspace="15px" hspace="15px" width="100px" height="100px"
+											<a href="#aulas" data-toggle="tooltip" data-placement="right"
+												title="Aulas"> <img vspace="15px" hspace="15px"
+												width="100px" height="100px"
 												th:src="@{images/categorias/aulas.png}" />
 											</a>
 										</div>
@@ -54,32 +53,32 @@
 								</div>
 								<div class="col-lg-2">
 									<div class="panel panel-default">
-										<div class="panel-heading" align="center">Automóvel</div>
 										<div class="panel-body text-center">
-										<a href="#automovel">
-											<img vspace="15px" hspace="15px" width="100px" height="100px"
+											<a href="#automovel" data-toggle="tooltip"
+												data-placement="right" title="Automóvel"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
 												th:src="@{images/categorias/autos.png}" />
-										</a>
+											</a>
 										</div>
 									</div>
 								</div>
 								<div class="col-lg-2">
 									<div class="panel panel-default">
-										<div class="panel-heading" align="center">Construção</div>
 										<div class="panel-body text-center">
-										<a href="#construcao">
-											<img vspace="15px" hspace="15px" width="100px" height="100px"
+											<a href="#construcao" data-toggle="tooltip"
+												data-placement="right" title="Construção e reforma"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
 												th:src="@{images/categorias/construcaoereforma.png}" />
-										</a>		
+											</a>
 										</div>
 									</div>
 								</div>
 								<div class="col-lg-2">
 									<div class="panel panel-default">
-										<div class="panel-heading" align="center">Consultoria</div>
 										<div class="panel-body text-center">
-											<a href="#colsultoria">
-											<img vspace="15px" hspace="15px" width="100px" height="100px"
+											<a href="#colsultoria" data-toggle="tooltip"
+												data-placement="right" title="Consultoria e Projetos"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
 												th:src="@{images/categorias/consultoriaeprojetos.png}" />
 											</a>
 										</div>
@@ -87,12 +86,12 @@
 								</div>
 								<div class="col-lg-2">
 									<div class="panel panel-default">
-										<div class="panel-heading" align="center">Esporte</div>
 										<div class="panel-body text-center">
-										<a href="#esporte">
-											<img vspace="15px" hspace="15px" width="100px" height="100px"
+											<a href="#esporte" data-toggle="tooltip"
+												data-placement="right" title="Esportes"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
 												th:src="@{images/categorias/esportes.png}" />
-										</a>
+											</a>
 										</div>
 									</div>
 								</div>
@@ -100,68 +99,71 @@
 							<div class="row">
 								<div class="col-lg-2">
 									<div class="panel panel-default">
-										<div class="panel-heading" align="center">Eventos</div>
 										<div class="panel-body text-center">
-										<a href="#eventos">
-											<img vspace="15px" hspace="15px" width="100px" height="100px"
+											<a href="#eventos" data-toggle="tooltip"
+												data-placement="right" title="Eventos"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
 												th:src="@{images/categorias/eventos.png}" />
-										</a>
+											</a>
 										</div>
 									</div>
 								</div>
 								<div class="col-lg-2">
 									<div class="panel panel-default">
-										<div class="panel-heading" align="center">Fotografia</div>
 										<div class="panel-body text-center">
-										<a href="#fotografia">
-											<img vspace="15px" hspace="15px" width="100px" height="100px"
+											<a href="#fotografia" data-toggle="tooltip"
+												data-placement="right" title="Fotografia"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
 												th:src="@{images/categorias/fotografia.png}" />
-										</a>
+											</a>
 										</div>
 									</div>
 								</div>
 								<div class="col-lg-2">
 									<div class="panel panel-default">
-										<div class="panel-heading" align="center">Moda e Beleza
-										</div>
+
 										<div class="panel-body text-center">
-										<a href="#modaebeleza">
-											<img vspace="15px" hspace="15px" width="100px" height="100px"
+											<a href="#modaebeleza" data-toggle="tooltip"
+												data-placement="right" title="Moda e Beleza"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
 												th:src="@{images/categorias/modaebeleza.png}" />
-										</a>
+											</a>
 										</div>
 									</div>
 								</div>
 								<div class="col-lg-2">
 									<div class="panel panel-default">
-										<div class="panel-heading" align="center">Saúde</div>
+
 										<div class="panel-body text-center">
-										<a href="#saude">
-											<img vspace="15px" hspace="15px" width="100px" height="100px"
+											<a href="#saude" data-toggle="tooltip" data-placement="right"
+												title="Saúde"> <img vspace="15px" hspace="15px"
+												width="100px" height="100px"
 												th:src="@{images/categorias/saude.png}" />
-										</a>
+											</a>
 										</div>
 									</div>
 								</div>
 								<div class="col-lg-2">
 									<div class="panel panel-default">
-										<div class="panel-heading" align="center">Serv. Domésticos</div>
+
 										<div class="panel-body text-center">
-										<a href="#domesticos">
-											<img vspace="15px" hspace="15px" width="100px" height="100px"
+											<a href="#domesticos" data-toggle="tooltip"
+												data-placement="right" title="Serviços Domésticos"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
 												th:src="@{images/categorias/servicosdomesticos.png}" />
-										</a>
+											</a>
 										</div>
 									</div>
 								</div>
 								<div class="col-lg-2">
 									<div class="panel panel-default">
-										<div class="panel-heading" align="center">Tecnologia</div>
+
 										<div class="panel-body text-center">
-										<a href="#tecnologia">
-											<img vspace="15px" hspace="15px" width="100px" height="100px"
+											<a href="#tecnologia" data-toggle="tooltip"
+												data-placement="right" title="Tecnologia"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
 												th:src="@{images/categorias/tecnologia.png}" />
-										</a>
+											</a>
 										</div>
 									</div>
 								</div>
@@ -180,7 +182,8 @@
 		<div class=" container mt-30">
 			<div class="row">
 				<div class="ibox-title col-lg-12">
-					<h3 id="assistencia" style="text-align: center">Assistência Técnica</h3>
+					<h3 id="assistencia" style="text-align: center">Assistência
+						Técnica</h3>
 				</div>
 			</div>
 			<div class="row">

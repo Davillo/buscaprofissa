@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import br.com.buscaprofissa.security.AppUserDetailsService;
 
@@ -33,7 +34,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/index")
 		.antMatchers("/cadastro")
 		.antMatchers("/categorias")
-		.antMatchers("/")
 		.antMatchers("/sourcebusca/**")
 		.antMatchers("/sourceindex/**")
 		.antMatchers("/sourcetemplate/**")
@@ -43,8 +43,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and()
-				.csrf().disable();
+		.anyRequest()
+		.authenticated()
+		.and()
+		.formLogin()
+		.loginPage("/login")
+		.permitAll()
+		.and()
+		.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 	}
 
 	@Bean
