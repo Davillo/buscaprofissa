@@ -8,9 +8,6 @@
 	margin-top: 50px;
 	background-color: white;
 	
-
-	
-	
 }
 
 #conteudoCategorias{
@@ -27,6 +24,7 @@
 	align:center;
 	height: 500px;
 	margin-bottom: 50px;
+	
 }
 
 .form-login{
@@ -55,9 +53,9 @@
 	font-weight: 400;
 }
 
-.conteudo{
+.conteudoMeio{
+	background-color: #F3F3F4;
 }
-
 
 
 
