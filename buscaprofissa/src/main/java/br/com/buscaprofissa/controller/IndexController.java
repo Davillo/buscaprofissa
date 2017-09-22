@@ -8,13 +8,13 @@ public class IndexController {
 	
 	@RequestMapping("/index")
 	public String index(){
-		return "Index";
+		return "externas/Index";
 		
 	}
 	
 	@RequestMapping("/categorias")
 	public String categorias(){
-		return "Categorias";
+		return "externas/Categorias";
 	}
 	
 	

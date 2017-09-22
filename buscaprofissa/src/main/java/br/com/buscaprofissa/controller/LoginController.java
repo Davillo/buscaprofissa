@@ -17,13 +17,13 @@ public class LoginController {
 			return "redirect:/";
 		}
 		
-		return "login/Login";
+		return "externas/Login";
 	}
 	
 	
 	@RequestMapping("/")
 	public String inicial(){
-		return "Inicial";
+		return "internas/Inicial";
 	}
 	
 
