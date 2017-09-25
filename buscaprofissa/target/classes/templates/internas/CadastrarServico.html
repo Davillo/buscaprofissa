@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:buscaprofissa="http://buscaprofissa.com.br"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>INSPINIA | Wizards</title>
+<title>Cadastrar Serviço</title>
 
-<link th:href="@{/sourcetemplate/css/bootstrap.min.css}"
-	rel="stylesheet">
+<link th:href="@{/sourcetemplate/css/bootstrap.min.css}" rel="stylesheet">
 
 <link th:href="@{/sourcetemplate/font-awesome/css/font-awesome.css}"
 	rel="stylesheet">
-<link th:href="@{/sourcetemplate/css/plugins/iCheck/custom.css}"
-	rel="stylesheet">
-<link th:href="@{/sourcetemplate/css/plugins/steps/jquery.steps.css}"
-	rel="stylesheet">
+<link th:href="@{/sourcetemplate/css/plugins/iCheck/custom.css}" rel="stylesheet">
+<link th:href="@{/sourcetemplate/css/plugins/steps/jquery.steps.css}" rel="stylesheet">
 <link th:href="@{/sourcetemplate/css/animate.css}" rel="stylesheet">
 <link th:href="@{/sourcetemplate/css/style.css}" rel="stylesheet">
 
@@ -74,6 +73,7 @@
 					<li><a href="#"><i class="fa fa-globe"></i> <span
 							class="nav-label">Galeria</span><span
 							class="label label-info pull-right">NEW</span></a></li>
+							</ul>
 			</div>
 		</nav>
 
@@ -336,22 +336,20 @@
 	</div>
 
 
+ 	<script th:src="@{sourcetemplate/js/jquery-2.1.1.js}"></script>
+    <script th:src="@{sourcetemplate/js/bootstrap.min.js}"></script>
+    <script th:src="@{sourcetemplate/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+    <script th:src="@{sourcetemplate/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
 
-	<!-- Mainly scripts -->
-	<script src="js/jquery-2.1.1.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-	<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- Custom and plugin javascript -->
+    <script th:src="@{sourcetemplate/js/inspinia.js}"></script>
+    <script th:src="@{sourcetemplate/js/plugins/pace/pace.min.js}"></script>
 
-	<!-- Custom and plugin javascript -->
-	<script src="js/inspinia.js"></script>
-	<script src="js/plugins/pace/pace.min.js"></script>
+    <!-- Steps -->
+    <script th:src="@{sourcetemplate/js/plugins/staps/jquery.steps.min.js}"></script>
 
-	<!-- Steps -->
-	<script src="js/plugins/staps/jquery.steps.min.js"></script>
-
-	<!-- Jquery Validate -->
-	<script src="js/plugins/validate/jquery.validate.min.js"></script>
+    <!-- Jquery Validate -->
+    <script th:src="@{sourcetemplate/js/plugins/validate/jquery.validate.min.js}"></script>
 
 
 	<script>

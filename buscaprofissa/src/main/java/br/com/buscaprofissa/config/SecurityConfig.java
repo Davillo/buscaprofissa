@@ -31,13 +31,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring()
-		.antMatchers("/index")
-		.antMatchers("/cadastro")
-		.antMatchers("/categorias")
+		.antMatchers("/images/**")
 		.antMatchers("/sourcebusca/**")
 		.antMatchers("/sourceindex/**")
 		.antMatchers("/sourcetemplate/**")
-		.antMatchers("/images/**");
+		.antMatchers("/categorias")
+		.antMatchers("/index")
+		.antMatchers("/cadastro")
+		;
 	}
 
 	@Override

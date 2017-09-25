@@ -15,11 +15,12 @@ public class UsuarioLogado extends User {
 	
 	private Usuario usuario;
 
+	
 	public UsuarioLogado(Usuario usuario, Collection<? extends GrantedAuthority> authorities) {
 		super(usuario.getEmail(), usuario.getSenha(), authorities);
 		this.usuario = usuario;
 	}
-
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}

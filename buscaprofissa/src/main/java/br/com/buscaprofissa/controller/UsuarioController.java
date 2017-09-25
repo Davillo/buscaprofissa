@@ -51,7 +51,10 @@ public final class UsuarioController {
 		
 	}
 	
-	
+	@RequestMapping("/cadastroServico")
+	public String servico(){
+		return "internas/CadastrarServico";
+	}
 	
 	
 	
