@@ -22,39 +22,44 @@
 
 		<!-- Thymeleaf -->
 		<thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
-		
+
 		<!-- Servlet API -->
 		<servlet.version>3.1.0</servlet.version>
-		
+
 		<!-- Bean Validation / Hibernate Validator -->
 		<hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
-		
-		
+
+
 		<!-- Spring MVC -->
 		<spring-framework.version>4.3.0.RELEASE</spring-framework.version>
-		
+
 		<!-- Thymeleaf - Layout Dialect -->
 		<thymeleaf-layout-dialect.version>2.0.0</thymeleaf-layout-dialect.version>
-	
-	
+
+
 		<!-- JPA / Hibernate -->
 		<hibernate.version>5.1.0.Final</hibernate.version>
-		
+
 		<!-- Spring Data JPA -->
 		<spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>
-		
+
 		<!-- Apache Bean Utils -->
 		<commons-beanutils.version>1.9.2</commons-beanutils.version>
-		
+
 		<!-- Spring Security -->
 		<spring-security.version>4.1.1.RELEASE</spring-security.version>
-		
+
 		<!-- Jackson - JSON -->
 		<jackson-core.version>2.7.5</jackson-core.version>
-		
+
+		<!-- Thymeleaf - Extras Spring Security -->
+		<thymeleaf-extras-springsecurity.version>3.0.0.RELEASE</thymeleaf-extras-springsecurity.version>
+
+
+
 	</properties>
-	
-	
+
+
 	<build>
 		<plugins>
 			<plugin>
@@ -65,8 +70,8 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-			
-			
+
+
 			<plugin>
 				<groupId>org.flywaydb</groupId>
 				<artifactId>flyway-maven-plugin</artifactId>
@@ -75,10 +80,10 @@
 					<driver>com.mysql.jdbc.Driver</driver>
 				</configuration>
 			</plugin>
-			
+
 		</plugins>
 	</build>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -90,8 +95,8 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
-	
+
+
 	<dependencies>
 		<!-- Spring MVC -->
 		<dependency>
@@ -99,7 +104,7 @@
 			<artifactId>spring-webmvc</artifactId>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Servlet API -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -122,16 +127,16 @@
 			<version>${thymeleaf.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
-		
-        <!-- Thymeleaf - Layout Dialect -->
+
+
+		<!-- Thymeleaf - Layout Dialect -->
 		<dependency>
-    		<groupId>nz.net.ultraq.thymeleaf</groupId>
-    		<artifactId>thymeleaf-layout-dialect</artifactId>
-    		<version>${thymeleaf-layout-dialect.version}</version>
-		</dependency>	
-		
-		
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+			<version>${thymeleaf-layout-dialect.version}</version>
+		</dependency>
+
+
 		<!-- JPA / Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -141,30 +146,30 @@
 		</dependency>
 
 		<!-- Hibernate - Java 8 support -->
-        <dependency>
-    		<groupId>org.hibernate</groupId>
-    		<artifactId>hibernate-java8</artifactId>
-    		<version>${hibernate.version}</version>
-    		<scope>compile</scope>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Spring Data JPA -->
 		<dependency>
-		    <groupId>org.springframework.data</groupId>
-		    <artifactId>spring-data-jpa</artifactId>
-		    <version>${spring-data-jpa.version}</version>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring-data-jpa.version}</version>
 		</dependency>
-		
-		
-	
+
+
+
 		<!-- Bean Validation / Hibernate Validator -->
-  		<dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
-            <scope>compile</scope>
-        </dependency>
-	
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
 		<!-- MySQL Driver -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -172,24 +177,24 @@
 			<version>${mysql-connector-java.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- Spring Context Support -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<scope>compile</scope>
-			
-			</dependency>
-			
-			<!-- Apache Bean Utils -->
-		<dependency>
-    		<groupId>commons-beanutils</groupId>
-    		<artifactId>commons-beanutils</artifactId>
-    		<version>${commons-beanutils.version}</version>
-    		<scope>compile</scope>
+
 		</dependency>
-		
-		
+
+		<!-- Apache Bean Utils -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>${commons-beanutils.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+
 		<!-- Spring Security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -203,16 +208,25 @@
 			<version>${spring-security.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
-		
-			<!-- Jackson - JSON -->
+
+
+		<!-- Jackson - JSON -->
 		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>${jackson-core.version}</version>
-		    <scope>compile</scope>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-core.version}</version>
+			<scope>compile</scope>
 		</dependency>
-		
+
+		<!-- Thymeleaf - Extras Spring Security -->
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
+			<version>${thymeleaf-extras-springsecurity.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+
 	</dependencies>
-	
+
 </project>
