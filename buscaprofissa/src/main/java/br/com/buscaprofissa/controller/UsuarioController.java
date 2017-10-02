@@ -57,6 +57,10 @@ public final class UsuarioController {
 	}
 	
 	
+	@RequestMapping("/teste")
+	public String chat(){
+		return "Chat";
+	}
 	
 	
 	
