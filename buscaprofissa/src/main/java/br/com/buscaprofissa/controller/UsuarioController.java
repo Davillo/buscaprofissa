@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,6 +39,8 @@ public final class UsuarioController {
 			return cadastro(usuario);
 		}
 		
+		
+		
 		try{
 			service.salvar(usuario);
 			
@@ -46,20 +49,31 @@ public final class UsuarioController {
 			return cadastro(usuario);
 		}
 		
-		attributes.addFlashAttribute("mensagem","Cadastrado com sucesso!");
+		attributes.addFlashAttribute("mensagem","Salvo com sucesso!");
 		return new ModelAndView("redirect:/cadastro");
 		
 	}
 	
-	@RequestMapping("/cadastroServico")
-	public String servico(){
-		return "internas/CadastrarServico";
+	@RequestMapping("/meusdados")
+	public ModelAndView meusdados(Usuario usuario){
+		ModelAndView mv = new ModelAndView("internas/MeusDados");
+		return mv;
 	}
 	
 	
 	@RequestMapping("/teste")
 	public String chat(){
 		return "Chat";
+	}
+	
+	@PostMapping("/meusdados")
+	public ModelAndView salvarDados(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes){
+		
+		if(result.hasErrors()){
+			return meusdados(usuario);
+		}
+		
+		return new ModelAndView("redirect:/meusdados");
 	}
 	
 	

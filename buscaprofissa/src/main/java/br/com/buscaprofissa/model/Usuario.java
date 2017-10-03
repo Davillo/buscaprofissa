@@ -1,9 +1,11 @@
 package br.com.buscaprofissa.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +19,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
 
 import br.com.buscaprofissa.validation.AtributoConfirmacao;
 
@@ -39,11 +42,17 @@ public class Usuario implements Serializable{
 	@NotBlank(message = "O sobrenome é obrigatório!")
 	private String sobrenome;
 	
+	@NotBlank(message = "CPF é obrigatório!")
+	@CPF
+	private String cpf;
+	
+	
 	@NotBlank(message = "E-mail é obrigatório!")
 	@Email(message = "Informe um e-mail válido!")
 	private String email;
 	
 	@NotBlank(message = "A senha é obrigatória!")
+	@Size(min = 8, message = "A senha deve conter no mínimo 8 caracteres!")
 	private String senha;
 	
 	@Transient
@@ -51,7 +60,15 @@ public class Usuario implements Serializable{
 
 	private String foto;
 	
+	@Column(name = "data_nascimento")
+	private LocalDate dataNascimento; 
 	
+	private String telefone;
+	
+	private String sexo;
+	
+	@Embedded
+	private Endereco endereco;
 	
 	@Column(name = "content_type")
 	private String contentType;
@@ -133,6 +150,52 @@ public class Usuario implements Serializable{
 
 	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
+	}
+	
+	
+	
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	
+	
+	
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	@Override
