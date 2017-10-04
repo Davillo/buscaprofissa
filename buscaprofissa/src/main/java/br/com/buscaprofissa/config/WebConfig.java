@@ -1,5 +1,6 @@
 package br.com.buscaprofissa.config;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 import org.springframework.beans.BeansException;
@@ -8,6 +9,10 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
+import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
+import org.springframework.format.support.DefaultFormattingConversionService;
+import org.springframework.format.support.FormattingConversionService;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -28,6 +33,7 @@ import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 @Configuration
 @ComponentScan(basePackageClasses = { UsuarioController.class })
+@EnableSpringDataWebSupport
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
@@ -79,4 +85,18 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 	public LocaleResolver localeResolver(){
 		return new FixedLocaleResolver(new Locale("pt", "BR"));
 	}
+	
+	@Bean
+	public FormattingConversionService mvConversionService(){
+		DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService();
+	
+		
+		//DateTimeFormatterRegistrar dateTimeFormatter  = new DateTimeFormatterRegistrar();
+		//dateTimeFormatter.setDateFormatter(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		//dateTimeFormatter.registerFormatters(conversionService);
+		
+		return conversionService;
+	}
+	
+	
 }

@@ -27,6 +27,11 @@
 	
 }
 
+.bp-required > .control-label:after {
+	content: "*";
+}
+
+
 .form-login{
 	margin-top:130px;
 	width: 300px;

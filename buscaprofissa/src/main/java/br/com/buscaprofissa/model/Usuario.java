@@ -1,12 +1,16 @@
-package br.com.buscaprofissa.model;
+	package br.com.buscaprofissa.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,20 +18,24 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import br.com.buscaprofissa.validation.AtributoConfirmacao;
 
 
-@AtributoConfirmacao(atributo = "senha", atributoConfirmacao = "confirmacaoSenha", message = "Senhas não conferem")
 @Entity
 @Table(name = "usuario")
-public class Usuario implements Serializable{
+public class Usuario implements Serializable,UserDetails{
 	
 	
 	private static final long serialVersionUID = 1L;
@@ -36,23 +44,16 @@ public class Usuario implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message = "O nome é obrigatório!")
 	private String nome;
 	
-	@NotBlank(message = "O sobrenome é obrigatório!")
 	private String sobrenome;
 	
-	@NotBlank(message = "CPF é obrigatório!")
-	@CPF
+	@CPF(message = "Informe um CPF válido")
 	private String cpf;
 	
-	
-	@NotBlank(message = "E-mail é obrigatório!")
-	@Email(message = "Informe um e-mail válido!")
+	@Email(message = "Informe um e-mail válido")
 	private String email;
 	
-	@NotBlank(message = "A senha é obrigatória!")
-	@Size(min = 8, message = "A senha deve conter no mínimo 8 caracteres!")
 	private String senha;
 	
 	@Transient
@@ -61,11 +62,14 @@ public class Usuario implements Serializable{
 	private String foto;
 	
 	@Column(name = "data_nascimento")
-	private LocalDate dataNascimento; 
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date dataNascimento; 
 	
 	private String telefone;
 	
-	private String sexo;
+	@Enumerated(EnumType.STRING)
+	private Sexo sexo;
 	
 	@Embedded
 	private Endereco endereco;
@@ -79,6 +83,10 @@ public class Usuario implements Serializable{
 	inverseJoinColumns = @JoinColumn(name = "id_categoria"))
 	private List<Categoria> categorias;
 	
+
+
+
+
 	//getters e setters
 	public Long getId() {
 		return id;
@@ -166,11 +174,11 @@ public class Usuario implements Serializable{
 	
 	
 
-	public LocalDate getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(LocalDate dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -182,11 +190,11 @@ public class Usuario implements Serializable{
 		this.telefone = telefone;
 	}
 
-	public String getSexo() {
+	public Sexo getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(String sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
 
@@ -221,6 +229,48 @@ public class Usuario implements Serializable{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	

@@ -30,19 +30,19 @@ layout:decorate="layout/externo/Padrao">
 				<buscaprofissa:message/>
          		
                 <div class="form-group" buscaprofissa:classforerror="nome">
-                    <input type="text" class="form-control" th:field="*{nome}" placeholder="Nome" >
+                    <input type="text" class="form-control" th:field="*{nome}"  required placeholder="Nome" >
                 </div>
                 <div class="form-group" buscaprofissa:classforerror="sobrenome" >
-                    <input type="text" class="form-control" th:field="*{sobrenome}"placeholder="Sobrenome">
+                    <input type="text" class="form-control" th:field="*{sobrenome}" required placeholder="Sobrenome">
                 </div>
                 <div class="form-group" buscaprofissa:classforerror="email">
-                    <input type="text" class="form-control" th:field="*{email}"  placeholder="E-mail">
+                    <input type="text" class="form-control" th:field="*{email}" required  placeholder="E-mail">
                 </div>
                  <div class="form-group" buscaprofissa:classforerror="senha">
-                    <input type="password" class="form-control" th:field="*{senha}"  placeholder="Senha">
+                    <input type="password" class="form-control" th:field="*{senha}" required placeholder="Senha">
                 </div>
                  <div class="form-group">
-                    <input type="password" class="form-control" th:field="*{confirmacaoSenha}" placeholder="Confirmação de senha" >
+                    <input type="password" class="form-control" th:field="*{confirmacaoSenha}" required placeholder="Confirmação de senha" >
                 </div>
                 
              

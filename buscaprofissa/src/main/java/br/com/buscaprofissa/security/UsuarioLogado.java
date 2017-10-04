@@ -24,5 +24,6 @@ public class UsuarioLogado extends User {
 	public Usuario getUsuario() {
 		return usuario;
 	}
-
+	
+	
 }
