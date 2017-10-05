@@ -186,6 +186,7 @@ public class Usuario implements Serializable,UserDetails{
 		return telefone;
 	}
 
+	
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}

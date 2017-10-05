@@ -21,8 +21,15 @@ public class UsuarioLogado extends User {
 		this.usuario = usuario;
 	}
 	
-	public Usuario getUsuario() {
+	
+
+	public  Usuario getUsuario() {
 		return usuario;
+	}
+	
+	
+	public void setUsuario(Usuario usuario){
+		this.usuario= usuario;
 	}
 	
 	

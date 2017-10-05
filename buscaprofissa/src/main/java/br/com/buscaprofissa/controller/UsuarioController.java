@@ -5,9 +5,11 @@ import java.util.jar.Attributes;
 
 import javax.validation.Valid;
 
+import org.hibernate.validator.constraints.ParameterScriptAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -73,7 +75,7 @@ public final class UsuarioController {
 		return new ModelAndView("redirect:/cadastro");
 		
 	}
-	
+	/*
 	@GetMapping("/meusdados")
 	public ModelAndView meusdados(@RequestParam("id") Long id){
 		Usuario usuario = repository.findOne(id);
@@ -81,6 +83,19 @@ public final class UsuarioController {
 		mv.addObject("usuario", usuario);
 		mv.addObject("sexos", Sexo.values());
 		return mv;
+	}*/
+	
+	@RequestMapping("/meusdados")
+	public ModelAndView meusdados(@AuthenticationPrincipal UsuarioLogado usuario){
+		Usuario user = usuario.getUsuario();
+		ModelAndView mv = new ModelAndView("internas/MeusDados");
+		
+		mv.addObject("usuario", user);
+		mv.addObject("sexos", Sexo.values());
+		
+		
+		return mv;
+		
 	}
 	
 	
@@ -92,21 +107,23 @@ public final class UsuarioController {
 	}
 	
 	@PostMapping("/meusdadosSave")
-	public ModelAndView salvarDados(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes){
-	
+	public ModelAndView salvarDados(@AuthenticationPrincipal UsuarioLogado user,Usuario  usuario, BindingResult result, RedirectAttributes attributes){
+
 		if(result.hasErrors()){
-			System.out.println(">> "+usuario.getNome());
+			return new ModelAndView("redirect:/meusdados");
 			
 		}
 		
 		try{
 			service.atualizar(usuario);
+			user.setUsuario(usuario);
+			attributes.addFlashAttribute("mensagem", "Salvo com sucesso!");
 		}catch (Exception e) {
-				System.out.println(">>" +e.getMessage());
+				System.out.println(">>" +e.getMessage() + ">> "+e.getCause());
 		}
 		
-		attributes.addFlashAttribute("mensagem", "Salvo com sucesso!");
-		return new ModelAndView("redirect:/meusdados/?id="+usuario.getId());
+		
+		return new ModelAndView("redirect:/meusdados");
 	}
 	
 	

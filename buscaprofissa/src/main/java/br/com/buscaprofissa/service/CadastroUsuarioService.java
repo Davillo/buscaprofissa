@@ -37,7 +37,6 @@ public class CadastroUsuarioService {
 			
 			usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
 			usuario.setConfirmacaoSenha(usuario.getSenha());
-			
 			repository.save(usuario);
 		}
 		
