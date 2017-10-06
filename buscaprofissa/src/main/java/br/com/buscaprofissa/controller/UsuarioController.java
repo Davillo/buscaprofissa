@@ -1,25 +1,15 @@
 package br.com.buscaprofissa.controller;
 
-import java.security.Principal;
-import java.util.jar.Attributes;
 
 import javax.validation.Valid;
 
-import org.hibernate.validator.constraints.ParameterScriptAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -75,15 +65,7 @@ public final class UsuarioController {
 		return new ModelAndView("redirect:/cadastro");
 		
 	}
-	/*
-	@GetMapping("/meusdados")
-	public ModelAndView meusdados(@RequestParam("id") Long id){
-		Usuario usuario = repository.findOne(id);
-		ModelAndView mv = new ModelAndView("internas/MeusDados");
-		mv.addObject("usuario", usuario);
-		mv.addObject("sexos", Sexo.values());
-		return mv;
-	}*/
+
 	
 	@RequestMapping("/meusdados")
 	public ModelAndView meusdados(@AuthenticationPrincipal UsuarioLogado usuario){

@@ -29,7 +29,7 @@ public class CadastroUsuarioService {
 			if(emailUsuarioJaExistent.isPresent()){
 				throw new EmailUsuarioJaCadastradoException("E-mail de usuário já cadastrado");
 			}
-			if(usuario.getSenha() != usuario.getConfirmacaoSenha() ){
+			if(!(usuario.getSenha().equals(usuario.getConfirmacaoSenha()))   ){
 				throw new SenhaEConfirmacaoDiferentesException("Senhas não conferem");
 			}
 			
