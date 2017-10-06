@@ -203,8 +203,27 @@
 								<div class="ibox-tools">Área profissional</div>
 							</div>
 							<div class="ibox-content">
-								<h2>Selecione uma área de atuação</h2>
-								
+								<h2>Selecione uma  categoria</h2>
+											<div class="row">
+				<div class="form-group  col-sm-6">
+					<label class="control-label">Categorias</label> 
+					<div>
+					<form th:action="@{/categorias/save}" method="POST" th:object="${usuario}">
+							
+						<th:block th:each="categoria : ${categorias}">
+	  						<div class="checkbox  checkbox-inline"> 
+	  						
+		    					<input type="checkbox" th:field="*{categorias}"  th:value="${categoria.id}" />
+		    					<label th:text="${categoria.nome}"></label>
+	    					</div>
+	    				</th:block>
+	    					<input type="text" th:value="${#authentication.principal.usuario.id}" id="id"/>
+	    					<input type="submit" value="Salvar">
+	    					</form>
+					</div>
+				
+				</div>
+			</div>
 									</div>
 								</div>
 							</div>

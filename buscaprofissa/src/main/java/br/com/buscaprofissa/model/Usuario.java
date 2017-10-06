@@ -1,16 +1,14 @@
-	package br.com.buscaprofissa.model;
+package br.com.buscaprofissa.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,21 +19,15 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 
 
 @Entity
 @Table(name = "usuario")
-public class Usuario implements Serializable,UserDetails{
+public class Usuario implements Serializable{
 	
 	
 	private static final long serialVersionUID = 1L;
@@ -78,14 +70,9 @@ public class Usuario implements Serializable,UserDetails{
 	private String contentType;
 	
 	@ManyToMany
-	@Size(min = 0)
 	@JoinTable(name = "servico", joinColumns = @JoinColumn(name = "id_usuario"),
 	inverseJoinColumns = @JoinColumn(name = "id_categoria"))
 	private List<Categoria> categorias;
-	
-
-
-
 
 	//getters e setters
 	public Long getId() {
@@ -161,8 +148,6 @@ public class Usuario implements Serializable,UserDetails{
 	}
 	
 	
-	
-
 	public String getCpf() {
 		return cpf;
 	}
@@ -232,52 +217,6 @@ public class Usuario implements Serializable,UserDetails{
 		return true;
 	}
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getUsername() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	
-	
-	
-	
 	
 	
 	
