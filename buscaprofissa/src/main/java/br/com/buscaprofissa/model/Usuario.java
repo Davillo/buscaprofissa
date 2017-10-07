@@ -54,6 +54,19 @@ public class Usuario implements Serializable{
 
 	private String foto;
 	
+	@Column(name = "ativo")
+	private Boolean ativo;
+	
+	
+	
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+
 	@Transient
 	private AreaAtuacao areaAtuacao;
 	
@@ -90,7 +103,7 @@ public class Usuario implements Serializable{
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-
+	
 	//getters e setters
 	public Long getId() {
 		return id;

@@ -25,7 +25,7 @@ layout:decorate="layout/externo/Padrao">
             
             
             <p th:if="${#bools.isTrue(param.error)}">
-            <font color="red">E-mail ou senha inválidos!</font>
+            <font color="red">E-mail/Senha incorretos ou conta inativa!</font>
             </p>
               </div>
             <form class="m-t" role="form" method="POST" th:action="@{/login}">

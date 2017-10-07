@@ -25,7 +25,7 @@ public class CadastroUsuarioService {
 		
 		@Transactional 
 		public void salvar(Usuario usuario){
-			Optional<Usuario> emailUsuarioJaExistent = repository.findByEmail(usuario.getEmail());
+			Optional<Usuario> emailUsuarioJaExistent = repository.findByEmailIgnoreCaseAndAtivoTrue(usuario.getEmail());
 			if(emailUsuarioJaExistent.isPresent()){
 				throw new EmailUsuarioJaCadastradoException("E-mail de usuário já cadastrado");
 			}
@@ -37,6 +37,7 @@ public class CadastroUsuarioService {
 			
 			usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
 			usuario.setConfirmacaoSenha(usuario.getSenha());
+			usuario.setAtivo(true);
 			repository.save(usuario);
 		}
 		
