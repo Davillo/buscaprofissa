@@ -2,6 +2,7 @@
 <html lang="pt" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:buscaprofissa="http://buscaprofissa.com.br"
+	xmlns:data="http://www.thymeleaf.org/extras/data"
 	>
 
 <head>
@@ -341,15 +342,40 @@
 										
 										 <input type="hidden" class="form-control" name="senha" th:value="${#authentication.principal.usuario.senha}"  placeholder="Senha">
 											 <input type="hidden" class="form-control" name="confirmacaoSenha" th:value="${#authentication.principal.usuario.senha}"  placeholder="Senha">
+								
+								
+								
+								
+																
+					<div class="form-group  col-sm-5">
+							<label for="area">Área de atuação</label>
+							<select id="area" class="form-control" th:field="*{areaAtuacao}">
+		                    <option value="">Selecione a área</option>
+		                    <option th:each="area : ${areas}" th:value="${area.id}" th:text="${area.nome}"></option>
+		                	</select>
+					</div>
+			 
+				<div class="form-group  col-sm-5">
+					<label  for="cidade">Categorias</label>
+					
+						<!-- <input type="hidden" id="inputHiddenCategoriaSelecionada" th:value="*{categoria} != null ? *{categoria.id}"/> -->
+						<select id="categoria" class="form-control"  th:field="*{categoria}">
+						   <option value="">Selecione a categoria</option>
+						    <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nome}"></option>
+						   
+						</select>
+						<!-- data:url="@{/categorias}" -->
+						
+				
+				</div>
 
+
+								
 
 									</div>
 
 
-
-
-
-
+			
 
 
 									<div class="form-group">
@@ -393,6 +419,7 @@
     <script th:src="@{/sourcetemplate/js/inspinia.js}"></script>
     <script th:src="@{/sourcetemplate/js/plugins/pace/pace.min.js}"></script>
     <script th:src="@{/sourcebusca/locastyle.js}"></script>
+    <!--  <script th:src="@{/sourcebusca/combocategoria.js}"></script> -->
     <!-- Peity -->
     <script th:src="@{/sourcetemplate/js/plugins/peity/jquery.peity.min.js}"></script>
     <!-- Peity -->

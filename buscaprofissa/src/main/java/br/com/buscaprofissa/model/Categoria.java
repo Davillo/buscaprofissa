@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "categoria")
 public class Categoria implements Serializable {
@@ -26,9 +28,14 @@ public class Categoria implements Serializable {
 	
 	private String nome;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_area_atuacao")
+	@JsonIgnore
 	private AreaAtuacao areaAtuacao;
+	
+	public boolean temArea(){
+		return areaAtuacao != null;
+	}
 
 	public Long getId() {
 		return id;
@@ -79,10 +86,6 @@ public class Categoria implements Serializable {
 		return true;
 	}
 	
-	@Override
-	public String toString() {
-		return nome;
-	}
 	
 	
 

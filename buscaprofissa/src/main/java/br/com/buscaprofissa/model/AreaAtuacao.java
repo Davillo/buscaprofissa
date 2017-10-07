@@ -3,32 +3,24 @@ package br.com.buscaprofissa.model;
 import javax.persistence.Table;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 @Table(name = "area_atuacao")
 public class AreaAtuacao implements Serializable{
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	
 	private String nome;
-	
-	@OneToMany
-	private List<Categoria> categorias;
 
 	public Long getId() {
 		return id;
@@ -45,14 +37,7 @@ public class AreaAtuacao implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public List<Categoria> getCategorias() {
-		return categorias;
-	}
-
-	public void setCategorias(List<Categoria> categorias) {
-		this.categorias = categorias;
-	}
+	
 
 	@Override
 	public int hashCode() {
@@ -78,6 +63,7 @@ public class AreaAtuacao implements Serializable{
 			return false;
 		return true;
 	}
+	
 	
 	
 	

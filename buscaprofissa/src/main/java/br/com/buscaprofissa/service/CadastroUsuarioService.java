@@ -43,7 +43,7 @@ public class CadastroUsuarioService {
 		
 		@Transactional
 		public void atualizar(Usuario usuario){
-			repository.save(usuario);
+			repository.saveAndFlush(usuario);
 		}
 		
 	

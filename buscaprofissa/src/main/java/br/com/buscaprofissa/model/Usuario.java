@@ -8,13 +8,13 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,6 +22,7 @@ import javax.persistence.Transient;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
+
 
 
 
@@ -53,6 +54,18 @@ public class Usuario implements Serializable{
 
 	private String foto;
 	
+	@Transient
+	private AreaAtuacao areaAtuacao;
+	
+	
+	public AreaAtuacao getAreaAtuacao() {
+		return areaAtuacao;
+	}
+
+	public void setAreaAtuacao(AreaAtuacao areaAtuacao) {
+		this.areaAtuacao = areaAtuacao;
+	}
+
 	@Column(name = "data_nascimento")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -69,10 +82,14 @@ public class Usuario implements Serializable{
 	@Column(name = "content_type")
 	private String contentType;
 	
-	@ManyToMany
-	@JoinTable(name = "servico", joinColumns = @JoinColumn(name = "id_usuario"),
-	inverseJoinColumns = @JoinColumn(name = "id_categoria"))
-	private List<Categoria> categorias;
+	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 
 	//getters e setters
 	public Long getId() {
@@ -139,14 +156,10 @@ public class Usuario implements Serializable{
 		this.contentType = contentType;
 	}
 
-	public List<Categoria> getCategorias() {
-		return categorias;
-	}
-
-	public void setCategorias(List<Categoria> categorias) {
-		this.categorias = categorias;
-	}
 	
+	@ManyToOne
+	@JoinColumn(name = "id_categoria")
+	private Categoria categoria;
 	
 	public String getCpf() {
 		return cpf;

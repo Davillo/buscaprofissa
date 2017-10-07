@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.buscaprofissa.model.AreaAtuacao;
 import br.com.buscaprofissa.model.Sexo;
 import br.com.buscaprofissa.model.Usuario;
+import br.com.buscaprofissa.repository.AreaAtuacaoRepository;
+import br.com.buscaprofissa.repository.CategoriaRepository;
 import br.com.buscaprofissa.repository.UsuarioRepository;
 import br.com.buscaprofissa.security.UsuarioLogado;
 import br.com.buscaprofissa.service.CadastroUsuarioService;
@@ -30,7 +33,10 @@ public final class UsuarioController {
 	private CadastroUsuarioService service;
 	
 	@Autowired
-	private UsuarioRepository repository;
+	private AreaAtuacaoRepository areaRep;
+	
+	@Autowired
+	private CategoriaRepository categoriaRep;
 
 	@RequestMapping("/cadastro")
 	public ModelAndView cadastro(Usuario usuario){
@@ -72,8 +78,11 @@ public final class UsuarioController {
 		Usuario user = usuario.getUsuario();
 		ModelAndView mv = new ModelAndView("internas/MeusDados");
 		
+		mv.addObject("areas", areaRep.findAll());
+		mv.addObject("categorias", categoriaRep.findAll());
 		mv.addObject("usuario", user);
 		mv.addObject("sexos", Sexo.values());
+		
 		
 		
 		return mv;
