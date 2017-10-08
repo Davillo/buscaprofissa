@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -115,6 +116,25 @@ public final class UsuarioController {
 		
 		
 		return new ModelAndView("redirect:/meusdados");
+	}
+	
+	
+	@GetMapping("/meusdados/desativar")
+	public ModelAndView desativar(@AuthenticationPrincipal UsuarioLogado user,Usuario usuario){
+		usuario = user.getUsuario();
+
+		usuario.setAtivo(false);
+		
+		try{
+			user.setUsuario(usuario);
+			service.atualizar(usuario);
+		}catch (Exception e) {
+			System.out.println(">>" +e.getMessage() + ">> "+e.getCause());
+		}
+		
+		return new ModelAndView("redirect:/logout");
+		
+		
 	}
 	
 	

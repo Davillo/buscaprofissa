@@ -19,7 +19,12 @@
     
 
 </head>
+<script>
 
+	function desativar(){
+		alert('Conta desativada!');
+	}
+</script>
 <body>
 
     <div id="wrapper">
@@ -202,7 +207,11 @@
 						<div class="ibox">
 							<div class="ibox-title">
 								<h5>Início</h5>
-								<div class="ibox-tools">*Campos obrigatórios</div>
+							
+								<div class="ibox-tools">
+									<a th:href="@{/meusdados/desativar}" onclick="desativar()"><i class="fa fa-close">Desativar Conta</i></a>
+								</div>
+							
 							</div>
 							<div class="ibox-content">
 								<h2>Meus dados</h2>
