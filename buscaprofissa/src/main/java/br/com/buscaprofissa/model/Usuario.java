@@ -113,14 +113,13 @@ public class Usuario implements Serializable{
 		this.id = id;
 	}
 	
-	
-	
 	@PreUpdate
 	private void preUpdate(){
 	
 		cpf = cpf.replaceAll("\\.|-|/", "");
 	}
 	
+
 	public String getNome() {
 		return nome;
 	}
@@ -194,9 +193,6 @@ public class Usuario implements Serializable{
 		this.cpf = cpf;
 	}
 	
-	
-	
-
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}

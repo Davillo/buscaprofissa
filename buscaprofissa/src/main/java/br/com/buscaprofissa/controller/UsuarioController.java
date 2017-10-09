@@ -19,6 +19,8 @@ import br.com.buscaprofissa.model.Sexo;
 import br.com.buscaprofissa.model.Usuario;
 import br.com.buscaprofissa.repository.AreaAtuacaoRepository;
 import br.com.buscaprofissa.repository.CategoriaRepository;
+import br.com.buscaprofissa.repository.CidadeRepository;
+import br.com.buscaprofissa.repository.EstadoRepository;
 import br.com.buscaprofissa.repository.UsuarioRepository;
 import br.com.buscaprofissa.security.UsuarioLogado;
 import br.com.buscaprofissa.service.CadastroUsuarioService;
@@ -38,6 +40,12 @@ public final class UsuarioController {
 	
 	@Autowired
 	private CategoriaRepository categoriaRep;
+	
+	@Autowired
+	private EstadoRepository estadoRep;
+	
+	@Autowired
+	private CidadeRepository cidadeRep;
 
 	@RequestMapping("/cadastro")
 	public ModelAndView cadastro(Usuario usuario){
@@ -83,6 +91,9 @@ public final class UsuarioController {
 		mv.addObject("categorias", categoriaRep.findAll());
 		mv.addObject("usuario", user);
 		mv.addObject("sexos", Sexo.values());
+		mv.addObject("cidades",cidadeRep.findAll());
+		mv.addObject("estados",estadoRep.findAll());
+		
 		
 		
 		
@@ -123,11 +134,12 @@ public final class UsuarioController {
 	public ModelAndView desativar(@AuthenticationPrincipal UsuarioLogado user,Usuario usuario){
 		usuario = user.getUsuario();
 
-		usuario.setAtivo(false);
+		
 		
 		try{
+			service.desativar(usuario);
 			user.setUsuario(usuario);
-			service.atualizar(usuario);
+			
 		}catch (Exception e) {
 			System.out.println(">>" +e.getMessage() + ">> "+e.getCause());
 		}

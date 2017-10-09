@@ -50,9 +50,15 @@ public class CadastroUsuarioService {
 		
 		@Transactional
 		public void atualizar(Usuario usuario){
+			usuario.setAtivo(true);
 			publisher.publishEvent(new UsuarioSalvoEvent(usuario));
 			repository.saveAndFlush(usuario);
 		}
 		
+		@Transactional
+		public void desativar(Usuario usuario){
+			usuario.setAtivo(false);
+			repository.saveAndFlush(usuario);
+		}
 	
 }

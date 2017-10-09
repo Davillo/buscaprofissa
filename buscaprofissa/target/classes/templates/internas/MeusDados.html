@@ -345,8 +345,9 @@
 												<div class="form-group  col-sm-5">
 													<label for="estado" class="control-label">Estado</label> <select
 														class="form-control m-b" th:field="*{endereco.estado}">
-														<option value="">Selecione...</option>
-														<option th:value="CE">Ceará</option>
+													   <option value="">Selecione o estado</option>
+	                  				  <option th:each="estado : ${estados}" th:value="${estado.id}" th:text="${estado.nome}"></option>
+													
 													</select>
 												</div>
 
@@ -354,9 +355,7 @@
 													<label for="cidade" class="control-label">Cidade</label> <select
 														class="form-control m-b" th:field="*{endereco.cidade}">
 														<option value="">Selecione...</option>
-														<option th:value="CRATO">Crato</option>
-														<option th:value="JUAZEIRO">Juazeiro</option>
-														<option th:value="BARBALHA">Barbalha</option>
+									 			 <option th:each="cidade : ${cidades}" th:value="${cidade.id}" th:text="${cidade.nome}"></option>
 													</select>
 												</div>
 											</div>
