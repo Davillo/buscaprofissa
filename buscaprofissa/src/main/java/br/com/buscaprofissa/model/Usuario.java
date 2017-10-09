@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -110,7 +112,15 @@ public class Usuario implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	
+	
+	
+	@PreUpdate
+	private void preUpdate(){
+	
+		cpf = cpf.replaceAll("\\.|-|/", "");
+	}
+	
 	public String getNome() {
 		return nome;
 	}
