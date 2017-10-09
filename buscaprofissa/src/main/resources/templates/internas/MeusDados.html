@@ -251,6 +251,7 @@
 												<label for="cpf" class="control-label">CPF</label> <input
 													type="text" th:field="*{cpf}" class="form-control" id="cpf"
 													data-mask="000.000.000-00" maxlength="14"
+													required
 													placeholder="Digite seu CPF" />
 											</div>
 
@@ -258,6 +259,7 @@
 												<label for="dataNascimento" class="control-label">Data
 													de nascimento</label> <input type=text class="form-control"
 													id="dataNascimento" th:field="*{dataNascimento}"
+													required
 													data-mask="00/00/0000" maxlength="10"
 													placeholder="Digite sua data de nascimento" />
 											</div>
@@ -294,6 +296,7 @@
 
 											<div class="form-group  col-sm-5">
 												<label for="estado" class="control-label">Sexo</label> <select
+													required
 													class="form-control m-b" th:field="*{sexo}" required>
 													<option value="">Selecione...</option>
 													<option th:each="sexo : ${sexos}" th:value="${sexo}"
@@ -304,7 +307,7 @@
 											<div class="form-group  col-sm-10">
 												<label for="logradouro" class="control-label">Logradouro</label>
 												<input type="text" class="form-control"
-													th:field="*{endereco.logradouro}" id="logradouro" />
+													th:field="*{endereco.logradouro}" id="logradouro" required />
 											</div>
 
 
@@ -313,14 +316,14 @@
 													<label for="cep" class="control-label">CEP</label> <input
 														type="text" class="form-control"
 														th:field="*{endereco.cep}" id="cep" data-mask="00.000-000"
-														maxlength="10" placeholder="Digite o CEP">
+														maxlength="10" placeholder="Digite o CEP" required>
 												</div>
 
 												<div class="form-group  col-sm-5">
 													<label for="numero" class="control-label">Número</label> <input
 														type="text" class="form-control" id="numero"
 														th:field="*{endereco.numero}"
-														placeholder="Digite o número" />
+														placeholder="Digite o número" required />
 												</div>
 											</div>
 
@@ -330,7 +333,7 @@
 													<label for="bairro" class="control-label">Bairro</label> <input
 														type="text" class="form-control" id="bairro"
 														placeholder="Digite o bairro"
-														th:field="*{endereco.bairro}" />
+														th:field="*{endereco.bairro}" required />
 												</div>
 
 												<div class="form-group  col-sm-5">
@@ -344,7 +347,7 @@
 											<div>
 												<div class="form-group  col-sm-5">
 													<label for="estado" class="control-label">Estado</label> <select
-														class="form-control m-b" th:field="*{endereco.estado}">
+														class="form-control m-b" th:field="*{endereco.estado}" required>
 													   <option value="">Selecione o estado</option>
 	                  				  <option th:each="estado : ${estados}" th:value="${estado.id}" th:text="${estado.nome}"></option>
 													
@@ -353,7 +356,7 @@
 
 												<div class="form-group  col-sm-5">
 													<label for="cidade" class="control-label">Cidade</label> <select
-														class="form-control m-b" th:field="*{endereco.cidade}">
+														class="form-control m-b" th:field="*{endereco.cidade}" required>
 														<option value="">Selecione...</option>
 									 			 <option th:each="cidade : ${cidades}" th:value="${cidade.id}" th:text="${cidade.nome}"></option>
 													</select>
@@ -374,7 +377,7 @@
 
 											<div class="form-group  col-sm-5">
 												<label for="area">Área de atuação</label> <select id="area"
-													class="form-control" th:field="*{areaAtuacao}">
+													class="form-control" th:field="*{areaAtuacao}" required>
 													<option value="">Selecione a área</option>
 													<option th:each="area : ${areas}" th:value="${area.id}"
 														th:text="${area.nome}"></option>
@@ -386,7 +389,7 @@
 
 												<!-- <input type="hidden" id="inputHiddenCategoriaSelecionada" th:value="*{categoria} != null ? *{categoria.id}"/> -->
 												<select id="categoria" class="form-control"
-													th:field="*{categoria}">
+													th:field="*{categoria}" required>
 													<option value="">Selecione a categoria</option>
 													<option th:each="categoria : ${categorias}"
 														th:value="${categoria.id}" th:text="${categoria.nome}"></option>

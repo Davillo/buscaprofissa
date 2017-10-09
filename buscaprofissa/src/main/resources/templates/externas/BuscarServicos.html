@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/externo/Padrao">
+
+<head>
+
+
+<title>BuscaProfissa | Lista de Profissionais</title>
+
+
+
+</head>
+
+<div layout:fragment="conteudo" align="center" id="containerCentro">
+	<div class="form-control conteudoMeio">
+	
+			<div class="container-fluid">
+		<form method="GET">
+			<div class="row">
+				<div class="form-group  col-sm-8">
+					<label class="control-label" for="nome">Área de Atuação</label>
+					<input type="text" class="form-control" id="nome" autofocus="autofocus"/>
+				</div>
+				
+				<div class="form-group  col-sm-4">
+					<label for="cpfOuCnpj" class="control-label">Categoria</label>
+					<input type="text" class="form-control" id="cpfOuCnpj"/>
+				</div>
+			</div>
+			
+			<button type="submit" class="btn  btn-primary">Pesquisar</button>
+		</form>
+		
+		<div class="table-responsive  bw-tabela-simples">
+			<table class="table  table-hover">
+				<thead>
+					<tr>
+						<th class="table-clientes-col-nome">
+							<!--  <brewer:order page="${pagina}" field="nome" text="Nome"/>-->
+						</th>
+						<th class="table-clientes-col-tipo-pessoa">
+							<!-- <brewer:order page="${pagina}" field="tipoPessoa" text="Tipo Pessoa"/> -->
+						</th>
+						<th class="table-clientes-col-cpf-cnpj">CPF/CNPJ</th>
+						<th class="table-clientes-col-telefone">Telefone</th>
+						<th class="table-clientes-col-cidade-estado">Cidade/Estado</th>
+						<th class="table-col-acoes"></th>
+					</tr>
+				</thead>
+				
+				<tbody>
+				<!--  
+					<tr th:each="cliente : ${pagina.conteudo}">
+						<td th:text="${cliente.nome}"></td>
+						<td class="text-center" th:text="${cliente.tipoPessoa.descricao}"></td>
+						<td class="text-right" th:text="${cliente.cpfOuCnpj}"></td>
+						<td class="text-right" th:text="${cliente.telefone}"></td>
+						<td class="text-right" th:text="${cliente.endereco.nomeCidadeSiglaEstado}|"></td>
+						
+					</tr>
+					-->
+					<tr th:if="${pagina.vazia}">
+						<td colspan="5">Nenhum cliente encontrado</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		
+	</div>
+	
+	</div>
+</div>
+
+
+
+</html>
