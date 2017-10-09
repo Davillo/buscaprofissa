@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import br.com.buscaprofissa.security.AppUserDetailsService;
 
@@ -38,6 +39,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/categorias")
 		.antMatchers("/index")
 		.antMatchers("/chat")
+		.antMatchers("/fotos")
+		.antMatchers("/temp/")
+		.antMatchers("/buscaprofissa/fotos")
 		.antMatchers("ws://" + "localhost:9090" + "/buscaprofissa/chat/")
 		.antMatchers("/cadastro");
 	}

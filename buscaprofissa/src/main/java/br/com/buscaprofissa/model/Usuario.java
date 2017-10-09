@@ -19,6 +19,7 @@ import javax.persistence.Transient;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.thymeleaf.util.StringUtils;
 
 
 
@@ -166,6 +167,10 @@ public class Usuario implements Serializable{
 		this.contentType = contentType;
 	}
 
+	public String getFotoOuMock(){
+		return !StringUtils.isEmpty(foto) ? foto : "thumbnail.user-mock.jpg";
+	}
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "id_categoria")

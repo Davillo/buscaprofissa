@@ -3,12 +3,14 @@ package br.com.buscaprofissa.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.buscaprofissa.model.Usuario;
 import br.com.buscaprofissa.repository.UsuarioRepository;
+import br.com.buscaprofissa.service.event.UsuarioSalvoEvent;
 import br.com.buscaprofissa.service.exception.EmailUsuarioJaCadastradoException;
 import br.com.buscaprofissa.service.exception.SenhaEConfirmacaoDiferentesException;
 
@@ -20,6 +22,9 @@ public class CadastroUsuarioService {
 		
 		@Autowired
 		private PasswordEncoder passwordEncoder;
+		
+		@Autowired
+		private ApplicationEventPublisher publisher;
 		
 	
 		
@@ -38,12 +43,14 @@ public class CadastroUsuarioService {
 			usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
 			usuario.setConfirmacaoSenha(usuario.getSenha());
 			usuario.setAtivo(true);
+		
 			repository.save(usuario);
 		}
 		
 		
 		@Transactional
 		public void atualizar(Usuario usuario){
+			publisher.publishEvent(new UsuarioSalvoEvent(usuario));
 			repository.saveAndFlush(usuario);
 		}
 		
