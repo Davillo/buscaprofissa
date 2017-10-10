@@ -387,7 +387,6 @@
 											<div class="form-group  col-sm-5">
 												<label for="cidade">Categorias</label>
 
-												<!-- <input type="hidden" id="inputHiddenCategoriaSelecionada" th:value="*{categoria} != null ? *{categoria.id}"/> -->
 												<select id="categoria" class="form-control"
 													th:field="*{categoria}" required>
 													<option value="">Selecione a categoria</option>
@@ -395,7 +394,6 @@
 														th:value="${categoria.id}" th:text="${categoria.nome}"></option>
 
 												</select>
-												<!-- data:url="@{/categorias}" -->
 
 
 											</div>
