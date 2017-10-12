@@ -35,6 +35,7 @@
 									<div class="form-group col-sm-4">
 										<select id="categoria" class="form-control" required>
 											<option value="">Selecione a Área de Atuação</option>
+											<option th:each="area : ${areas}" th:text="${area.nome}" th:value="${area.id}"></option>
 										</select>
 
 									</div>
@@ -43,6 +44,7 @@
 									<div class="form-group col-sm-4">
 										<select id="categoria" class="form-control" required th:field="*{categoria}">
 											<option value="">Selecione a categoria</option>
+											<option th:each="categoria : ${categorias}" th:text="${categoria.nome}" th:value="${categoria.id}"></option>
 										</select>
 
 									</div>
@@ -52,6 +54,7 @@
 									<div class="form-group col-sm-4">
 										<select id="categoria" class="form-control" required th:field="*{cidade}">
 											<option value="">Selecione a Cidade</option>
+											<option th:each="cidade : ${cidades}" th:text="${cidade.nome}" th:value="${cidade.id}"></option>
 										</select>
 
 									</div>

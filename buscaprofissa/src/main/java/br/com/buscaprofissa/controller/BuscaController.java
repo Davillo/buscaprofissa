@@ -29,6 +29,9 @@ public class BuscaController {
 		
 		ModelAndView mv = new ModelAndView("externas/BuscarServicos");
 		mv.addObject("usuarios", usuarios.filtrar(usuarioFilter));
+		mv.addObject("areas", areas.findAll());
+		mv.addObject("categorias", categorias.findAll());
+		mv.addObject("cidades", cidades.findAll());
 		return mv;
 	}
 	
