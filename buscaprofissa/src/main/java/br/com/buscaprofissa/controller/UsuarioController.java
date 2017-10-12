@@ -17,11 +17,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.buscaprofissa.model.AreaAtuacao;
 import br.com.buscaprofissa.model.Sexo;
 import br.com.buscaprofissa.model.Usuario;
-import br.com.buscaprofissa.repository.AreaAtuacaoRepository;
-import br.com.buscaprofissa.repository.CategoriaRepository;
-import br.com.buscaprofissa.repository.CidadeRepository;
-import br.com.buscaprofissa.repository.EstadoRepository;
-import br.com.buscaprofissa.repository.UsuarioRepository;
+import br.com.buscaprofissa.repository.AreasAtuacoes;
+import br.com.buscaprofissa.repository.Categorias;
+import br.com.buscaprofissa.repository.Cidades;
+import br.com.buscaprofissa.repository.Estados;
+import br.com.buscaprofissa.repository.Usuarios;
 import br.com.buscaprofissa.security.UsuarioLogado;
 import br.com.buscaprofissa.service.CadastroUsuarioService;
 import br.com.buscaprofissa.service.exception.EmailUsuarioJaCadastradoException;
@@ -36,16 +36,16 @@ public final class UsuarioController {
 	private CadastroUsuarioService service;
 	
 	@Autowired
-	private AreaAtuacaoRepository areaRep;
+	private AreasAtuacoes areaRep;
 	
 	@Autowired
-	private CategoriaRepository categoriaRep;
+	private Categorias categoriaRep;
 	
 	@Autowired
-	private EstadoRepository estadoRep;
+	private Estados estadoRep;
 	
 	@Autowired
-	private CidadeRepository cidadeRep;
+	private Cidades cidadeRep;
 
 	@RequestMapping("/cadastro")
 	public ModelAndView cadastro(Usuario usuario){

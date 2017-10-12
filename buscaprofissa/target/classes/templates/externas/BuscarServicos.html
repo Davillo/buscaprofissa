@@ -29,14 +29,9 @@
 						<div class="ibox-content">
 
 							<div class="container-fluid">
-								<form method="GET" class="form-vertical">
+								<form method="GET" class="form-vertical" th:object="${usuarioFilter}">
 									<div class="row">
-									<div class="form-group col-sm-4">
-										<select id="categoria" class="form-control" required>
-											<option value="">Selecione a categoria</option>
-										</select>
-
-									</div>
+									
 									<div class="form-group col-sm-4">
 										<select id="categoria" class="form-control" required>
 											<option value="">Selecione a Área de Atuação</option>
@@ -46,7 +41,16 @@
 									
 									
 									<div class="form-group col-sm-4">
-										<select id="categoria" class="form-control" required>
+										<select id="categoria" class="form-control" required th:field="*{categoria}">
+											<option value="">Selecione a categoria</option>
+										</select>
+
+									</div>
+									
+									
+									
+									<div class="form-group col-sm-4">
+										<select id="categoria" class="form-control" required th:field="*{cidade}">
 											<option value="">Selecione a Cidade</option>
 										</select>
 
@@ -65,23 +69,20 @@
 										</thead>
 
 										<tbody>
-											<tr>
-												<td class="text-left">
-												<input type="text" value="FOTO"/> <input type="text" value="NOME"/> 
+											<tr th:each="usuario : ${usuarios}">
+												<td class="text-left" th:text="${usuario.nome}">
+											
 												
 												</td>
 												
-													<td class="text-left">
-												<input type="text" value="DESCRIÇÃO"/>
-												</td>
+													<td class="text-left" th:text="${usuario.sobrenome}"></td>
 												
-													<td class="text-right">
-												<input type="text" value="VER TELEFONE"/><br>
-												<input type="text" value="VER PERFIL"/>
+													<td class="text-right" th:text="${usuario.email}">
+											
 												</td>
 					
 											</tr>
-											<tr>
+											<tr th:if="${#lists.isEmpty(usuarios)}">
 												<td colspan="5">Nenhum profissional encontrado</td>
 											</tr>
 										</tbody>

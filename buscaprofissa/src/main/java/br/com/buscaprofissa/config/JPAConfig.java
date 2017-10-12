@@ -17,11 +17,10 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import br.com.buscaprofissa.model.Usuario;
-import br.com.buscaprofissa.repository.UsuarioRepository;
+import br.com.buscaprofissa.repository.Usuarios;
 
 @Configuration
-@ComponentScan(basePackageClasses = UsuarioRepository.class)
-@EnableJpaRepositories(basePackageClasses = UsuarioRepository.class,enableDefaultTransactions=false)
+@EnableJpaRepositories(basePackageClasses = Usuarios.class,enableDefaultTransactions=false)
 @EnableTransactionManagement
 public class JPAConfig {
 

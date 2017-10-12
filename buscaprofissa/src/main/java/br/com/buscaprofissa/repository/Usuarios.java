@@ -6,11 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import br.com.buscaprofissa.model.Usuario;
+import br.com.buscaprofissa.repository.helper.usuario.UsuariosQueries;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+public interface Usuarios extends JpaRepository<Usuario, Long>, UsuariosQueries {
 
 	public Optional<Usuario> findByEmailIgnoreCaseAndAtivoTrue(String email);
+	
 
 	
 }

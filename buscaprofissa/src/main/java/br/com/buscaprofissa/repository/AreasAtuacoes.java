@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.buscaprofissa.model.AreaAtuacao;
 
-public interface AreaAtuacaoRepository extends JpaRepository<AreaAtuacao, Long> {
+public interface AreasAtuacoes extends JpaRepository<AreaAtuacao, Long> {
 
 }

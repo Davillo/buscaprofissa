@@ -11,14 +11,14 @@ import org.springframework.stereotype.Service;
 
 
 import br.com.buscaprofissa.model.Usuario;
-import br.com.buscaprofissa.repository.UsuarioRepository;
+import br.com.buscaprofissa.repository.Usuarios;
 
 
 @Service
 public class AppUserDetailsService implements UserDetailsService {
 
 	@Autowired
-	private UsuarioRepository usuarios;
+	private Usuarios usuarios;
 	
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

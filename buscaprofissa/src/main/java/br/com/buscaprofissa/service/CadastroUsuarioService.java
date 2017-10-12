@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.buscaprofissa.model.Usuario;
-import br.com.buscaprofissa.repository.UsuarioRepository;
+import br.com.buscaprofissa.repository.Usuarios;
 import br.com.buscaprofissa.service.event.UsuarioSalvoEvent;
 import br.com.buscaprofissa.service.exception.EmailUsuarioJaCadastradoException;
 import br.com.buscaprofissa.service.exception.SenhaEConfirmacaoDiferentesException;
@@ -18,7 +18,7 @@ import br.com.buscaprofissa.service.exception.SenhaEConfirmacaoDiferentesExcepti
 public class CadastroUsuarioService {
 
 		@Autowired
-		private UsuarioRepository repository;
+		private Usuarios repository;
 		
 		@Autowired
 		private PasswordEncoder passwordEncoder;
