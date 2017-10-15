@@ -34,13 +34,12 @@
 				<ul class="nav" id="side-menu">
 					<li class="nav-header">
 						<div class="dropdown profile-element">
-							<span> <img alt="image" class="img-circle"
-								src="img/profile_small.jpg" />
-							</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+						
+							 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<span class="clear"> <span class="block m-t-xs"> <strong
 										class="font-bold"></strong>
 								</span> <span class="text-muted text-xs block"
-									th:text="${#authentication.principal.usuario.nome}">Art
+									th:text="${#authentication.principal.usuario.foto}">Art
 										Director <b class="caret"></b>
 								</span>
 							</span>
@@ -182,12 +181,7 @@
 								</li>
 							</ul></li>
 
-						<li><a th:href="@{/oferecerservico}">
-								<button type="button" class="btn btn-primary btn-sm btn-block">
-									<i class="glyphicon glyphicon-hand-right"></i> OFERECER
-									SERVIÇOS
-								</button>
-						</a></li>
+					
 
 						<li><a th:href="@{/logout}"> <i class="fa fa-sign-out"></i>
 								Sair
@@ -233,16 +227,15 @@
 											<div class="form-group  col-sm-5">
 												<label for="nome" class="control-label">Nome : </label> <input
 													type="text" class="form-control" th:field="*{nome}"
-													id="nome" placeholder="Digite seu nome caso queira alterar" />
+													id="nome" required />
 											</div>
 
 											<div class="form-group  col-sm-5">
 												<label for="sobrenome" class="control-label">Sobrenome
 													: </label> <input type="text" class="form-control"
-													th:field="*{sobrenome}"
-													th:value="${#authentication.principal.usuario.sobrenome}"
+													th:field="*{sobrenome}" required
 													id="sobrenome"
-													placeholder="Digite seu sobrenome caso queira alterar" />
+													 />
 											</div>
 										</div>
 
@@ -295,7 +288,7 @@
 
 
 											<div class="form-group  col-sm-5">
-												<label for="estado" class="control-label">Sexo</label> <select
+												<label for="sexo" class="control-label">Sexo</label> <select id="sexo"
 													
 													class="form-control m-b" th:field="*{sexo}" required>
 													<option value="">Selecione...</option>

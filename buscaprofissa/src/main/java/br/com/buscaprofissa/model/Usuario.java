@@ -57,7 +57,8 @@ public class Usuario implements Serializable{
 	@Column(name = "ativo")
 	private Boolean ativo;
 	
-	
+	@Column(name = "area_atuacao")
+	private AreaAtuacao areaAtuacao;
 	
 	public Boolean getAtivo() {
 		return ativo;
@@ -67,8 +68,9 @@ public class Usuario implements Serializable{
 		this.ativo = ativo;
 	}
 
-	@Transient
-	private AreaAtuacao areaAtuacao;
+	
+	
+	
 	
 	
 	public AreaAtuacao getAreaAtuacao() {

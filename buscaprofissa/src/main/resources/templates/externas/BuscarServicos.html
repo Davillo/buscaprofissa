@@ -81,7 +81,11 @@
 											<tr th:each="usuario : ${pagina.conteudo}">
 												<td class="text-left" th:text="${usuario.nome}"></td>
 
-												<td class="text-left" th:text="${usuario.sobrenome}"></td>
+
+												<td class="text-left">
+												<img th:src="@{/fotos/{foto}(foto=${usuario.foto})}" class="img-responsive">
+												</td>
+												<td class="text-left" th:text="${usuario.sobrenome}">	</td>
 
 												<td class="text-right" th:text="${usuario.email}"></td>
 
@@ -98,7 +102,15 @@
 
 							</div>
 
-	<div class="col-sm-12  text-center" th:if="${not pagina.vazia}">
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+		</div>
+		<div class="col-sm-1  text-center" th:if="${not pagina.vazia}">
 			<nav>
 				<ul class="pagination  pagination-sm" th:with="paginaAtual=${pagina.atual}">
 					<li th:class="${pagina.primeira} ? disabled">
@@ -116,18 +128,12 @@
 				</ul>
 			</nav>
 </div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-
-		</div>
-
 	</section>
-
+		
+		
+	
+	
 </div>
-
+	
 
 </html>

@@ -86,10 +86,10 @@ public final class UsuarioController {
 	public ModelAndView meusdados(@AuthenticationPrincipal UsuarioLogado usuario){
 		Usuario user = usuario.getUsuario();
 		ModelAndView mv = new ModelAndView("internas/MeusDados");
-		
+		mv.addObject("usuario", user);
 		mv.addObject("areas", areaRep.findAll());
 		mv.addObject("categorias", categoriaRep.findAll());
-		mv.addObject("usuario", user);
+		
 		mv.addObject("sexos", Sexo.values());
 		mv.addObject("cidades",cidadeRep.findAll());
 		mv.addObject("estados",estadoRep.findAll());

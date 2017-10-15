@@ -66,12 +66,15 @@ public class FotoStorageLocal implements FotoStorage {
 	@Override
 	public void salvar(String foto) {
 		try {
+			
 			Files.move(this.localTemporario.resolve(foto), this.local.resolve(foto));
+			
 		} catch (IOException e) {
 			throw new RuntimeException("Erro movendo a foto para destino final");
 		}
 		
 		try {
+			
 			Thumbnails.of(this.local.resolve(foto).toString()).size(100, 100).toFiles(Rename.PREFIX_DOT_THUMBNAIL);
 		} catch (IOException e) {
 			throw new RuntimeException("Erro gerando thumbnail");
@@ -101,7 +104,7 @@ public class FotoStorageLocal implements FotoStorage {
 	public byte[] recuperar(String nome) {
 
 		try {
-			return Files.readAllBytes(this.local.resolve(nome));
+			return Files.readAllBytes(this.local.resolve("thumbnail."+nome));
 		} catch (IOException e) {
 			
 			throw new RuntimeException("Erro lendo a foto ",e);

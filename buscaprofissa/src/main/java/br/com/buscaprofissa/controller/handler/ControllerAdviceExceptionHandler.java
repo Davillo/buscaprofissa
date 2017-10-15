@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import br.com.buscaprofissa.service.exception.LoginOuSenhaIncorretosException;
 
 
-public class ControllerAdivceExceptionHandler {
+public class ControllerAdviceExceptionHandler {
 	
 	@ExceptionHandler(LoginOuSenhaIncorretosException.class)
 	public ResponseEntity<String> handleLoginOuSenhaIncorretos(LoginOuSenhaIncorretosException e) {

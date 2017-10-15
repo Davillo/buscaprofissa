@@ -1,5 +1,6 @@
 package br.com.buscaprofissa.model;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,7 +16,7 @@ public class Endereco {
 	private String complemento;
 	private String bairro;
 	
-	@Transient
+	@Column(name = "estado")
 	private Estado estado;
 
 	@ManyToOne
