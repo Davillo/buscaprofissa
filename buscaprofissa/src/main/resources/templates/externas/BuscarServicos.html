@@ -29,41 +29,47 @@
 						<div class="ibox-content">
 
 							<div class="container-fluid">
-								<form method="GET" class="form-vertical" th:object="${usuarioFilter}">
+								<form method="GET" class="form-vertical"
+									th:object="${usuarioFilter}">
 									<div class="row">
-									
-									<div class="form-group col-sm-4">
-										<select id="categoria" class="form-control" required>
-											<option value="">Selecione a Área de Atuação</option>
-											<option th:each="area : ${areas}" th:text="${area.nome}" th:value="${area.id}"></option>
-										</select>
 
-									</div>
-									
-									
-									<div class="form-group col-sm-4">
-										<select id="categoria" class="form-control" required th:field="*{categoria}">
-											<option value="">Selecione a categoria</option>
-											<option th:each="categoria : ${categorias}" th:text="${categoria.nome}" th:value="${categoria.id}"></option>
-										</select>
+										<div class="form-group col-sm-4">
+											<select id="categoria" class="form-control" required>
+												<option value="">Selecione a Área de Atuação</option>
+												<option th:each="area : ${areas}" th:text="${area.nome}"
+													th:value="${area.id}"></option>
+											</select>
 
-									</div>
-									
-									
-									
-									<div class="form-group col-sm-4">
-										<select id="categoria" class="form-control" required th:field="*{cidade}">
-											<option value="">Selecione a Cidade</option>
-											<option th:each="cidade : ${cidades}" th:text="${cidade.nome}" th:value="${cidade.id}"></option>
-										</select>
+										</div>
 
-									</div>
+
+										<div class="form-group col-sm-4">
+											<select id="categoria" class="form-control" required
+												th:field="*{categoria}">
+												<option value="">Selecione a categoria</option>
+												<option th:each="categoria : ${categorias}"
+													th:text="${categoria.nome}" th:value="${categoria.id}"></option>
+											</select>
+
+										</div>
+
+
+
+										<div class="form-group col-sm-4">
+											<select id="categoria" class="form-control" required
+												th:field="*{cidade}">
+												<option value="">Selecione a Cidade</option>
+												<option th:each="cidade : ${cidades}"
+													th:text="${cidade.nome}" th:value="${cidade.id}"></option>
+											</select>
+
+										</div>
 									</div>
 
 									<button type="submit" class="btn  btn-primary">Pesquisar</button>
 								</form>
-						<hr>
-								<div class="table-responsive" style="margin-top:50px">
+								<hr>
+								<div class="table-responsive" style="margin-top: 50px">
 									<table class="table  table-hover">
 										<thead>
 											<tr>
@@ -72,20 +78,15 @@
 										</thead>
 
 										<tbody>
-											<tr th:each="usuario : ${usuarios}">
-												<td class="text-left" th:text="${usuario.nome}">
-											
-												
-												</td>
-												
-													<td class="text-left" th:text="${usuario.sobrenome}"></td>
-												
-													<td class="text-right" th:text="${usuario.email}">
-											
-												</td>
-					
+											<tr th:each="usuario : ${pagina.conteudo}">
+												<td class="text-left" th:text="${usuario.nome}"></td>
+
+												<td class="text-left" th:text="${usuario.sobrenome}"></td>
+
+												<td class="text-right" th:text="${usuario.email}"></td>
+
 											</tr>
-											<tr th:if="${#lists.isEmpty(usuarios)}">
+											<tr th:if="${pagina.vazia}">
 												<td colspan="5">Nenhum profissional encontrado</td>
 											</tr>
 										</tbody>
@@ -94,12 +95,33 @@
 
 
 
+
 							</div>
 
+	<div class="col-sm-12  text-center" th:if="${not pagina.vazia}">
+			<nav>
+				<ul class="pagination  pagination-sm" th:with="paginaAtual=${pagina.atual}">
+					<li th:class="${pagina.primeira} ? disabled">
+						<a th:href="${pagina.urlParaPagina(paginaAtual - 1)}" th:remove="${pagina.primeira} ? tag"><span>&laquo;</span></a>
+					</li>
+					<th:block th:each="p : ${#numbers.sequence(1, pagina.total)}" th:with="numeroPagina=${p - 1}">
+						<li th:class="${paginaAtual == numeroPagina} ? active">
+							<a th:href="${pagina.urlParaPagina(numeroPagina)}">[[${p}]]</a>
+						</li>
+					</th:block>
+					
+					<li th:class="${pagina.ultima} ? disabled">
+						<a th:href="${pagina.urlParaPagina(paginaAtual + 1)}" th:remove="${pagina.ultima} ? tag"><span>&raquo;</span></a>
+					</li>
+				</ul>
+			</nav>
+</div>
 						</div>
 					</div>
 				</div>
 			</div>
+
+
 
 		</div>
 

@@ -1,10 +1,17 @@
 package br.com.buscaprofissa.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.buscaprofissa.controller.page.PageWrapper;
+import br.com.buscaprofissa.model.Usuario;
 import br.com.buscaprofissa.repository.AreasAtuacoes;
 import br.com.buscaprofissa.repository.Categorias;
 import br.com.buscaprofissa.repository.Cidades;
@@ -25,13 +32,17 @@ public class BuscaController {
 	
 	
 	@RequestMapping("/buscar")
-	public ModelAndView viewBusca(UsuarioFilter usuarioFilter){
+	public ModelAndView viewBusca(UsuarioFilter usuarioFilter,BindingResult result
+			,@PageableDefault(size=2) Pageable pageable, HttpServletRequest httpServletRequest){
 		
 		ModelAndView mv = new ModelAndView("externas/BuscarServicos");
-		mv.addObject("usuarios", usuarios.filtrar(usuarioFilter));
+		
 		mv.addObject("areas", areas.findAll());
 		mv.addObject("categorias", categorias.findAll());
 		mv.addObject("cidades", cidades.findAll());
+		
+		PageWrapper<Usuario> paginaWrapper = new PageWrapper<>(usuarios.filtrar(usuarioFilter, pageable),  httpServletRequest);
+		mv.addObject("pagina", paginaWrapper);
 		return mv;
 	}
 	
