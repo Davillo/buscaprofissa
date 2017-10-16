@@ -279,8 +279,8 @@
 											<div class="form-group  col-sm-5">
 												<label class="control-label">Foto</label>
 												
-												<input type="hidden" th:field="*{foto}">
-												<input type="hidden" th:field="*{contentType}">
+												<input type="hidden" name="foto">
+												<input type="hidden" name="contentType">
 												 <a><input
 													id="upload-select" type="file" accept=".jpg,.jpeg,.png" /></a>
 
@@ -339,8 +339,10 @@
 
 											<div>
 												<div class="form-group  col-sm-5">
-													<label for="estado" class="control-label">Estado</label> <select
-														class="form-control m-b" th:field="*{endereco.estado}" required>
+													<label for="estado" class="control-label">Estado</label>
+													 <select class="form-control m-b" th:field="*{endereco.estado}"
+													 id="estado"
+													  required>
 													   <option value="">Selecione o estado</option>
 	                  				  <option th:each="estado : ${estados}" th:value="${estado.id}" th:text="${estado.nome}"></option>
 													
@@ -349,8 +351,10 @@
 
 												<div class="form-group  col-sm-5">
 													<label for="cidade" class="control-label">Cidade</label> <select
-														class="form-control m-b" th:field="*{endereco.cidade}" required>
-														<option value="">Selecione...</option>
+													 class="form-control m-b" th:field="*{endereco.cidade}" disabled
+													 id="cidade"
+													  required data:url="@{/cidades}" >
+													 
 									 			 <option th:each="cidade : ${cidades}" th:value="${cidade.id}" th:text="${cidade.nome}"></option>
 													</select>
 												</div>
@@ -475,7 +479,8 @@
 		th:src="@{/sourcetemplate/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
 	<script
 		th:src="@{/sourcetemplate/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
-
+	
+	<script th:src="@{/sourcebusca/combo-estado-cidade.js}"></script>
 	<!-- Custom and plugin javascript -->
 	<script th:src="@{/sourcetemplate/js/inspinia.js}"></script>
 	<script th:src="@{/sourcetemplate/js/plugins/pace/pace.min.js}"></script>
