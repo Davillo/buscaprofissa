@@ -8,6 +8,7 @@ public class UsuarioFilter {
 	private Categoria categoria;
 	private Cidade cidade;
 	
+	
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -20,6 +21,14 @@ public class UsuarioFilter {
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return categoria.getNome();
+	}
+	
+	
 	
 	
 	

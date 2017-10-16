@@ -67,10 +67,6 @@ public class Usuario implements Serializable{
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
-
-	
-	
-	
 	
 	
 	public AreaAtuacao getAreaAtuacao() {

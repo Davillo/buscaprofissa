@@ -1,14 +1,19 @@
 package br.com.buscaprofissa.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import br.com.buscaprofissa.repository.filter.UsuarioFilter;
 
 @Controller
 public class IndexController {
 	
 	@RequestMapping("/index")
-	public String index(){
-		return "externas/Index";
+	public ModelAndView index(UsuarioFilter usuarioFilter , BindingResult result){
+		ModelAndView mv = new ModelAndView("externas/Index");
+		return mv;
 		
 	}
 	

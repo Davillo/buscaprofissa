@@ -79,15 +79,14 @@
 
 										<tbody>
 											<tr th:each="usuario : ${pagina.conteudo}">
-												<td class="text-left" th:text="${usuario.nome}"></td>
-
-
 												<td class="text-left">
 												<img th:src="@{/fotos/{foto}(foto=${usuario.foto})}" class="img-responsive">
 												</td>
-												<td class="text-left" th:text="${usuario.sobrenome}">	</td>
+												<td class="text-left" th:text="|${usuario.nome} ${usuario.sobrenome}|"></td>
 
-												<td class="text-right" th:text="${usuario.email}"></td>
+												<td class="text-right" th:text="${usuario.categoria.nome}"></td>
+												
+												<td class="text-right" th:text="${usuario.telefone}"></td>
 
 											</tr>
 											<tr th:if="${pagina.vazia}">
