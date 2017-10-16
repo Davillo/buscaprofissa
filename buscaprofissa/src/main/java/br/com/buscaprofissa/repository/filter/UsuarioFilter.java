@@ -7,6 +7,7 @@ public class UsuarioFilter {
 	
 	private Categoria categoria;
 	private Cidade cidade;
+
 	
 	
 	public Categoria getCategoria() {
@@ -22,11 +23,10 @@ public class UsuarioFilter {
 		this.cidade = cidade;
 	}
 	
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return categoria.getNome();
-	}
+	
+	
+	
+	
 	
 	
 	

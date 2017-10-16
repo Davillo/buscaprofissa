@@ -62,11 +62,7 @@ public class UsuariosImpl implements UsuariosQueries {
 			if (isCidadePresente(filtro)) {
 				criteria.add(Restrictions.eq("endereco.cidade", filtro.getCidade()));
 			}
-			
-			if (!StringUtils.isEmpty(filtro.getCategoria())) {
-				criteria.add(Restrictions.ilike("categoria.nome",filtro.toString(), MatchMode.EXACT));
-			}
-					
+		
 		}
 	}
 

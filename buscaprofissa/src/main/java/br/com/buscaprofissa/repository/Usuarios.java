@@ -13,6 +13,5 @@ public interface Usuarios extends JpaRepository<Usuario, Long>, UsuariosQueries 
 
 	public Optional<Usuario> findByEmailIgnoreCaseAndAtivoTrue(String email);
 	
-
 	
 }
