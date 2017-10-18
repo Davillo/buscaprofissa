@@ -29,17 +29,19 @@ public class UsuariosImpl implements UsuariosQueries {
 	@Transactional(readOnly = true)
 	public Page<Usuario> filtrar(UsuarioFilter filtro, Pageable pageable) {
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Usuario.class);
-		criteria.add(Restrictions.isNotNull("categoria"));
+		
+		adicionarFiltro(filtro, criteria);
 
+		
+			
 		int totalRegistrosPagina = pageable.getPageSize();
 		int paginaAtual = pageable.getPageNumber();
 		int primeiroRegistro = paginaAtual * totalRegistrosPagina;
-
+		
 		criteria.setFirstResult(primeiroRegistro);
 		criteria.setMaxResults(totalRegistrosPagina);
-
-		adicionarFiltro(filtro, criteria);
-
+	
+	
 		return new PageImpl<>(criteria.list(), pageable, total(filtro));
 	}
 
@@ -60,6 +62,7 @@ public class UsuariosImpl implements UsuariosQueries {
 				criteria.add(Restrictions.ilike("descricaoProfissional", filtro.getDescricaoProfissional(), MatchMode.ANYWHERE));
 			}
 			
+			criteria.add(Restrictions.isNotNull("categoria"));
 			
 			if (isCategoriaPresente(filtro)) { // filtrar pelo estilo caso selecionado
 				criteria.add(Restrictions.eq("categoria", filtro.getCategoria())); // filtra pelo estilo

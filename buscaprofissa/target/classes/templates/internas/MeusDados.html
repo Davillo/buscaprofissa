@@ -341,24 +341,18 @@
 											<div>
 												<div class="form-group  col-sm-5">
 													<label for="estado" class="control-label">Estado</label>
-													 <select class="form-control m-b" th:field="*{endereco.estado}"
-													 id="estado"
-													  required>
-													   <option value="">Selecione o estado</option>
-	                  				  <option th:each="estado : ${estados}" th:value="${estado.id}" th:text="${estado.nome}"></option>
-													
-													</select>
+													 <select id="estado" class="form-control" th:field="*{endereco.estado}">
+	                    <option value="">Selecione o estado</option>
+	                    <option th:each="estado : ${estados}" th:value="${estado.id}" th:text="${estado.nome}"></option>
+	                </select>
 												</div>
 
 												<div class="form-group  col-sm-5">
 													<label for="cidade" class="control-label">Cidade</label>
-														
-													 <select
-													 class="form-control m-b" th:field="*{endereco.cidade}"
-													 id="cidade" required>
-													 
-									 			 <option th:each="cidade : ${cidades}" th:value="${cidade.id}" th:text="${cidade.nome}"></option>
-													</select>
+														 <select id="cidade" class="form-control" th:field="*{endereco.cidade}">
+	                 						   <option value="">Selecione a Cidade</option>
+	                  			  <option th:each="cidade : ${cidades}" th:value="${cidade.id}" th:text="${cidade.nome}"></option>
+	             						   </select>
 												</div>
 											</div>
 											
@@ -379,7 +373,7 @@
 											<div class="form-group  col-sm-5">
 												<label for="area">Área de atuação</label> 
 												<select id="area"
-													class="form-control" th:field="*{areaAtuacao}" required>
+													class="form-control" th:field="*{areaAtuacao}">
 													<option value="">Selecione a área</option>
 													<option th:each="area : ${areas}" th:value="${area.id}"
 														th:text="${area.nome}"></option>
@@ -404,7 +398,7 @@
 	
 										
 										
-										<div class="form-group  col-sm-11">
+										<div class="form-group  col-sm-10">
 												<label for="descricao" class="control-label">Descrição profissional</label>
 
 												
@@ -495,8 +489,8 @@
 	<script th:src="@{/sourcetemplate/js/bootstrap.js}"></script>
 	<script th:src="@{/sourcetemplate/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
 	<script th:src="@{/sourcetemplate/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
-	<!--<script th:src="@{/sourcebusca/combo-estadoEcidade.js}"></script>-->
-	<!-- <script th:src="@{/sourcebusca/combo-area-categoria.js}"></script> -->
+<!-- 	<script th:src="@{/sourcebusca/combo-estadoEcidade.js}"></script>-->	
+	<script th:src="@{/sourcebusca/combo-area-categoria.js}"></script> -->
 	<script th:src="@{/sourcetemplate/js/inspinia.js}"></script>
 	<script th:src="@{/sourcetemplate/js/plugins/pace/pace.min.js}"></script>
 	<script th:src="@{/sourcebusca/locastyle.js}"></script>

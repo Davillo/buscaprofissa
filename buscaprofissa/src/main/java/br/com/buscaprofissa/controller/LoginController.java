@@ -7,12 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.buscaprofissa.repository.filter.UsuarioFilter;
+
 
 @Controller
 public class LoginController {
 	
 	@GetMapping("/login")
-	public String login(@AuthenticationPrincipal User user) {
+	public String login(@AuthenticationPrincipal User user, UsuarioFilter usuarioFilter) {
 		if (user != null) {
 			return "redirect:/";
 		}
