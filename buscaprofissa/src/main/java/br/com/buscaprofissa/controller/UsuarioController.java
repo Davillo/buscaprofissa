@@ -22,6 +22,7 @@ import br.com.buscaprofissa.repository.Categorias;
 import br.com.buscaprofissa.repository.Cidades;
 import br.com.buscaprofissa.repository.Estados;
 import br.com.buscaprofissa.repository.Usuarios;
+import br.com.buscaprofissa.repository.filter.UsuarioFilter;
 import br.com.buscaprofissa.security.UsuarioLogado;
 import br.com.buscaprofissa.service.CadastroUsuarioService;
 import br.com.buscaprofissa.service.exception.EmailUsuarioJaCadastradoException;
@@ -48,7 +49,7 @@ public final class UsuarioController {
 	private Cidades cidadeRep;
 
 	@RequestMapping("/cadastro")
-	public ModelAndView cadastro(Usuario usuario){
+	public ModelAndView cadastro(Usuario usuario,UsuarioFilter usuarioFilter){
 		ModelAndView mv = new ModelAndView("externas/CadastroUsuario");
 		
 	
@@ -57,9 +58,9 @@ public final class UsuarioController {
 	
 	
 	@RequestMapping(value = "/cadastro", method = RequestMethod.POST)
-	public ModelAndView cadastrar(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes){
+	public ModelAndView cadastrar(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes, UsuarioFilter usuarioFilter){
 		if(result.hasErrors()){
-			return cadastro(usuario);
+			return cadastro(usuario,usuarioFilter);
 		}
 		
 		
@@ -70,10 +71,10 @@ public final class UsuarioController {
 			
 		}catch (EmailUsuarioJaCadastradoException e) {
 			result.rejectValue("email", e.getMessage(),e.getMessage());
-			return cadastro(usuario);
+			return cadastro(usuario, usuarioFilter);
 		}catch(SenhaEConfirmacaoDiferentesException e){
 			result.rejectValue("senha", e.getMessage(), e.getMessage());
-			return cadastro(usuario);
+			return cadastro(usuario,usuarioFilter);
 		}
 		
 		attributes.addFlashAttribute("mensagem","Salvo com sucesso!");

@@ -22,9 +22,9 @@
 
        
                 <div class="search-form">
-                    <form th:method="GET" th:action="@{/buscar/porNome}">
+                    <form th:method="GET" th:action="@{/buscar}" th:object="${usuarioFilter}">
                         <div class="input-group">
-                            <input type="text" placeholder="Procurar" name="nome" class="form-control input-lg" size="200">
+                            <input type="text" placeholder="Procurar" th:field="*{descricaoProfissional}" class="form-control input-lg" size="200">
                             <div class="input-group-btn">
                                 <button class="btn btn-lg btn-grey" type="submit">
                                      <i class="fa fa-search"></i>

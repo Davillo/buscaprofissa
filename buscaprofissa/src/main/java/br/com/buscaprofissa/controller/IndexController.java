@@ -18,9 +18,12 @@ public class IndexController {
 	}
 	
 	@RequestMapping("/categorias")
-	public String categorias(){
-		return "externas/Categorias";
+	public ModelAndView categorias(UsuarioFilter usuarioFilter , BindingResult result){
+		ModelAndView mv = new ModelAndView("externas/Categorias");
+		return mv;
 	}
+	
+	
 	
 	
 	
