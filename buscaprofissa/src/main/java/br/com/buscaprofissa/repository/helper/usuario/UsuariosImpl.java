@@ -54,7 +54,13 @@ public class UsuariosImpl implements UsuariosQueries {
 	
 	private void adicionarFiltro(UsuarioFilter filtro, Criteria criteria) {
 		if (filtro != null) {
-
+					
+			
+			if(!StringUtils.isEmpty(filtro.getDescricaoProfissional())) {
+				criteria.add(Restrictions.ilike("descricaoProfissional", filtro.getDescricaoProfissional(), MatchMode.ANYWHERE));
+			}
+			
+			
 			if (isCategoriaPresente(filtro)) { // filtrar pelo estilo caso selecionado
 				criteria.add(Restrictions.eq("categoria", filtro.getCategoria())); // filtra pelo estilo
 			}
@@ -62,6 +68,8 @@ public class UsuariosImpl implements UsuariosQueries {
 			if (isCidadePresente(filtro)) {
 				criteria.add(Restrictions.eq("endereco.cidade", filtro.getCidade()));
 			}
+			
+			
 		
 		}
 	}

@@ -60,22 +60,7 @@ public class Usuario implements Serializable{
 	@Column(name = "area_atuacao")
 	private AreaAtuacao areaAtuacao;
 	
-	public Boolean getAtivo() {
-		return ativo;
-	}
-
-	public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
-	}
-	
-	
-	public AreaAtuacao getAreaAtuacao() {
-		return areaAtuacao;
-	}
-
-	public void setAreaAtuacao(AreaAtuacao areaAtuacao) {
-		this.areaAtuacao = areaAtuacao;
-	}
+	private String descricaoProfissional;
 
 	@Column(name = "data_nascimento")
 	@Temporal(TemporalType.DATE)
@@ -175,7 +160,7 @@ public class Usuario implements Serializable{
 	}
 
 	public String getFotoOuMock(){
-		return !StringUtils.isEmpty(foto) ? foto : "thumbnail.user-mock.jpg";
+		return !StringUtils.isEmpty(foto) ? foto : "usuario-mock.jpg";
 	}
 	
 	
@@ -222,6 +207,35 @@ public class Usuario implements Serializable{
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+	
+	
+
+	
+	
+	public String getDescricaoProfissional() {
+		return descricaoProfissional;
+	}
+
+	public void setDescricaoProfissional(String descricaoProfissional) {
+		this.descricaoProfissional = descricaoProfissional;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+	
+	
+	public AreaAtuacao getAreaAtuacao() {
+		return areaAtuacao;
+	}
+
+	public void setAreaAtuacao(AreaAtuacao areaAtuacao) {
+		this.areaAtuacao = areaAtuacao;
 	}
 
 	@Override

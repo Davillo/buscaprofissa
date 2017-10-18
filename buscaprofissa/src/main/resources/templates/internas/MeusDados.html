@@ -279,8 +279,8 @@
 											<div class="form-group  col-sm-5">
 												<label class="control-label">Foto</label>
 												
-												<input type="hidden" name="foto">
-												<input type="hidden" name="contentType">
+												<input type="hidden" th:field="*{foto}">
+												<input type="hidden" th:field="*{contentType}">
 												 <a><input
 													id="upload-select" type="file" accept=".jpg,.jpeg,.png" /></a>
 
@@ -350,15 +350,18 @@
 												</div>
 
 												<div class="form-group  col-sm-5">
-													<label for="cidade" class="control-label">Cidade</label> <select
-													 class="form-control m-b" th:field="*{endereco.cidade}" disabled
-													 id="cidade"
-													  required data:url="@{/cidades}" >
+													<label for="cidade" class="control-label">Cidade</label>
+														
+													 <select
+													 class="form-control m-b" th:field="*{endereco.cidade}"
+													 id="cidade" required>
 													 
 									 			 <option th:each="cidade : ${cidades}" th:value="${cidade.id}" th:text="${cidade.nome}"></option>
 													</select>
 												</div>
 											</div>
+											
+										
 
 
 											<input type="hidden" class="form-control" name="senha"
@@ -370,10 +373,11 @@
 
 
 
-
+											
 
 											<div class="form-group  col-sm-5">
-												<label for="area">Área de atuação</label> <select id="area"
+												<label for="area">Área de atuação</label> 
+												<select id="area"
 													class="form-control" th:field="*{areaAtuacao}" required>
 													<option value="">Selecione a área</option>
 													<option th:each="area : ${areas}" th:value="${area.id}"
@@ -382,9 +386,9 @@
 											</div>
 
 											<div class="form-group  col-sm-5">
-												<label for="cidade">Categorias</label>
+												<label for="categoria">Categorias</label>
 
-												<select id="categoria" class="form-control"
+												<select id="categoria" class="form-control" 
 													th:field="*{categoria}" required>
 													<option value="">Selecione a categoria</option>
 													<option th:each="categoria : ${categorias}"
@@ -396,7 +400,20 @@
 											</div>
 
 
+	
+										
+										
+										<div class="form-group  col-sm-11">
+												<label for="descricao" class="control-label">Descrição profissional</label>
 
+												
+												<textarea rows="7" cols="100" th:field="*{descricaoProfissional}" class="form-control">
+												
+												</textarea>
+
+
+											</div>
+										
 
 										</div>
 
@@ -404,7 +421,7 @@
 
 
 
-										<div class="form-group">
+										<div class="form-group ">
 											<button class="btn  btn-success" type="submit">Salvar</button>
 										</div>
 
@@ -475,21 +492,14 @@
 	<!-- Mainly scripts -->
 
 	<script th:src="@{/sourcetemplate/js/bootstrap.js}"></script>
-	<script
-		th:src="@{/sourcetemplate/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
-	<script
-		th:src="@{/sourcetemplate/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
-	
-	<script th:src="@{/sourcebusca/combo-estado-cidade.js}"></script>
-	<!-- Custom and plugin javascript -->
+	<script th:src="@{/sourcetemplate/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+	<script th:src="@{/sourcetemplate/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+	<!--<script th:src="@{/sourcebusca/combo-estadoEcidade.js}"></script>-->
+	<!-- <script th:src="@{/sourcebusca/combo-area-categoria.js}"></script> -->
 	<script th:src="@{/sourcetemplate/js/inspinia.js}"></script>
 	<script th:src="@{/sourcetemplate/js/plugins/pace/pace.min.js}"></script>
 	<script th:src="@{/sourcebusca/locastyle.js}"></script>
-	<!--  <script th:src="@{/sourcebusca/combocategoria.js}"></script> -->
-	<!-- Peity -->
-	<script
-		th:src="@{/sourcetemplate/js/plugins/peity/jquery.peity.min.js}"></script>
-	<!-- Peity -->
+	<script th:src="@{/sourcetemplate/js/plugins/peity/jquery.peity.min.js}"></script>
 	<script th:src="@{/sourcetemplate/js/demo/peity-demo.js}"></script>
 
 </body>

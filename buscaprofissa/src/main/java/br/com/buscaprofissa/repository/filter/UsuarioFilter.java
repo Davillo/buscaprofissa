@@ -7,7 +7,7 @@ public class UsuarioFilter {
 	
 	private Categoria categoria;
 	private Cidade cidade;
-
+	private String descricaoProfissional;
 	
 	
 	public Categoria getCategoria() {
@@ -22,6 +22,14 @@ public class UsuarioFilter {
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
 	}
+	public String getDescricaoProfissional() {
+		return descricaoProfissional;
+	}
+	public void setDescricaoProfissional(String descricaoProfissional) {
+		this.descricaoProfissional = descricaoProfissional;
+	}
+	
+	
 	
 	
 	

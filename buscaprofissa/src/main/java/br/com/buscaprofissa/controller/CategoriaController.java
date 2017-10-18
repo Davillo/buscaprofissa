@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import br.com.buscaprofissa.model.Categoria;
+import br.com.buscaprofissa.model.Cidade;
 import br.com.buscaprofissa.repository.Categorias;
 
 
@@ -22,9 +23,8 @@ public class CategoriaController {
 	private Categorias categorias;
 	
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody List<Categoria> pesquisarPorIdArea(@RequestParam(name = "area", defaultValue= "-1")Long id) throws InterruptedException{
-		
-		return categorias.findByAreaAtuacaoId(id);
+	public @ResponseBody List<Categoria> pesquisarPorIdCategoria(@RequestParam(name = "area",defaultValue = "-1") Long idArea){
+		return categorias.findByAreaAtuacaoId(idArea);
 	}
 	
 }
