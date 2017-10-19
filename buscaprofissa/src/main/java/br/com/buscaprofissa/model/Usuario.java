@@ -160,7 +160,7 @@ public class Usuario implements Serializable{
 	}
 
 	public String getFotoOuMock(){
-		return !StringUtils.isEmpty(foto) ? foto : "usuario-mock.jpg";
+		return !StringUtils.isEmpty(foto) ? foto : "usuario-mock.png";
 	}
 	
 	

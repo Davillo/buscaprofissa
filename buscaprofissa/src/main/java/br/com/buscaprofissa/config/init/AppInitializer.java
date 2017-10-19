@@ -11,6 +11,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 
 import br.com.buscaprofissa.config.JPAConfig;
+import br.com.buscaprofissa.config.MailConfig;
 import br.com.buscaprofissa.config.SecurityConfig;
 import br.com.buscaprofissa.config.ServiceConfig;
 import br.com.buscaprofissa.config.WebConfig;
@@ -24,7 +25,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class<?>[]{WebConfig.class};
+		return new Class<?>[]{WebConfig.class,MailConfig.class};
 	}
 
 	@Override

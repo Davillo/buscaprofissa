@@ -41,7 +41,9 @@
 								</span> <span class="text-muted text-xs block">
 										
 										
-									<img th:src="@{/fotos/thumbnail.{foto}(foto=${#authentication.principal.usuario.fotoOuMock})}"/>
+									<img th:src="@{/fotos/thumbnail.{foto}(foto=${#authentication.principal.usuario.fotoOuMock})}"
+									
+									/>
 								</span>
 							</span>
 							</a>
@@ -489,8 +491,6 @@
 	<script th:src="@{/sourcetemplate/js/bootstrap.js}"></script>
 	<script th:src="@{/sourcetemplate/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
 	<script th:src="@{/sourcetemplate/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
-<!-- 	<script th:src="@{/sourcebusca/combo-estadoEcidade.js}"></script>-->	
-	<script th:src="@{/sourcebusca/combo-area-categoria.js}"></script> -->
 	<script th:src="@{/sourcetemplate/js/inspinia.js}"></script>
 	<script th:src="@{/sourcetemplate/js/plugins/pace/pace.min.js}"></script>
 	<script th:src="@{/sourcebusca/locastyle.js}"></script>
