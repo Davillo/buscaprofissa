@@ -1,8 +1,9 @@
 package br.com.buscaprofissa.ws.chat;
-
 /**
  * Created by Arip Hidayat on 21/02/2016.
  */
+
+/*
 public class Message {
 
     private String from;
@@ -38,3 +39,4 @@ public class Message {
         this.content = content;
     }
 }
+*/

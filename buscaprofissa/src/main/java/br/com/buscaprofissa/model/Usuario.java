@@ -96,11 +96,11 @@ public class Usuario implements Serializable{
 		this.id = id;
 	}
 	
-	@PreUpdate
-	private void preUpdate(){
+//	@PreUpdate
+///	private void preUpdate(){
 	
-		cpf = cpf.replaceAll("\\.|-|/", "");
-	}
+//		cpf = cpf.replaceAll("\\.|-|/", "");
+//	}
 	
 
 	public String getNome() {

@@ -1,18 +1,10 @@
 package br.com.buscaprofissa.ws.chat;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
-import java.util.logging.Logger;
-import javax.websocket.*;
-import javax.websocket.server.PathParam;
-import javax.websocket.server.ServerEndpoint;
-
 /**
  *
  * @author Arip Hidayat
  */
+
+/*
 @ServerEndpoint(
         value="/chat/{username}",
         decoders = MessageDecoder.class,
@@ -93,4 +85,4 @@ public class ChatEndpoint {
         }
         return null;
     }
-}
+}*/

@@ -59,14 +59,7 @@
 					</li>
 					<li><a th:href="@{/}"><i class="fa fa-th-large"></i> <span
 							class="nav-label">Inicio</span> </a></li>
-					<li><a href="mailbox.html"><i class="fa fa-envelope"></i>
-							<span class="nav-label">Mensagens</span><span
-							class="label label-warning pull-right">16/24</span></a>
-						<ul class="nav nav-second-level">
-							<li><a href="mailbox.html">Inbox</a></li>
-							<li><a href="mail_detail.html">Email view</a></li>
-
-						</ul></li>
+					
 
 
 					<li><a th:href="@{/meusdados}"><i class="fa fa-files-o"></i>
@@ -351,8 +344,9 @@
 
 												<div class="form-group  col-sm-5">
 													<label for="cidade" class="control-label">Cidade</label>
-														 <select id="cidade" class="form-control" th:field="*{endereco.cidade}">
-	                 						   <option value="">Selecione a Cidade</option>
+														 <select id="cidade" class="form-control"
+														  th:field="*{endereco.cidade}">
+	                 						
 	                  			  <option th:each="cidade : ${cidades}" th:value="${cidade.id}" th:text="${cidade.nome}"></option>
 	             						   </select>
 												</div>
@@ -386,7 +380,7 @@
 												<label for="categoria">Categorias</label>
 
 												<select id="categoria" class="form-control" 
-													th:field="*{categoria}" required>
+													th:field="*{categoria}">
 													<option value="">Selecione a categoria</option>
 													<option th:each="categoria : ${categorias}"
 														th:value="${categoria.id}" th:text="${categoria.nome}"></option>
@@ -487,8 +481,12 @@
 
 
 	<!-- Mainly scripts -->
-
+	
+	
+	<script th:src="@{/sourcebusca/combo-estado-cidade.js}"></script>
+	<script th:src="@{/sourcebusca/combo-area-categoria.js}"></script>
 	<script th:src="@{/sourcetemplate/js/bootstrap.js}"></script>
+	
 	<script th:src="@{/sourcetemplate/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
 	<script th:src="@{/sourcetemplate/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
 	<script th:src="@{/sourcetemplate/js/inspinia.js}"></script>

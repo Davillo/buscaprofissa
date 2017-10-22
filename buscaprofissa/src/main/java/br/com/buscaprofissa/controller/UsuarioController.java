@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.buscaprofissa.mail.Mailer;
 import br.com.buscaprofissa.model.AreaAtuacao;
 import br.com.buscaprofissa.model.Sexo;
 import br.com.buscaprofissa.model.Usuario;
@@ -47,6 +48,9 @@ public final class UsuarioController {
 	
 	@Autowired
 	private Cidades cidadeRep;
+	
+	@Autowired
+	private Mailer mailer;
 
 	@RequestMapping("/cadastro")
 	public ModelAndView cadastro(Usuario usuario,UsuarioFilter usuarioFilter){
@@ -66,7 +70,7 @@ public final class UsuarioController {
 		
 		
 		try{
-			
+			mailer.enviar();
 			service.salvar(usuario);
 			
 		}catch (EmailUsuarioJaCadastradoException e) {

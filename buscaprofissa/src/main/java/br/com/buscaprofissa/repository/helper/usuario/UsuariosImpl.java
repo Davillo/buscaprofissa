@@ -63,6 +63,7 @@ public class UsuariosImpl implements UsuariosQueries {
 			}
 			
 			criteria.add(Restrictions.isNotNull("categoria"));
+			criteria.add(Restrictions.eq("ativo", true));
 			
 			if (isCategoriaPresente(filtro)) { // filtrar pelo estilo caso selecionado
 				criteria.add(Restrictions.eq("categoria", filtro.getCategoria())); // filtra pelo estilo

@@ -41,6 +41,7 @@
 }
 
 
+
 .form-login{
 	margin-top:130px;
 	width: 300px;
@@ -56,6 +57,10 @@
 
 .bp-glyphicon-large{
 	font-size: 18px;
+}
+
+td{
+	font-size: 20px;
 }
 
 .bp-field-action__icon{

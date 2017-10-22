@@ -30,7 +30,7 @@ public class CadastroUsuarioService {
 		
 		@Transactional 
 		public void salvar(Usuario usuario){
-			Optional<Usuario> emailUsuarioJaExistent = repository.findByEmailIgnoreCaseAndAtivoTrue(usuario.getEmail());
+			Optional<Usuario> emailUsuarioJaExistent = repository.findByEmailIgnoreCase(usuario.getEmail());
 			if(emailUsuarioJaExistent.isPresent()){
 				throw new EmailUsuarioJaCadastradoException("E-mail de usuário já cadastrado");
 			}
@@ -55,9 +55,19 @@ public class CadastroUsuarioService {
 		}
 		
 		@Transactional
+		public void ativar(Usuario usuario){
+			usuario.setAtivo(true);
+			repository.saveAndFlush(usuario);
+		}
+		
+		@Transactional
 		public void desativar(Usuario usuario){
 			usuario.setAtivo(false);
 			repository.saveAndFlush(usuario);
 		}
+		
+		
+		
+	
 	
 }

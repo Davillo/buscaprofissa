@@ -1,15 +1,12 @@
 package br.com.buscaprofissa.ws.chat;
 
-import com.google.gson.Gson;
 
-import javax.websocket.DecodeException;
-import javax.websocket.Decoder;
-import javax.websocket.EndpointConfig;
-import java.util.logging.Logger;
 
 /**
  * Created by Arip Hidayat on 21/02/2016.
  */
+
+/*
 public class MessageDecoder implements Decoder.Text<Message> {
     private final Logger log = Logger.getLogger(getClass().getName());
 
@@ -36,4 +33,4 @@ public class MessageDecoder implements Decoder.Text<Message> {
     public void destroy() {
         // do nothing
     }
-}
+}*/
