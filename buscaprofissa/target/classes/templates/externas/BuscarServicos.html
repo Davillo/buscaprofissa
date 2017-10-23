@@ -6,7 +6,7 @@
 
 
 
-<title>BuscaProfissa-Categorias</title>
+<title>BuscaProfissa-Buscar Serviços</title>
 
 
 </head>
@@ -64,10 +64,10 @@
 											</select>
 
 										</div>
-										
-										
-										
-										
+
+
+
+
 									</div>
 
 									<button type="submit" class="btn  btn-primary">Pesquisar</button>
@@ -78,27 +78,31 @@
 										<thead>
 											<tr>
 												<th>Profissional</th>
+												
 											</tr>
 										</thead>
 
 										<tbody>
 											<tr th:each="usuario : ${pagina.conteudo}">
-												
-													
-													<td class="text-left"><img
-													th:src="@{/fotos/thumbnail.{foto}(foto=${usuario.fotoOuMock})}"/>
-													 </td>	
-													 
-												
+
+
+												<td class="text-left"><img
+													th:src="@{/fotos/thumbnail.{foto}(foto=${usuario.fotoOuMock})}" />
+												</td>
+
+
 												<td class="text-left"
 													th:text="|${usuario.nome} ${usuario.sobrenome}|"></td>
 
-												<td class="text-right" th:text="${usuario.categoria.nome}"></td>
 
 												<td class="text-right" th:text="${usuario.telefone}"></td>
 												<td class="text-right"
 													th:text="${usuario.descricaoProfissional}"></td>
-											</tr>
+													
+												<td class="text-center"><a th:href="@{/verPerfil/{id}(id=${usuario.id})}"><button type="button" class="btn btn-secondary"
+													>VER PERFIL	 
+														</button></a>
+													</td>
 											<tr th:if="${pagina.vazia}">
 												<td colspan="5">Nenhum profissional encontrado</td>
 											</tr>
@@ -106,45 +110,45 @@
 									</table>
 								</div>
 
-							<div class="col-sm-10" th:if="${not pagina.vazia}" align="right">
-			<nav>
-				<ul class="pagination  pagination-sm"
-					th:with="paginaAtual=${pagina.atual}">
-					<li th:class="${pagina.primeira} ? disabled"><a
-						th:href="${pagina.urlParaPagina(paginaAtual - 1)}"
-						th:remove="${pagina.primeira} ? tag"><span>&laquo;</span></a></li>
-					<th:block th:each="p : ${#numbers.sequence(1, pagina.total)}"
-						th:with="numeroPagina=${p - 1}">
-						<li th:class="${paginaAtual == numeroPagina} ? active"><a
-							th:href="${pagina.urlParaPagina(numeroPagina)}">[[${p}]]</a></li>
-					</th:block>
+								<div class="col-sm-10" th:if="${not pagina.vazia}" align="right">
+									<nav>
+										<ul class="pagination  pagination-sm"
+											th:with="paginaAtual=${pagina.atual}">
+											<li th:class="${pagina.primeira} ? disabled"><a
+												th:href="${pagina.urlParaPagina(paginaAtual - 1)}"
+												th:remove="${pagina.primeira} ? tag"><span>&laquo;</span></a></li>
+											<th:block th:each="p : ${#numbers.sequence(1, pagina.total)}"
+												th:with="numeroPagina=${p - 1}">
+												<li th:class="${paginaAtual == numeroPagina} ? active"><a
+													th:href="${pagina.urlParaPagina(numeroPagina)}">[[${p}]]</a></li>
+											</th:block>
 
-					<li th:class="${pagina.ultima} ? disabled"><a
-						th:href="${pagina.urlParaPagina(paginaAtual + 1)}"
-						th:remove="${pagina.ultima} ? tag"><span>&raquo;</span></a></li>
-				</ul>
-			</nav>
-		</div>
+											<li th:class="${pagina.ultima} ? disabled"><a
+												th:href="${pagina.urlParaPagina(paginaAtual + 1)}"
+												th:remove="${pagina.ultima} ? tag"><span>&raquo;</span></a></li>
+										</ul>
+									</nav>
+								</div>
 
 
 							</div>
-						
-						
+
+
 						</div>
 					</div>
 				</div>
 			</div>
 
-		
+
 
 		</div>
-		
+
 	</section>
 
 
 
 
 </div>
-	
+
 
 </html>

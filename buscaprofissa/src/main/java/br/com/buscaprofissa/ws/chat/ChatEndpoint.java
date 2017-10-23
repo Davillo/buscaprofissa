@@ -1,17 +1,21 @@
 package br.com.buscaprofissa.ws.chat;
-/**
- *
- * @author Arip Hidayat
- */
 
-/*
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
+import javax.websocket.*;
+import javax.websocket.server.PathParam;
+import javax.websocket.server.ServerEndpoint;
+
+
 @ServerEndpoint(
         value="/chat/{username}",
         decoders = MessageDecoder.class,
         encoders = MessageEncoder.class
 )
 public class ChatEndpoint {
-    private final Logger log = Logger.getLogger(getClass().getName());
 
     private Session session;
     private String username;
@@ -20,14 +24,14 @@ public class ChatEndpoint {
 
     @OnOpen
     public void onOpen(Session session, @PathParam("username") String username) throws IOException, EncodeException {
-        log.info(session.getId() + " connected!");
+  
 
         this.session = session;
         this.username = username;
         chatEndpoints.add(this);
         users.put(session.getId(), username);
 
-        Message message = new Message();
+       Message message = new Message();
         message.setFrom(username);
         message.setContent("connected!");
         broadcast(message);
@@ -35,7 +39,6 @@ public class ChatEndpoint {
 
     @OnMessage
     public void onMessage(Session session, Message message) throws IOException, EncodeException {
-        log.info(message.toString());
 
         message.setFrom(users.get(session.getId()));
         sendMessageToOneUser(message);
@@ -43,7 +46,6 @@ public class ChatEndpoint {
 
     @OnClose
     public void onClose(Session session) throws IOException, EncodeException {
-        log.info(session.getId() + " disconnected!");
 
         chatEndpoints.remove(this);
         Message message = new Message();
@@ -54,7 +56,6 @@ public class ChatEndpoint {
 
     @OnError
     public void onError(Session session, Throwable throwable) {
-        log.warning(throwable.toString());
     }
 
     private static void broadcast(Message message) throws IOException, EncodeException {
@@ -85,4 +86,4 @@ public class ChatEndpoint {
         }
         return null;
     }
-}*/
+}

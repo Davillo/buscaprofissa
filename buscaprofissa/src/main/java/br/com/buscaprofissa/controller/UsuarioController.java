@@ -8,6 +8,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.buscaprofissa.mail.Mailer;
-import br.com.buscaprofissa.model.AreaAtuacao;
 import br.com.buscaprofissa.model.Sexo;
 import br.com.buscaprofissa.model.Usuario;
 import br.com.buscaprofissa.repository.AreasAtuacoes;
@@ -51,6 +51,9 @@ public final class UsuarioController {
 	
 	@Autowired
 	private Mailer mailer;
+	
+	@Autowired
+	private Usuarios usuarios;
 
 	@RequestMapping("/cadastro")
 	public ModelAndView cadastro(Usuario usuario,UsuarioFilter usuarioFilter){
@@ -151,9 +154,17 @@ public final class UsuarioController {
 		
 		return new ModelAndView("redirect:/logout");
 		
-		
 	}
 	
+	@GetMapping("/verPerfil/{id}")
+	public ModelAndView visualizarPerfil(@PathVariable("id") Long id) {
+		Usuario usuario = usuarios.findOne(id);
+		ModelAndView mv = new ModelAndView("internas/VisualizarPerfil");
+		
+		mv.addObject("usuario", usuario);
+		
+		return mv;
+	}
 	
 	
 	
