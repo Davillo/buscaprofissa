@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="layout/externo/Padrao"
+xmlns:buscaprofissa="http://buscaprofissa.com.br"
+>
+
+<head>
+
+
+    <title>BuscaProfissa | Login</title>
+
+  
+
+</head>
+
+	<div layout:fragment="conteudo" align="center" id="containerCentro">
+    <div class="form-control conteudoMeio">
+        <div class="form-login">
+          
+          
+          <div class="text-busca">	
+            <h3>Recuperação de senha</h3>
+           
+          
+            
+            
+          
+              </div>
+            <form class="m-t" role="form" method="POST" th:action="@{/recuperarSenha}" th:object="${usuario}">
+            <buscaprofissa:message/>
+                <div class="form-group">
+                    <input type="text" id="email" class="form-control" th:field="*{email}" placeholder="E-mail">
+                </div>
+                
+                 <div class="form-group">
+                    <input type="text" id="email" class="form-control" th:field="*{senha}" placeholder="Nova senha">
+                </div>
+               
+                
+                <button type="submit" class="btn btn-primary block full-width m-b">Recuperar</button>
+
+				
+                <p class="text-muted text-center text-busca"><small>Não tem uma conta?</small></p>
+               
+                <a class="btn btn-blue block full-width m-b" th:href="@{/cadastro}">Criar uma conta</a>
+                
+                 <p class="text-muted text-center text-busca"><small>Esqueceu a senha?</small></p>
+                   <a class="btn btn-blue block full-width m-b" th:href="@{/recuperarSenha}">Recuperar senha</a>
+            </form>
+        </div>
+    </div>
+	</div>
+	
+
+
+</html>

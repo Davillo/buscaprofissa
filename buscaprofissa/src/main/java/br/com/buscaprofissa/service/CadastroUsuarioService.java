@@ -66,7 +66,12 @@ public class CadastroUsuarioService {
 			repository.saveAndFlush(usuario);
 		}
 		
-		
+		@Transactional
+		public void novaSenha(Usuario usuario) {
+			
+			usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
+			repository.saveAndFlush(usuario);
+		}
 		
 	
 	

@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Component;
 
 import br.com.buscaprofissa.model.Usuario;
+import br.com.buscaprofissa.security.UsuarioLogado;
 
 @Component
 public class Mailer {
@@ -15,13 +17,14 @@ public class Mailer {
 	private JavaMailSender mailSender;
 	
 	@Async
-	public void enviar() {
+	public void enviar(Usuario usuario, @AuthenticationPrincipal UsuarioLogado usuarioLogado) {
 			SimpleMailMessage mensagem = new SimpleMailMessage();
-			mensagem.setFrom("startupinnovatech@gmail.com");
-			mensagem.setTo("davilloaurelio@hotmail.com");
-			mensagem.setSubject("Teste de e-mail");
-			mensagem.setText("Apenas um teste com sendgrid");
-			
+			mensagem.setFrom(usuarioLogado.getUsuario().getEmail());
+			mensagem.setTo(usuario.getEmail());
+			mensagem.setSubject("Solicitação de serviço no BuscaProfissa!");
+			mensagem.setText("Olá , " + usuario.getNome() + " o usuário "+usuarioLogado.getUsuario().getNome()+ " Solicita um serviço! \n"
+	
+					);
 			mailSender.send(mensagem);
 	}
 	

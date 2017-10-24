@@ -27,6 +27,7 @@ import br.com.buscaprofissa.repository.filter.UsuarioFilter;
 import br.com.buscaprofissa.security.UsuarioLogado;
 import br.com.buscaprofissa.service.CadastroUsuarioService;
 import br.com.buscaprofissa.service.exception.EmailUsuarioJaCadastradoException;
+import br.com.buscaprofissa.service.exception.ErroEnviandoEmailException;
 import br.com.buscaprofissa.service.exception.SenhaEConfirmacaoDiferentesException;
 
 @Controller
@@ -73,7 +74,7 @@ public final class UsuarioController {
 		
 		
 		try{
-			mailer.enviar();
+		
 			service.salvar(usuario);
 			
 		}catch (EmailUsuarioJaCadastradoException e) {
@@ -91,7 +92,8 @@ public final class UsuarioController {
 
 	
 	@RequestMapping("/meusdados")
-	public ModelAndView meusdados(@AuthenticationPrincipal UsuarioLogado usuario){
+	public ModelAndView meusdados(@AuthenticationPrincipal UsuarioLogado usuario,
+			UsuarioFilter usuarioFilter){
 		Usuario user = usuario.getUsuario();
 		ModelAndView mv = new ModelAndView("internas/MeusDados");
 		mv.addObject("usuario", user);
@@ -112,9 +114,13 @@ public final class UsuarioController {
 	
 	
 	
-	@RequestMapping("/teste")
-	public String chat(){
-		return "Chat";
+	@RequestMapping("/chat")
+	public ModelAndView chat(@AuthenticationPrincipal UsuarioLogado usuario){
+		
+		ModelAndView mv = new ModelAndView("bp");
+		mv.addObject("usuario",usuario);
+		
+		return mv;
 	}
 	
 	@PostMapping("/meusdadosSave")
@@ -157,13 +163,37 @@ public final class UsuarioController {
 	}
 	
 	@GetMapping("/verPerfil/{id}")
-	public ModelAndView visualizarPerfil(@PathVariable("id") Long id) {
+	public ModelAndView visualizarPerfil(@PathVariable("id") Long id, UsuarioFilter usuarioFilter) {
 		Usuario usuario = usuarios.findOne(id);
 		ModelAndView mv = new ModelAndView("internas/VisualizarPerfil");
 		
 		mv.addObject("usuario", usuario);
 		
 		return mv;
+	}
+	
+	
+	
+	@PostMapping("/verPerfil/{id}")
+	public ModelAndView solicitar( @PathVariable("id") Long id,@AuthenticationPrincipal UsuarioLogado usuarioLogado,
+			BindingResult result
+			) {
+		
+		ModelAndView mv = new ModelAndView("internas/VisualizarPerfil");
+		Usuario usuario = usuarios.findOne(id);
+		mv.addObject("usuario", usuario);
+		
+		try {
+			
+			mailer.enviar(usuario, usuarioLogado);
+		
+		}catch (ErroEnviandoEmailException e) {
+			
+			result.rejectValue("email", e.getMessage(),e.getMessage());
+		}
+		
+		
+		 return new ModelAndView("redirect:/verPerfil/{id}");
 	}
 	
 	

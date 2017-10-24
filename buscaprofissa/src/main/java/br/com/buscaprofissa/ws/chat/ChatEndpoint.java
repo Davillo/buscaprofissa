@@ -33,7 +33,7 @@ public class ChatEndpoint {
 
        Message message = new Message();
         message.setFrom(username);
-        message.setContent("connected!");
+        message.setContent("Conectado!");
         broadcast(message);
     }
 

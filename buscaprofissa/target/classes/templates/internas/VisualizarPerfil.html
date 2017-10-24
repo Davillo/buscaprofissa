@@ -1,39 +1,40 @@
-	<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="pt" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" th:href="@{/images/favicon.png}" />
-    <title>BuscaProfissa | Home</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" th:href="@{/images/favicon.png}" />
+<title>BuscaProfissa | Perfil Profissional</title>
 
-    <link th:href="@{/sourcetemplate/css/bootstrap.min.css}" rel="stylesheet">
-    <link th:href="@{/sourcetemplate/font-awesome/css/font-awesome.css}" rel="stylesheet">
-    <link th:href="@{/sourcetemplate/css/animate.css}" rel="stylesheet">
-    <link th:href="@{/sourcetemplate/css/style.css}" rel="stylesheet">
-    
+<link th:href="@{/sourcetemplate/css/bootstrap.min.css}"
+	rel="stylesheet">
+<link th:href="@{/sourcetemplate/font-awesome/css/font-awesome.css}"
+	rel="stylesheet">
+<link th:href="@{/sourcetemplate/css/animate.css}" rel="stylesheet">
+<link th:href="@{/sourcetemplate/css/style.css}" rel="stylesheet">
+
 
 </head>
 
 <body>
 
-    <div id="wrapper">
+	<div id="wrapper">
 
-  <nav class="navbar-default navbar-static-side" role="navigation">
+		<nav class="navbar-default navbar-static-side" role="navigation">
 			<div class="sidebar-collapse">
 				<ul class="nav" id="side-menu">
 					<li class="nav-header">
 						<div class="dropdown profile-element">
-						
-							 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-								<span class="clear"> <span class="block m-t-xs"> <strong
+
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#"> <span
+								class="clear"> <span class="block m-t-xs"> <strong
 										class="font-bold"></strong>
-								</span> <span class="text-muted text-xs block">
-										
-										
-									<img th:src="@{/fotos/thumbnail.{foto}(foto=${#authentication.principal.usuario.fotoOuMock})}"/>
+								</span> <span class="text-muted text-xs block"> <img
+										th:src="@{/fotos/thumbnail.{foto}(foto=${#authentication.principal.usuario.fotoOuMock})}" />
 								</span>
 							</span>
 							</a>
@@ -45,11 +46,11 @@
 								<li><a href="login.html">Logout</a></li>
 							</ul>
 						</div>
-						<div class="logo-element">IN+</div>
+						<div class="logo-element">BP</div>
 					</li>
 					<li><a th:href="@{/}"><i class="fa fa-th-large"></i> <span
 							class="nav-label">Inicio</span> </a></li>
-				
+
 
 					<li><a th:href="@{/meusdados}"><i class="fa fa-files-o"></i>
 							<span class="nav-label">Meus dados</span></a></li>
@@ -59,183 +60,161 @@
 			</div>
 		</nav>
 
-        <div id="page-wrapper" class="gray-bg">
-        <div class="row border-bottom">
-        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
+		<div id="page-wrapper" class="gray-bg">
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation"
+					style="margin-bottom: 0">
+					 <div class="navbar-header">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
            
-            <form role="search" class="navbar-form-custom" method="GET" th:action="@{/buscar}">
+            <form role="search" class="navbar-form-custom" method="GET" th:action="@{/buscar}"
+            th:object="${usuarioFilter}" 
+            >
                 <div class="form-group">
-                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                    <input type="text" placeholder="Busque profissionais" th:field="*{descricaoProfissional}" class="form-control" name="top-search" id="top-search">
                 </div>
             </form>
         </div>
-            <ul class="nav navbar-top-links navbar-right">
-              
-                <li class="dropdown">
-                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-messages">
-                        <li>
-                            <div class="dropdown-messages-box">
-                                <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a7.jpg">
-                                </a>
-                                <div class="media-body">
-                                    <small class="pull-right">46h ago</small>
-                                    <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
-                                    <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="dropdown-messages-box">
-                                <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a4.jpg">
-                                </a>
-                                <div class="media-body ">
-                                    <small class="pull-right text-navy">5h ago</small>
-                                    <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
-                                    <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="dropdown-messages-box">
-                                <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/profile.jpg">
-                                </a>
-                                <div class="media-body ">
-                                    <small class="pull-right">23h ago</small>
-                                    <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
-                                    <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="text-center link-block">
-                                <a href="mailbox.html">
-                                    <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="mailbox.html">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i> You have 16 messages
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="profile.html">
-                                <div>
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                    <span class="pull-right text-muted small">12 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="grid_options.html">
-                                <div>
-                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="text-center link-block">
-                                <a href="notifications.html">
-                                    <strong>See All Alerts</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                
-              
-                	<li><a th:href="@{/logout}"> <i class="fa fa-sign-out"></i>
-							Sair
+					<ul class="nav navbar-top-links navbar-right">
+
+						<li><a th:href="@{/logout}"> <i class="fa fa-sign-out"></i>
+								Sair
 						</a></li>
-                
-            </ul>
-		
-		
-	
-        </nav>
-        </div>
-            <div class="row">
-                    
-                 
-                    
-        <div class="wrapper wrapper-content">
-            <div class="row animated fadeInRight">
-             
-               <div class="col-lg-12">
-						<div class="ibox">
-							<div class="ibox-title">
-								<h5>Início</h5>
-								<div class="ibox-tools">DASHBOARD</div>
-							</div>
-							<div class="ibox-content">
-								<p th:text="${usuario.telefone}"> </p>
+
+					</ul>
+
+
+
+				</nav>
+			</div>
+			<div class="row">
+
+
+
+				<div class="wrapper wrapper-content">
+					<div class="row animated fadeInRight">
+
+						<div class="col-lg-12">
+							<div class="ibox">
+								<div class="ibox-title">
+									<h5>Perfil de Profissional</h5>
+									<div class="ibox-tools">PERFIL</div>
+								</div>
+								<div class="ibox-content">
+
+									<form th:action="@{/verPerfil/{id}(id=${usuario.id})}"
+										method="POST" th:object="${usuario}">
+
+										<div class="row">
+											<div class="form-group  col-sm-5">
+												<label for="nome" class="control-label"> Nome:</label> <label
+													for="nome" class="control-label"
+													th:text="|${usuario.nome} ${usuario.sobrenome}|"></label>
+											</div>
+
+
+
+											<div class="form-group  col-sm-5">
+												<label for="nome" class="control-label"> Cidade:</label> <label
+													id="cidade" class="control-label"
+													th:text="${usuario.endereco.cidade}"></label>
+
+											</div>
+											<div class="form-group  col-sm-5">
+												<label for="nome" class="control-label"> Email:</label> <label
+													id="email" class="control-label" th:text="${usuario.email}">
+													<input type="hidden" name="email"
+													th:value="${usuario.email}">
+												</label>
+											</div>
+
+
+											<div class="form-group  col-sm-5">
+												<label for="nome" class="control-label"> Estado:</label> <label
+													id="estado" class="control-label"
+													th:text="${usuario.endereco.estado}"></label>
+
+											</div>
+
+											<div class="form-group  col-sm-5">
+												<label for="nome" class="control-label"> Telefone:</label> <label
+													id="telefone" class="control-label"
+													th:text="${usuario.telefone}"></label>
+
+											</div>
+
+
+											<div class="form-group  col-sm-5">
+												<label for="nome" class="control-label">Categoria: </label>
+												<label id="categoria" class="control-label"
+													th:text="${usuario.categoria}"></label>
+											</div>
+
+
+											<div class="form-group  col-sm-5">
+												<label id="foto" class="control-label"></label> <img
+													th:src="@{/fotos/thumbnail.{foto}(foto=${usuario.fotoOuMock})}">
+											</div>
+
+											<div class="form-group  col-sm-5">
+												<label id="descricao" class="control-label">Descrição
+													profissional: </label> <label for="telefone" class="control-label"
+													th:text="${usuario.descricaoProfissional}"></label>
+											</div>
+											<div class="form-group  col-sm-5">
+												<button type="submit" value="Solicitar serviço"
+													class="btn btn-primary">Solicitar serviço</button>
+											</div>
+									</form>
 									
+									
+															
+								
+
+								</div>
 							</div>
 						</div>
 					</div>
-                    </div>
 
-                </div>
-            </div>
-      
-      	  <div class="footer">
-            <div class="pull-right">
-                 <strong>BuscaProfissa</strong>
-            </div>
-            <div>
-                <strong>INNOVATECH 2017</strong>
-            </div>
-        </div>
-        </div>
-      
+				</div>
+			</div>
 
-        </div>
-      
+			<div class="footer">
+				<div class="pull-right">
+					<strong>BuscaProfissa</strong>
+				</div>
+				<div>
+					<strong>INNOVATECH 2017</strong>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
 
 
 
-    <!-- Mainly scripts -->
-    <script th:src="@{/sourcetemplate/js/jquery-2.1.1.js}"></script>
-    <script th:src="@{/sourcetemplate/js/bootstrap.js}"></script>
-    <script th:src="@{/sourcetemplate/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
-    <script th:src="@{/sourcetemplate/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
 
-    <!-- Custom and plugin javascript -->
-    <script th:src="@{/sourcetemplate/js/inspinia.js}"></script>
-    <script th:src="@{/sourcetemplate/js/plugins/pace/pace.min.js}"></script>
 
-    <!-- Peity -->
-    <script th:src="@{/sourcetemplate/js/plugins/peity/jquery.peity.min.js}"></script>
+ <script th:src="@{/sourcebusca/chat-js.js}"></script>
+	<!-- Mainly scripts -->
+	<script th:src="@{/sourcetemplate/js/jquery-2.1.1.js}"></script>
+	<script th:src="@{/sourcetemplate/js/bootstrap.js}"></script>
+	<script
+		th:src="@{/sourcetemplate/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+	<script
+		th:src="@{/sourcetemplate/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
 
-    <!-- Peity -->
-    <script th:src="@{/sourcetemplate/js/demo/peity-demo.js}"></script>
+	<!-- Custom and plugin javascript -->
+	<script th:src="@{/sourcetemplate/js/inspinia.js}"></script>
+	<script th:src="@{/sourcetemplate/js/plugins/pace/pace.min.js}"></script>
 
+	<!-- Peity -->
+	<script
+		th:src="@{/sourcetemplate/js/plugins/peity/jquery.peity.min.js}"></script>
+
+	<!-- Peity -->
+	<script th:src="@{/sourcetemplate/js/demo/peity-demo.js}"></script>
 </body>
 
 </html>

@@ -41,7 +41,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/chat")
 		.antMatchers("/fotos/**")
 		.antMatchers("/buscar/**")
-		.antMatchers("ws://" + "localhost:9090" + "/buscaprofissa/chat/")
+		.antMatchers("/novaSenha")
+		.antMatchers("/recuperarSenha")
+		.antMatchers("ws://" + "localhost:9090" + "/buscaprofissa/**")
 		.antMatchers("/cadastro");
 	}
 

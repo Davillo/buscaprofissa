@@ -74,6 +74,11 @@ public class Estado implements Serializable {
 		this.sigla = sigla;
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return nome;
+	}
 	
 	
 	

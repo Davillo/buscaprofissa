@@ -89,7 +89,11 @@ public class Cidade implements Serializable {
 		return true;
 	}
 	
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return nome;
+	}
 	
 	
 	
