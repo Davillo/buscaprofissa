@@ -19,7 +19,7 @@ public class Mailer {
 	@Async
 	public void enviar(Usuario usuario, @AuthenticationPrincipal UsuarioLogado usuarioLogado) {
 			SimpleMailMessage mensagem = new SimpleMailMessage();
-			mensagem.setFrom(usuarioLogado.getUsuario().getEmail());
+			mensagem.setFrom("startupinnovatech@gmail.com");
 			mensagem.setTo(usuario.getEmail());
 			mensagem.setSubject("Solicitação de serviço no BuscaProfissa!");
 			mensagem.setText("Olá , " + usuario.getNome() + " o usuário "+usuarioLogado.getUsuario().getNome()+ " Solicita um serviço! \n"

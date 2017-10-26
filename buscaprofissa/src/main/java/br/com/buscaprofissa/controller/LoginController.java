@@ -71,9 +71,9 @@ public class LoginController {
 			return recuperar(usuarioFilter, usuario);
 		}
 		
-		Usuario user = usuarios.findByEmail(usuario.getEmail());
+		Usuario user = usuarios.findByEmailAndCpf(usuario.getEmail(), usuario.getCpf());
 		if(user == null) {
-			attributes.addFlashAttribute("mensagem", "Email não cadastrado!");
+			attributes.addFlashAttribute("mensagem", "Email ou CPF não cadastrados!");
 			return new ModelAndView("redirect:/recuperarSenha");
 		}
 		
@@ -90,13 +90,6 @@ public class LoginController {
 				return recuperar(usuarioFilter, usuario);
 				
 			}
-			
-		
-		
-	
-	
-
-	
 	
 	}
 	

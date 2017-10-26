@@ -66,6 +66,15 @@ public class CadastroUsuarioService {
 			repository.saveAndFlush(usuario);
 		}
 		
+		
+		@Transactional
+		public void atualizarServico(Usuario usuario){
+			usuario.setAreaAtuacao(usuario.getAreaAtuacao());
+			usuario.setCategoria(usuario.getCategoria());
+			usuario.setDescricaoProfissional(usuario.getDescricaoProfissional());
+			repository.saveAndFlush(usuario);
+		}
+		
 		@Transactional
 		public void novaSenha(Usuario usuario) {
 			

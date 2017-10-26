@@ -16,15 +16,18 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.buscaprofissa.mail.Mailer;
+import br.com.buscaprofissa.model.Servico;
 import br.com.buscaprofissa.model.Sexo;
 import br.com.buscaprofissa.model.Usuario;
 import br.com.buscaprofissa.repository.AreasAtuacoes;
 import br.com.buscaprofissa.repository.Categorias;
 import br.com.buscaprofissa.repository.Cidades;
 import br.com.buscaprofissa.repository.Estados;
+import br.com.buscaprofissa.repository.Servicos;
 import br.com.buscaprofissa.repository.Usuarios;
 import br.com.buscaprofissa.repository.filter.UsuarioFilter;
 import br.com.buscaprofissa.security.UsuarioLogado;
+import br.com.buscaprofissa.service.CadastroServicoService;
 import br.com.buscaprofissa.service.CadastroUsuarioService;
 import br.com.buscaprofissa.service.exception.EmailUsuarioJaCadastradoException;
 import br.com.buscaprofissa.service.exception.ErroEnviandoEmailException;
@@ -55,6 +58,9 @@ public final class UsuarioController {
 	
 	@Autowired
 	private Usuarios usuarios;
+	
+	@Autowired
+	private CadastroServicoService servicos;
 
 	@RequestMapping("/cadastro")
 	public ModelAndView cadastro(Usuario usuario,UsuarioFilter usuarioFilter){
@@ -115,12 +121,9 @@ public final class UsuarioController {
 	
 	
 	@RequestMapping("/chat")
-	public ModelAndView chat(@AuthenticationPrincipal UsuarioLogado usuario){
+	public String chat(@AuthenticationPrincipal UsuarioLogado usuario){
 		
-		ModelAndView mv = new ModelAndView("bp");
-		mv.addObject("usuario",usuario);
-		
-		return mv;
+		return "Chat";
 	}
 	
 	@PostMapping("/meusdadosSave")
@@ -176,26 +179,33 @@ public final class UsuarioController {
 	
 	@PostMapping("/verPerfil/{id}")
 	public ModelAndView solicitar( @PathVariable("id") Long id,@AuthenticationPrincipal UsuarioLogado usuarioLogado,
-			BindingResult result
+			 RedirectAttributes attributes
 			) {
+		
 		
 		ModelAndView mv = new ModelAndView("internas/VisualizarPerfil");
 		Usuario usuario = usuarios.findOne(id);
 		mv.addObject("usuario", usuario);
+		Servico servico = new Servico();
+		servico.setNomeCliente(usuarioLogado.getUsuario().getNome());
+		servico.setStatus(false);
+		servico.setUsuario(usuario);
+	
 		
 		try {
-			
+			servicos.salvar(servico);
 			mailer.enviar(usuario, usuarioLogado);
+			attributes.addFlashAttribute("mensagem", "Solicitação enviada via e-mail!");
+			
 		
 		}catch (ErroEnviandoEmailException e) {
 			
-			result.rejectValue("email", e.getMessage(),e.getMessage());
 		}
 		
-		
 		 return new ModelAndView("redirect:/verPerfil/{id}");
+		
+		
 	}
-	
-	
+		
 	
 }

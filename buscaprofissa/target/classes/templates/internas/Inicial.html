@@ -1,39 +1,39 @@
-	<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="pt" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" th:href="@{/images/favicon.png}" />
-    <title>BuscaProfissa | Home</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" th:href="@{/images/favicon.png}" />
+<title>BuscaProfissa | Home</title>
 
-    <link th:href="@{/sourcetemplate/css/bootstrap.min.css}" rel="stylesheet">
-    <link th:href="@{/sourcetemplate/font-awesome/css/font-awesome.css}" rel="stylesheet">
-    <link th:href="@{/sourcetemplate/css/animate.css}" rel="stylesheet">
-    <link th:href="@{/sourcetemplate/css/style.css}" rel="stylesheet">
-    
+<link th:href="@{/sourcetemplate/css/bootstrap.min.css}"
+	rel="stylesheet">
+<link th:href="@{/sourcetemplate/font-awesome/css/font-awesome.css}"
+	rel="stylesheet">
+<link th:href="@{/sourcetemplate/css/animate.css}" rel="stylesheet">
+<link th:href="@{/sourcetemplate/css/style.css}" rel="stylesheet">
+
 
 </head>
 
 <body>
 
-    <div id="wrapper">
+	<div id="wrapper">
 
-  <nav class="navbar-default navbar-static-side" role="navigation">
+		<nav class="navbar-default navbar-static-side" role="navigation">
 			<div class="sidebar-collapse">
 				<ul class="nav" id="side-menu">
 					<li class="nav-header">
 						<div class="dropdown profile-element">
-						
-							 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-								<span class="clear"> <span class="block m-t-xs"> <strong
+
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#"> <span
+								class="clear"> <span class="block m-t-xs"> <strong
 										class="font-bold"></strong>
-								</span> <span class="text-muted text-xs block">
-										
-										
-										<img
+								</span> <span class="text-muted text-xs block"> <img
 										th:src="@{/fotos/thumbnail.{foto}(foto=${#authentication.principal.usuario.fotoOuMock})}" />
 								</span>
 							</span>
@@ -50,8 +50,8 @@
 					</li>
 					<li><a th:href="@{/}"><i class="fa fa-th-large"></i> <span
 							class="nav-label">Inicio</span> </a></li>
-				
-				
+
+
 
 					<li><a th:href="@{/meusdados}"><i class="fa fa-files-o"></i>
 							<span class="nav-label">Meus dados</span></a></li>
@@ -61,96 +61,103 @@
 			</div>
 		</nav>
 
-        <div id="page-wrapper" class="gray-bg">
-        <div class="row border-bottom">
-        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-           
-            <form role="search" class="navbar-form-custom" method="GET" th:action="@{/buscar}"
-            th:object="${usuarioFilter}" 
-            >
-                <div class="form-group">
-                    <input type="text" placeholder="Busque profissionais" th:field="*{descricaoProfissional}" class="form-control" name="top-search" id="top-search">
-                </div>
-            </form>
-        </div>
-            <ul class="nav navbar-top-links navbar-right">
-              
-           
-            
-                
-              
-                	<li><a th:href="@{/logout}"> <i class="fa fa-sign-out"></i>
-							Sair
-						</a></li>
-                
-            </ul>
-		
-		
-	
-        </nav>
-        </div>
-            <div class="row">
-                    
-                 
-                    
-        <div class="wrapper wrapper-content">
-            <div class="row animated fadeInRight">
-             
-               <div class="col-lg-12">
-						<div class="ibox">
-							<div class="ibox-title">
-								<h5>Início</h5>
-								<div class="ibox-tools">DASHBOARD</div>
+		<div id="page-wrapper" class="gray-bg">
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation"
+					style="margin-bottom: 0">
+					<div class="navbar-header">
+						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+							href="#"><i class="fa fa-bars"></i> </a>
+
+						<form role="search" class="navbar-form-custom" method="GET"
+							th:action="@{/buscar}" th:object="${usuarioFilter}">
+							<div class="form-group">
+								<input type="text" placeholder="Busque profissionais"
+									th:field="*{descricaoProfissional}" class="form-control"
+									name="top-search" id="top-search">
 							</div>
-							<div class="ibox-content">
-								<h2>Seja bem-vindo , </h2><p th:text=${#authentication.principal.usuario.nome}></p>
+						</form>
+					</div>
+					<ul class="nav navbar-top-links navbar-right">
+
+
+
+
+
+						<li><a th:href="@{/logout}"> <i class="fa fa-sign-out"></i>
+								Sair
+						</a></li>
+
+					</ul>
+
+
+
+				</nav>
+			</div>
+			<div class="row">
+
+
+
+				<div class="wrapper wrapper-content">
+					<div class="row animated fadeInRight">
+
+						<div class="col-lg-12">
+							<div class="ibox">
+								<div class="ibox-title">
+									<h5>Início</h5>
+									<div class="ibox-tools">DASHBOARD</div>
+								</div>
+								<div class="ibox-content">
+									<h2>Seja bem-vindo ,</h2>
+									<p th:text=${#authentication.principal.usuario.nome}></p>
+
 									
-									
-						
-									
+
+
+								</div>
 							</div>
 						</div>
 					</div>
-                    </div>
 
-                </div>
-            </div>
-      
-      	  <div class="footer">
-            <div class="pull-right">
-                 <strong>BuscaProfissa</strong>
-            </div>
-            <div>
-                <strong>INNOVATECH 2017</strong>
-            </div>
-        </div>
-        </div>
-      
+				</div>
+			</div>
 
-        </div>
-      
+			<div class="footer">
+				<div class="pull-right">
+					<strong>BuscaProfissa</strong>
+				</div>
+				<div>
+					<strong>INNOVATECH 2017</strong>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
 
 
 
 
-	  <script th:src="@{/sourcebusca/chat-js.js}"></script>
-    <!-- Mainly scripts -->
-    <script th:src="@{/sourcetemplate/js/jquery-2.1.1.js}"></script>
-    <script th:src="@{/sourcetemplate/js/bootstrap.js}"></script>
-    <script th:src="@{/sourcetemplate/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
-    <script th:src="@{/sourcetemplate/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
 
-    <!-- Custom and plugin javascript -->
-    <script th:src="@{/sourcetemplate/js/inspinia.js}"></script>
-    <script th:src="@{/sourcetemplate/js/plugins/pace/pace.min.js}"></script>
+	<script th:src="@{/sourcebusca/chat-js.js}"></script>
+	<!-- Mainly scripts -->
+	<script th:src="@{/sourcetemplate/js/jquery-2.1.1.js}"></script>
+	<script th:src="@{/sourcetemplate/js/bootstrap.js}"></script>
+	<script
+		th:src="@{/sourcetemplate/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+	<script
+		th:src="@{/sourcetemplate/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
 
-    <!-- Peity -->
-    <script th:src="@{/sourcetemplate/js/plugins/peity/jquery.peity.min.js}"></script>
+	<!-- Custom and plugin javascript -->
+	<script th:src="@{/sourcetemplate/js/inspinia.js}"></script>
+	<script th:src="@{/sourcetemplate/js/plugins/pace/pace.min.js}"></script>
 
-    <!-- Peity -->
-    <script th:src="@{/sourcetemplate/js/demo/peity-demo.js}"></script>
+	<!-- Peity -->
+	<script
+		th:src="@{/sourcetemplate/js/plugins/peity/jquery.peity.min.js}"></script>
+
+	<!-- Peity -->
+	<script th:src="@{/sourcetemplate/js/demo/peity-demo.js}"></script>
 
 </body>
 
