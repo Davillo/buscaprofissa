@@ -12,8 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -69,9 +67,25 @@ public class Usuario implements Serializable{
 	
 	private String telefone;
 	
+	@Transient
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date dataServico;
+	
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 	
+	
+	
+	public Date getDataServico() {
+		return dataServico;
+	}
+
+	public void setDataServico(Date dataServico) {
+		this.dataServico = dataServico;
+	}
+
+
 	@Embedded
 	private Endereco endereco;
 	

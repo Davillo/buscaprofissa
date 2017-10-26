@@ -18,6 +18,7 @@
 	rel="stylesheet">
 <link th:href="@{/sourcetemplate/css/animate.css}" rel="stylesheet">
 <link th:href="@{/sourcetemplate/css/style.css}" rel="stylesheet">
+<link th:href="@{/sourcebusca/css/bootstrap-datepicker.standalone.min.css}" rel="stylesheet">
 
 
 </head>
@@ -161,16 +162,29 @@
 													
 													>
 											</div>
+										
 
 											<div class="form-group  col-sm-5">
 												<label id="descricao" class="control-label">Descrição
 													profissional: </label> <label for="telefone" class="control-label"
 													th:text="${usuario.descricaoProfissional}"></label>
 											</div>
+											
+											
 											<div class="form-group  col-sm-5">
+												DATA
+												<input type="text" class="control-label" id="dataVencimento"
+												 data-provide="datepicker" data-date-format="dd/mm/yyyy" th:field="*{dataServico}"
+											 data-date-language="pt-BR" data-date-autoclose="true" data-date-today-highlight="true"
+											 data-date-orientation="bottom"
+											  />
+											
 												<button type="submit" value="Solicitar serviço"
 													class="btn btn-primary">Solicitar serviço</button>
 											</div>
+											
+											
+											
 									</form>
 									
 									
@@ -200,11 +214,11 @@
 
 
 
-
-
- <script th:src="@{/sourcebusca/chat-js.js}"></script>
-	<!-- Mainly scripts -->
 	<script th:src="@{/sourcetemplate/js/jquery-2.1.1.js}"></script>
+	<script th:src="@{/sourcebusca/bootstrap-datepicker.min.js}"></script>
+	<script th:src="@{/sourcebusca/bootstrap-datepicker.pt-BR.min.js}"></script>
+	<!-- Mainly scripts -->
+
 	<script th:src="@{/sourcetemplate/js/bootstrap.js}"></script>
 	<script
 		th:src="@{/sourcetemplate/js/plugins/metisMenu/jquery.metisMenu.js}"></script>

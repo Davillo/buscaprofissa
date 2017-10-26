@@ -1,6 +1,8 @@
 package br.com.buscaprofissa.controller;
 
 
+import java.util.Date;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.buscaprofissa.mail.Mailer;
 import br.com.buscaprofissa.model.Servico;
 import br.com.buscaprofissa.model.Sexo;
+import br.com.buscaprofissa.model.StatusSolicitacao;
 import br.com.buscaprofissa.model.Usuario;
 import br.com.buscaprofissa.repository.AreasAtuacoes;
 import br.com.buscaprofissa.repository.Categorias;
@@ -179,22 +182,24 @@ public final class UsuarioController {
 	
 	@PostMapping("/verPerfil/{id}")
 	public ModelAndView solicitar( @PathVariable("id") Long id,@AuthenticationPrincipal UsuarioLogado usuarioLogado,
-			 RedirectAttributes attributes
+			 RedirectAttributes attributes, Usuario user
 			) {
-		
+		//System.out.println(user.getDataServico());
 		
 		ModelAndView mv = new ModelAndView("internas/VisualizarPerfil");
 		Usuario usuario = usuarios.findOne(id);
 		mv.addObject("usuario", usuario);
 		Servico servico = new Servico();
+		servico.setDataServico(user.getDataServico());
 		servico.setNomeCliente(usuarioLogado.getUsuario().getNome());
-		servico.setStatus(false);
+		servico.setEmailCliente(usuarioLogado.getUsuario().getEmail());
+		servico.setStatus(StatusSolicitacao.PENDENTE);
 		servico.setUsuario(usuario);
-	
+		
 		
 		try {
 			servicos.salvar(servico);
-			mailer.enviar(usuario, usuarioLogado);
+		//	mailer.enviar(usuario, usuarioLogado);
 			attributes.addFlashAttribute("mensagem", "Solicitação enviada via e-mail!");
 			
 		
