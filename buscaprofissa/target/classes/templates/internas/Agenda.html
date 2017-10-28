@@ -1,15 +1,14 @@
 
 <!DOCTYPE html>
 <html lang="pt" xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:buscaprofissa="http://buscaprofissa.com.br">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" th:href="@{/images/favicon.png}" />
-<title>BuscaProfissa | Perfil Profissional</title>
+<title>BuscaProfissa | Home</title>
 
 <link th:href="@{/sourcetemplate/css/bootstrap.min.css}"
 	rel="stylesheet">
@@ -17,9 +16,6 @@
 	rel="stylesheet">
 <link th:href="@{/sourcetemplate/css/animate.css}" rel="stylesheet">
 <link th:href="@{/sourcetemplate/css/style.css}" rel="stylesheet">
-<link
-	th:href="@{/sourcebusca/css/bootstrap-datepicker.standalone.min.css}"
-	rel="stylesheet">
 
 
 </head>
@@ -52,7 +48,7 @@
 								<li><a href="login.html">Logout</a></li>
 							</ul>
 						</div>
-						<div class="logo-element">BP</div>
+						<div class="logo-element">IN+</div>
 					</li>
 					<li><a th:href="@{/}"><i class="fa fa-th-large"></i> <span
 							class="nav-label">Dashboard</span> </a></li>
@@ -69,7 +65,6 @@
 							<span class="nav-label">Solicitações</span></a></li>
 							<li><a th:href="@{/buscar}"><i class="fa fa-search"></i>
 							<span class="nav-label">Buscar Profissionais</span></a></li>
-
 				</ul>
 			</div>
 		</nav>
@@ -93,6 +88,10 @@
 					</div>
 					<ul class="nav navbar-top-links navbar-right">
 
+
+
+
+
 						<li><a th:href="@{/logout}"> <i class="fa fa-sign-out"></i>
 								Sair
 						</a></li>
@@ -113,92 +112,67 @@
 						<div class="col-lg-12">
 							<div class="ibox">
 								<div class="ibox-title">
-									<h5>Perfil de Profissional</h5>
-									<div class="ibox-tools">PERFIL</div>
+									<h5>Agenda</h5>
+									<div class="ibox-tools">Profissional</div>
 								</div>
 								<div class="ibox-content">
+									<div style="overflow-x: auto">
+										<table class="table  table-hover">
+											<thead>
+												<tr>
 
-									<form th:action="@{/verPerfil/{id}(id=${usuario.id})}"
-										method="POST" th:object="${usuario}">
-										<buscaprofissa:message />
-										<div class="row">
-										
-										
-											<div class="form-group  col-sm-5">
-												<label id="foto" class="control-label"></label> <img
-													th:src="@{/fotos/thumbnail.{foto}(foto=${usuario.fotoOuMock})}" class="img-circle">
-											</div>
-											<div class="form-group  col-sm-5">
-												<label for="nome" class="control-label"> Nome:</label> <label
-													for="nome" class="control-label"
-													th:text="|${usuario.nome} ${usuario.sobrenome}|"></label>
-											</div>
+													
+													<th class="text-center">Nome do Cliente</th>
+													<th class="text-center">Opções</th>
+													<th class="text-center">Situação</th>
+													<th class="text-center">Data de serviço</th> 
 
 
+												</tr>
+											</thead>
 
-											<div class="form-group  col-sm-5">
-												<label for="nome" class="control-label"> Cidade:</label> <label
-													id="cidade" class="control-label"
-													th:text="${usuario.endereco.cidade}"></label>
-
-											</div>
-											<div class="form-group  col-sm-5">
-												<label for="nome" class="control-label"> Email:</label> <label
-													id="email" class="control-label" th:text="${usuario.email}">
-													<input type="hidden" name="email"
-													th:value="${usuario.email}">
-												</label>
-											</div>
+											<tbody>
+												<tr th:each="servico : ${servicos}">
 
 
-											<div class="form-group  col-sm-5">
-												<label for="nome" class="control-label"> Estado:</label> <label
-													id="estado" class="control-label"
-													th:text="${usuario.endereco.estado}"></label>
-
-											</div>
-
-											<div class="form-group  col-sm-5">
-												<label for="nome" class="control-label"> Telefone:</label> <label
-													id="telefone" class="control-label"
-													th:text="${usuario.telefone}"></label>
-
-											</div>
-
-
-											<div class="form-group  col-sm-5">
-												<label for="nome" class="control-label">Categoria: </label>
-												<label id="categoria" class="control-label"
-													th:text="${usuario.categoria}"></label>
-											</div>
-
-
-											
-
-											<div class="form-group  col-sm-5">
-												DATA <input type="text" class="control-label" required
-													id="dataVencimento" data-provide="datepicker"
-													data-date-format="dd/mm/yyyy" th:field="*{dataServico}"
-													data-date-language="pt-BR" data-date-autoclose="true"
-													data-date-today-highlight="true"
-													data-date-orientation="bottom" />
-
-												<button type="submit" value="Solicitar serviço"
-													class="btn btn-primary">Solicitar serviço</button>
-											</div>
-											
-											
-											<div class="form-group  col-sm-5">
-												<label id="descricao" class="control-label">Descrição
-													profissional: </label> <label for="telefone" class="control-label"
-													th:text="${usuario.descricaoProfissional}"></label>
-											</div>
-											
-									</form>
+													
 
 
 
 
+													<td class="text-center" th:text="${servico.nomeCliente}"></td>
+													<td class="text-center">
+													
+													 <a class="btn btn-link btn-xs" data-toggle="modal"
+														title="Recusar" rel="tooltip" data-placement="top"
+														 th:href="@{/solicitacoes/recusar/{id}(id=${servico.id})}"
+														> <span
+															class="glyphicon glyphicon-remove"></span>
+													</a> <a class="btn btn-link btn-xs"
+														 th:href="@{/solicitacoes/aceitar/{id}(id=${servico.id})}"
+														 title="Aceitar" rel="tooltip" 
+													
+														data-placement="top"
+															>
+														
+															<span class="glyphicon glyphicon-check"></span>
+													</a></td>
+													<td class="text-center" th:text="${servico.status.descricao}">
+								
+													</td>
+													
+													<td class="text-center" th:text="${servico.dataServico}">
+								
+													</td>
+													
+												</tr>
+												<tr th:if="${not #lists.isEmpty(servico)}">
+													<td class="text-center">Nenhuma solicitação<td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								
 
 								</div>
 							</div>
@@ -223,11 +197,11 @@
 
 
 
-	<script th:src="@{/sourcetemplate/js/jquery-2.1.1.js}"></script>
-	<script th:src="@{/sourcebusca/bootstrap-datepicker.min.js}"></script>
-	<script th:src="@{/sourcebusca/bootstrap-datepicker.pt-BR.min.js}"></script>
-	<!-- Mainly scripts -->
 
+
+	<script th:src="@{/sourcebusca/chat-js.js}"></script>
+	<!-- Mainly scripts -->
+	<script th:src="@{/sourcetemplate/js/jquery-2.1.1.js}"></script>
 	<script th:src="@{/sourcetemplate/js/bootstrap.js}"></script>
 	<script
 		th:src="@{/sourcetemplate/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
@@ -244,6 +218,7 @@
 
 	<!-- Peity -->
 	<script th:src="@{/sourcetemplate/js/demo/peity-demo.js}"></script>
+
 </body>
 
 </html>

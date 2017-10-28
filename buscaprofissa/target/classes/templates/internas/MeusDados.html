@@ -42,6 +42,7 @@
 										
 										
 									<img th:src="@{/fotos/thumbnail.{foto}(foto=${#authentication.principal.usuario.fotoOuMock})}"
+									class="img-circle"
 									
 									/>
 								</span>
@@ -58,16 +59,20 @@
 						<div class="logo-element">IN+</div>
 					</li>
 					<li><a th:href="@{/}"><i class="fa fa-th-large"></i> <span
-							class="nav-label">Inicio</span> </a></li>
-					
+							class="nav-label">Dashboard</span> </a></li>
 
+			
+					<li><a th:href="@{/index}"><i class="fa fa-home"></i> <span
+							class="nav-label">Início</span> </a></li>
+					
 
 					<li><a th:href="@{/meusdados}"><i class="fa fa-files-o"></i>
 							<span class="nav-label">Meus dados</span></a></li>
 							
 							<li><a th:href="@{/solicitacoes}"><i class="fa fa-bell"></i>
 							<span class="nav-label">Solicitações</span></a></li>
-
+							<li><a th:href="@{/buscar}"><i class="fa fa-search"></i>
+							<span class="nav-label">Buscar Profissionais</span></a></li>
 
 				</ul>
 			</div>

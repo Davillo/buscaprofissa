@@ -184,7 +184,6 @@ public final class UsuarioController {
 	public ModelAndView solicitar( @PathVariable("id") Long id,@AuthenticationPrincipal UsuarioLogado usuarioLogado,
 			 RedirectAttributes attributes, Usuario user
 			) {
-		//System.out.println(user.getDataServico());
 		
 		ModelAndView mv = new ModelAndView("internas/VisualizarPerfil");
 		Usuario usuario = usuarios.findOne(id);
@@ -199,7 +198,7 @@ public final class UsuarioController {
 		
 		try {
 			servicos.salvar(servico);
-		//	mailer.enviar(usuario, usuarioLogado);
+			mailer.enviar(usuario, usuarioLogado);
 			attributes.addFlashAttribute("mensagem", "Solicitação enviada via e-mail!");
 			
 		

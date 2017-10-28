@@ -35,7 +35,9 @@
 								class="clear"> <span class="block m-t-xs"> <strong
 										class="font-bold"></strong>
 								</span> <span class="text-muted text-xs block"> <img
-										th:src="@{/fotos/thumbnail.{foto}(foto=${#authentication.principal.usuario.fotoOuMock})}" />
+										th:src="@{/fotos/thumbnail.{foto}(foto=${#authentication.principal.usuario.fotoOuMock})}"
+										class="img-circle"
+										 />
 								</span>
 							</span>
 							</a>
@@ -50,15 +52,25 @@
 						<div class="logo-element">IN+</div>
 					</li>
 					<li><a th:href="@{/}"><i class="fa fa-th-large"></i> <span
-							class="nav-label">Inicio</span> </a></li>
+							class="nav-label">Dashboard</span> </a></li>
 
 			
+					<li><a th:href="@{/index}"><i class="fa fa-home"></i> <span
+							class="nav-label">Início</span> </a></li>
+					
 
 					<li><a th:href="@{/meusdados}"><i class="fa fa-files-o"></i>
 							<span class="nav-label">Meus dados</span></a></li>
 							
+					<li><a th:href="@{/agenda}"><i class="fa fa-calendar"></i>
+							<span class="nav-label">Agenda</span></a></li>		
+							
 							<li><a th:href="@{/solicitacoes}"><i class="fa fa-bell"></i>
 							<span class="nav-label">Solicitações</span></a></li>
+							<li><a th:href="@{/buscar}"><i class="fa fa-search"></i>
+							<span class="nav-label">Buscar Profissionais</span></a></li>
+							
+							
 
 
 				</ul>
@@ -108,8 +120,8 @@
 						<div class="col-lg-12">
 							<div class="ibox">
 								<div class="ibox-title">
-									<h5>Início</h5>
-									<div class="ibox-tools">DASHBOARD</div>
+									<h5>DASHBOARD</h5>
+									<div class="ibox-tools"></div>
 								</div>
 								<div class="ibox-content">
 									<h2>Solicitações</h2>
@@ -119,10 +131,11 @@
 											<thead>
 												<tr>
 
-													<th class="text-center">Numeração</th>
+													
 													<th class="text-center">Nome do Cliente</th>
 													<th class="text-center">Opções</th>
 													<th class="text-center">Situação</th>
+													<th class="text-center">Data de serviço</th> 
 
 
 												</tr>
@@ -132,7 +145,7 @@
 												<tr th:each="servico : ${servicos}">
 
 
-													<td class="text-center" th:text="${servico.id}"></td>
+													
 
 
 
@@ -141,7 +154,7 @@
 													<td class="text-center">
 													
 													 <a class="btn btn-link btn-xs" data-toggle="modal"
-														title="Excluir" rel="tooltip" data-placement="top"
+														title="Recusar" rel="tooltip" data-placement="top"
 														 th:href="@{/solicitacoes/recusar/{id}(id=${servico.id})}"
 														> <span
 															class="glyphicon glyphicon-remove"></span>
@@ -155,6 +168,10 @@
 															<span class="glyphicon glyphicon-check"></span>
 													</a></td>
 													<td class="text-center" th:text="${servico.status.descricao}">
+								
+													</td>
+													
+													<td class="text-center" th:text="${servico.dataServico}">
 								
 													</td>
 													

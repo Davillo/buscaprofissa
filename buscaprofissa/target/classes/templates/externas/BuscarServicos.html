@@ -77,7 +77,7 @@
 									<table class="table  table-hover">
 										<thead>
 											<tr>
-												<th>Profissional</th>
+												<th class="text-center">Profissionais</th>
 												
 											</tr>
 										</thead>
@@ -87,15 +87,14 @@
 
 
 												<td class="text-left"><img
-													th:src="@{/fotos/thumbnail.{foto}(foto=${usuario.fotoOuMock})}" />
+													th:src="@{/fotos/thumbnail.{foto}(foto=${usuario.fotoOuMock})}" class="img-circle"/>
 												</td>
 
 
-												<td class="text-left"
+												<td 
 													th:text="|${usuario.nome} ${usuario.sobrenome}|"></td>
 
 
-												<td class="text-center" th:text="${usuario.telefone}"></td>
 												<td class="text-right"
 													th:text="${usuario.descricaoProfissional}"></td>
 													

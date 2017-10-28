@@ -1,4 +1,4 @@
-package br.com.buscaprofissa.model;
+	package br.com.buscaprofissa.model;
 
 import java.io.Serializable;
 import java.util.Date;

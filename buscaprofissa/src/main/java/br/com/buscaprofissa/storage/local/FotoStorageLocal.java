@@ -93,7 +93,7 @@ public class FotoStorageLocal implements FotoStorage {
 		}
 		
 		try {
-			Thumbnails.of(this.local.resolve(foto).toString()).size(160, 200).toFiles(Rename.PREFIX_DOT_THUMBNAIL);
+			Thumbnails.of(this.local.resolve(foto).toString()).size(160, 160).toFiles(Rename.PREFIX_DOT_THUMBNAIL);
 		} catch (IOException e) {
 			throw new RuntimeException("Erro gerando a thumbnail");
 		}

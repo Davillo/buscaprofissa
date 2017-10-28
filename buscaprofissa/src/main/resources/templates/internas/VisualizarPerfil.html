@@ -2,8 +2,7 @@
 <!DOCTYPE html>
 <html lang="pt" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:buscaprofissa="http://buscaprofissa.com.br"
-	>
+	xmlns:buscaprofissa="http://buscaprofissa.com.br">
 
 <head>
 
@@ -18,7 +17,9 @@
 	rel="stylesheet">
 <link th:href="@{/sourcetemplate/css/animate.css}" rel="stylesheet">
 <link th:href="@{/sourcetemplate/css/style.css}" rel="stylesheet">
-<link th:href="@{/sourcebusca/css/bootstrap-datepicker.standalone.min.css}" rel="stylesheet">
+<link
+	th:href="@{/sourcebusca/css/bootstrap-datepicker.standalone.min.css}"
+	rel="stylesheet">
 
 
 </head>
@@ -37,9 +38,9 @@
 								class="clear"> <span class="block m-t-xs"> <strong
 										class="font-bold"></strong>
 								</span> <span class="text-muted text-xs block"> <img
-										th:src="@{/fotos/thumbnail.{foto}(foto=${#authentication.principal.usuario.fotoOuMock})}" 
-									
-										/>
+										th:src="@{/fotos/thumbnail.{foto}(foto=${#authentication.principal.usuario.fotoOuMock})}"
+										class="img-circle"
+										 />
 								</span>
 							</span>
 							</a>
@@ -54,12 +55,20 @@
 						<div class="logo-element">BP</div>
 					</li>
 					<li><a th:href="@{/}"><i class="fa fa-th-large"></i> <span
-							class="nav-label">Inicio</span> </a></li>
+							class="nav-label">Dashboard</span> </a></li>
 
+			
+					<li><a th:href="@{/index}"><i class="fa fa-home"></i> <span
+							class="nav-label">Início</span> </a></li>
+					
 
 					<li><a th:href="@{/meusdados}"><i class="fa fa-files-o"></i>
 							<span class="nav-label">Meus dados</span></a></li>
-
+							
+							<li><a th:href="@{/solicitacoes}"><i class="fa fa-bell"></i>
+							<span class="nav-label">Solicitações</span></a></li>
+							<li><a th:href="@{/buscar}"><i class="fa fa-search"></i>
+							<span class="nav-label">Buscar Profissionais</span></a></li>
 
 				</ul>
 			</div>
@@ -69,17 +78,19 @@
 			<div class="row border-bottom">
 				<nav class="navbar navbar-static-top" role="navigation"
 					style="margin-bottom: 0">
-					 <div class="navbar-header">
-            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-           
-            <form role="search" class="navbar-form-custom" method="GET" th:action="@{/buscar}"
-            th:object="${usuarioFilter}" 
-            >
-                <div class="form-group">
-                    <input type="text" placeholder="Busque profissionais" th:field="*{descricaoProfissional}" class="form-control" name="top-search" id="top-search">
-                </div>
-            </form>
-        </div>
+					<div class="navbar-header">
+						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+							href="#"><i class="fa fa-bars"></i> </a>
+
+						<form role="search" class="navbar-form-custom" method="GET"
+							th:action="@{/buscar}" th:object="${usuarioFilter}">
+							<div class="form-group">
+								<input type="text" placeholder="Busque profissionais"
+									th:field="*{descricaoProfissional}" class="form-control"
+									name="top-search" id="top-search">
+							</div>
+						</form>
+					</div>
 					<ul class="nav navbar-top-links navbar-right">
 
 						<li><a th:href="@{/logout}"> <i class="fa fa-sign-out"></i>
@@ -109,8 +120,14 @@
 
 									<form th:action="@{/verPerfil/{id}(id=${usuario.id})}"
 										method="POST" th:object="${usuario}">
-											<buscaprofissa:message/>
+										<buscaprofissa:message />
 										<div class="row">
+										
+										
+											<div class="form-group  col-sm-5">
+												<label id="foto" class="control-label"></label> <img
+													th:src="@{/fotos/thumbnail.{foto}(foto=${usuario.fotoOuMock})}" class="img-circle">
+											</div>
 											<div class="form-group  col-sm-5">
 												<label for="nome" class="control-label"> Nome:</label> <label
 													for="nome" class="control-label"
@@ -156,40 +173,32 @@
 											</div>
 
 
-											<div class="form-group  col-sm-5">
-												<label id="foto" class="control-label"></label> <img
-													th:src="@{/fotos/thumbnail.{foto}(foto=${usuario.fotoOuMock})}"
-													
-													>
-											</div>
-										
+											
 
+											<div class="form-group  col-sm-5">
+												DATA <input type="text" class="control-label" required
+													id="dataVencimento" data-provide="datepicker"
+													data-date-format="dd/mm/yyyy" th:field="*{dataServico}"
+													data-date-language="pt-BR" data-date-autoclose="true"
+													data-date-today-highlight="true"
+													data-date-orientation="bottom" />
+
+												<button type="submit" value="Solicitar serviço"
+													class="btn btn-primary">Solicitar serviço</button>
+											</div>
+											
+											
 											<div class="form-group  col-sm-5">
 												<label id="descricao" class="control-label">Descrição
 													profissional: </label> <label for="telefone" class="control-label"
 													th:text="${usuario.descricaoProfissional}"></label>
 											</div>
 											
-											
-											<div class="form-group  col-sm-5">
-												DATA
-												<input type="text" class="control-label" id="dataVencimento"
-												 data-provide="datepicker" data-date-format="dd/mm/yyyy" th:field="*{dataServico}"
-											 data-date-language="pt-BR" data-date-autoclose="true" data-date-today-highlight="true"
-											 data-date-orientation="bottom"
-											  />
-											
-												<button type="submit" value="Solicitar serviço"
-													class="btn btn-primary">Solicitar serviço</button>
-											</div>
-											
-											
-											
 									</form>
-									
-									
-															
-								
+
+
+
+
 
 								</div>
 							</div>
