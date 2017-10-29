@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" th:href="@{/images/favicon.png}" />
-<title>BuscaProfissa | Home</title>
+<title>BuscaProfissa | Dashboard</title>
 
 <link th:href="@{/sourcetemplate/css/bootstrap.min.css}"
 	rel="stylesheet">
@@ -35,8 +35,7 @@
 										class="font-bold"></strong>
 								</span> <span class="text-muted text-xs block"> <img
 										th:src="@{/fotos/thumbnail.{foto}(foto=${#authentication.principal.usuario.fotoOuMock})}"
-										class="img-circle"
-										 />
+										class="img-circle" />
 								</span>
 							</span>
 							</a>
@@ -53,18 +52,21 @@
 					<li><a th:href="@{/}"><i class="fa fa-th-large"></i> <span
 							class="nav-label">Dashboard</span> </a></li>
 
-			
+
 					<li><a th:href="@{/index}"><i class="fa fa-home"></i> <span
 							class="nav-label">Início</span> </a></li>
-					
+
 
 					<li><a th:href="@{/meusdados}"><i class="fa fa-files-o"></i>
 							<span class="nav-label">Meus dados</span></a></li>
-							
-							<li><a th:href="@{/solicitacoes}"><i class="fa fa-bell"></i>
+
+					<li><a th:href="@{/agenda}"><i class="fa fa-calendar"></i>
+							<span class="nav-label">Agenda</span></a></li>
+
+					<li><a th:href="@{/solicitacoes}"><i class="fa fa-bell"></i>
 							<span class="nav-label">Solicitações</span></a></li>
-							<li><a th:href="@{/buscar}"><i class="fa fa-search"></i>
-							<span class="nav-label">Buscar Profissionais</span></a></li>
+					<li><a th:href="@{/buscar}"><i class="fa fa-search"></i> <span
+							class="nav-label">Buscar Profissionais</span></a></li>
 				</ul>
 			</div>
 		</nav>
@@ -116,8 +118,17 @@
 									<div class="ibox-tools">DASHBOARD</div>
 								</div>
 								<div class="ibox-content">
-									<h2>Seja bem-vindo ,</h2>
-									<p th:text=${#authentication.principal.usuario.nome}></p>
+									<div class="alert  alert-success  alert-dismissible"
+										role="alert">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+
+										<span> Mantenha sempre seus dados atualizados e seja sempre buscado!</span>
+									</div>
+									<h2>Seja bem-vindo ,</h2><h2 th:text="${#authentication.principal.usuario.nome}"></h2>
+								
 
 
 

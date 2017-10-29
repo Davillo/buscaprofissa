@@ -1,5 +1,6 @@
 package br.com.buscaprofissa.config;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 import org.springframework.beans.BeansException;
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
+import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -27,7 +29,10 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import br.com.buscaprofissa.controller.UsuarioController;
+import br.com.buscaprofissa.controller.converter.AreaAtuacaoConverter;
 import br.com.buscaprofissa.controller.converter.CategoriaConverter;
+import br.com.buscaprofissa.controller.converter.CidadeConverter;
+import br.com.buscaprofissa.controller.converter.EstadoConverter;
 import br.com.buscaprofissa.thymeleaf.BuscaProfissaDialect;
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 
@@ -92,9 +97,15 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService();
 	
 		conversionService.addConverter(new CategoriaConverter());
-		//DateTimeFormatterRegistrar dateTimeFormatter  = new DateTimeFormatterRegistrar();
-		//dateTimeFormatter.setDateFormatter(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-		//dateTimeFormatter.registerFormatters(conversionService);
+		conversionService.addConverter(new EstadoConverter());
+		conversionService.addConverter(new CidadeConverter());
+		conversionService.addConverter(new AreaAtuacaoConverter());
+		
+		//API JAVA 8 de DATAS
+		
+		DateTimeFormatterRegistrar dateTimeFormatter = new DateTimeFormatterRegistrar();
+		dateTimeFormatter.setDateFormatter(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		dateTimeFormatter.registerFormatters(conversionService);
 		
 		return conversionService;
 	}

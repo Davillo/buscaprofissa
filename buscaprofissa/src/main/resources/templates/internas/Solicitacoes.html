@@ -167,8 +167,10 @@
 														
 															<span class="glyphicon glyphicon-check"></span>
 													</a></td>
-													<td class="text-center" th:text="${servico.status.descricao}">
-								
+													<td class="text-center" >
+														<span class="label" th:text="${servico.status.descricao}"
+														th:class="label-danger"
+														></span>
 													</td>
 													
 													<td class="text-center" th:text="${servico.dataServico}">
@@ -176,7 +178,7 @@
 													</td>
 													
 												</tr>
-												<tr th:if="${not #lists.isEmpty(servico)}">
+												<tr th:if="${#lists.isEmpty(servicos)}">
 													<td class="text-center">Nenhuma solicitação<td>
 												</tr>
 											</tbody>

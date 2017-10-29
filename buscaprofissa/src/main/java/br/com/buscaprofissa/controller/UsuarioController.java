@@ -26,12 +26,13 @@ import br.com.buscaprofissa.repository.AreasAtuacoes;
 import br.com.buscaprofissa.repository.Categorias;
 import br.com.buscaprofissa.repository.Cidades;
 import br.com.buscaprofissa.repository.Estados;
-import br.com.buscaprofissa.repository.Servicos;
 import br.com.buscaprofissa.repository.Usuarios;
 import br.com.buscaprofissa.repository.filter.UsuarioFilter;
 import br.com.buscaprofissa.security.UsuarioLogado;
 import br.com.buscaprofissa.service.CadastroServicoService;
 import br.com.buscaprofissa.service.CadastroUsuarioService;
+import br.com.buscaprofissa.service.exception.CpfInvalidoException;
+import br.com.buscaprofissa.service.exception.DataInvalidaException;
 import br.com.buscaprofissa.service.exception.EmailUsuarioJaCadastradoException;
 import br.com.buscaprofissa.service.exception.ErroEnviandoEmailException;
 import br.com.buscaprofissa.service.exception.SenhaEConfirmacaoDiferentesException;
@@ -112,25 +113,14 @@ public final class UsuarioController {
 		mv.addObject("sexos", Sexo.values());
 		mv.addObject("cidades",cidadeRep.findAll());
 		mv.addObject("estados",estadoRep.findAll());
-		
-		
-		
-		
+	
 		return mv;
 		
 	}
 	
-	
-	
-	
-	@RequestMapping("/chat")
-	public String chat(@AuthenticationPrincipal UsuarioLogado usuario){
-		
-		return "Chat";
-	}
-	
+
 	@PostMapping("/meusdadosSave")
-	public ModelAndView salvarDados(@AuthenticationPrincipal UsuarioLogado user,Usuario  usuario, BindingResult result, RedirectAttributes attributes){
+	public ModelAndView salvarDados(@AuthenticationPrincipal UsuarioLogado user,Usuario  usuario, BindingResult result,UsuarioFilter usuarioFilter ,RedirectAttributes attributes){
 
 		if(result.hasErrors()){
 			return new ModelAndView("redirect:/meusdados");
@@ -141,8 +131,11 @@ public final class UsuarioController {
 			service.atualizar(usuario);
 			user.setUsuario(usuario);
 			attributes.addFlashAttribute("mensagem", "Salvo com sucesso!");
-		}catch (Exception e) {
-				System.out.println(">>" +e.getMessage() + ">> "+e.getCause());
+		}catch (DataInvalidaException e) {
+			result.rejectValue("dataNascimento", e.getMessage(),e.getMessage());
+			return meusdados( user, usuarioFilter);
+		}catch(CpfInvalidoException e) {
+			result.rejectValue("cpf", e.getMessage(), e.getMessage());
 		}
 		
 		
@@ -154,8 +147,6 @@ public final class UsuarioController {
 	public ModelAndView desativar(@AuthenticationPrincipal UsuarioLogado user,Usuario usuario){
 		usuario = user.getUsuario();
 
-		
-		
 		try{
 			service.desativar(usuario);
 			user.setUsuario(usuario);

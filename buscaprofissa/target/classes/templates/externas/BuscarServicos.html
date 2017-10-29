@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="layout/externo/Padrao">
+	layout:decorate="layout/externo/Padrao"
+	xmlns:buscaprofissa="http://buscaprofissa.com.br"
+	>
 <head>
 
 
@@ -73,12 +75,12 @@
 									<button type="submit" class="btn  btn-primary">Pesquisar</button>
 								</form>
 								<hr>
-								<div style="overflow-x:auto" >
+								<div style="overflow-x: auto">
 									<table class="table  table-hover">
 										<thead>
 											<tr>
 												<th class="text-center">Profissionais</th>
-												
+
 											</tr>
 										</thead>
 
@@ -87,30 +89,29 @@
 
 
 												<td class="text-left"><img
-													th:src="@{/fotos/thumbnail.{foto}(foto=${usuario.fotoOuMock})}" class="img-circle"/>
-												</td>
+													th:src="@{/fotos/thumbnail.{foto}(foto=${usuario.fotoOuMock})}"
+													class="img-circle" /></td>
 
 
-												<td 
-													th:text="|${usuario.nome} ${usuario.sobrenome}|"></td>
+												<td th:text="|${usuario.nome} ${usuario.sobrenome}|"></td>
 
 
 												<td class="text-right"
 													th:text="${usuario.descricaoProfissional}"></td>
-													
-												<td class="text-center"><a th:href="@{/verPerfil/{id}(id=${usuario.id})}"><button type="button" class="btn btn-primary"
-													>VER PERFIL	 
-														</button></a>
-													</td>
+
+												<td class="text-center"><a
+													th:href="@{/verPerfil/{id}(id=${usuario.id})}"><button
+															type="button" class="btn btn-primary">VER PERFIL</button></a></td>
 											<tr th:if="${pagina.vazia}">
 												<td colspan="5">Nenhum profissional encontrado</td>
 											</tr>
 										</tbody>
-									</table>
-								</div>
 
-								<div class="col-sm-10" th:if="${not pagina.vazia}" align="center">
-									<nav>
+
+									</table>
+									
+									
+									<nav th:if="${not pagina.vazia}" align="center">
 										<ul class="pagination  pagination-sm"
 											th:with="paginaAtual=${pagina.atual}">
 											<li th:class="${pagina.primeira} ? disabled"><a
@@ -127,24 +128,31 @@
 												th:remove="${pagina.ultima} ? tag"><span>&raquo;</span></a></li>
 										</ul>
 									</nav>
+
 								</div>
+							
+
 
 
 							</div>
 
 
 						</div>
-						
-						
-						
-						
+
+
+
+
 					</div>
+
+
 				</div>
+
 			</div>
 
 
 
 		</div>
+
 
 	</section>
 
