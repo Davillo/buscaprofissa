@@ -12,6 +12,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import br.com.buscaprofissa.config.JPAConfig;
 import br.com.buscaprofissa.config.MailConfig;
+import br.com.buscaprofissa.config.S3Config;
 import br.com.buscaprofissa.config.SecurityConfig;
 import br.com.buscaprofissa.config.ServiceConfig;
 import br.com.buscaprofissa.config.WebConfig;
@@ -20,7 +21,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new  Class<?>[] {JPAConfig.class,ServiceConfig.class,SecurityConfig.class};
+		return new  Class<?>[] {JPAConfig.class,ServiceConfig.class,SecurityConfig.class, S3Config.class};
 	}
 
 	@Override
