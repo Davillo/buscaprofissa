@@ -16,10 +16,15 @@
 <link th:href="@{/sourcetemplate/font-awesome/css/font-awesome.css}"
 	rel="stylesheet">
 <link th:href="@{/sourcetemplate/css/animate.css}" rel="stylesheet">
+<link th:href="@{/sourcebusca/buscaprofissa.css}" rel="stylesheet">
+
 <link th:href="@{/sourcetemplate/css/style.css}" rel="stylesheet">
 <link
 	th:href="@{/sourcebusca/css/bootstrap-datepicker.standalone.min.css}"
 	rel="stylesheet">
+	
+	
+	<link th:href="@{/sourcebusca/css/avaliacao.css}"rel="stylesheet">
 
 
 </head>
@@ -132,8 +137,7 @@
 													th:src="@{/fotos/thumbnail.{foto}(foto=${usuario.fotoOuMock})}" class="img-circle">
 											</div>
 											<div class="form-group  col-sm-5">
-												<label for="nome" class="control-label"> Nome:</label> <label
-													for="nome" class="control-label"
+												<label> Nome:</label> <label
 													th:text="|${usuario.nome} ${usuario.sobrenome}|"></label>
 											</div>
 
@@ -175,7 +179,7 @@
 													th:text="${usuario.categoria}"></label>
 											</div>
 
-
+											
 											
 
 											<div class="form-group  col-sm-5">
@@ -186,24 +190,63 @@
 													data-date-today-highlight="true"
 													data-date-orientation="bottom" />
 
-												<button type="submit" value="Solicitar serviço"
+												<button type="submit" 
 													class="btn btn-primary">Solicitar serviço</button>
+													
+													
+													
+										
+									
 											</div>
+											
+											
+												</form>
+											
+											
 											
 											
 											<div class="col-sm-5">
 												<label id="descricao">Descrição
 													profissional: </label> <label
 													th:text="${usuario.descricaoProfissional}"></label>
+													
 											</div>
-											</div>
+											
+											
+										<form id="form-avaliar" th:action="@{/avaliar/{id}(id=${usuario.id})}" method="POST" th:object="${usuario}">	
+											<div class="col-sm-5"> DÊ uma nota para o profissional
+											<fieldset class="rating">
+										    <input type="radio" id="star5" name="rating" th:value="50" th:field="*{pontuacao}" />
+										    <label for="star5">5 stars</label>
+										    <input type="radio" id="star4" name="rating" th:value="40" th:field="*{pontuacao}" />
+										    <label for="star4">4 stars</label>
+										    <input type="radio" id="star3" name="rating" th:value="30"  th:field="*{pontuacao}"/>
+										    <label for="star3">3 stars</label>
+										    <input type="radio" id="star2" name="rating" th:value="20" th:field="*{pontuacao}"/>
+										    <label for="star2">2 stars</label>
+										    <input type="radio" id="star1" name="rating" th:value="10" th:field="*{pontuacao}"/>
+										    <label for="star1">1 star</label>
+										</fieldset>
+										<button class="btn btn-primary" type="submit">Avaliar</button>
+										</div>
+										<div>
+										
 									</form>
+										</div>
+										
+										
+										
+											</div>
+											
+											
+											
+								
 
 
-
-
+									
 
 								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -221,8 +264,47 @@
 			</div>
 		</div>
 
+			
 
-	</div>
+	</div>	
+	
+	<style>
+	.rating {
+    float:left;
+    border:none;
+}
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0, 0, 0, 0);
+}
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+}
+.rating:not(:checked) > label:before {
+    content:'★ ';
+}
+.rating > input:checked ~ label {
+    color: #f70;
+}
+.rating:not(:checked) > label:hover, .rating:not(:checked) > label:hover ~ label {
+    color: gold;
+}
+.rating > input:checked + label:hover, .rating > input:checked + label:hover ~ label, .rating > input:checked ~ label:hover, .rating > input:checked ~ label:hover ~ label, .rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+}
+.rating > label:active {
+    position:relative;
+}
+	</style>
 
 
 

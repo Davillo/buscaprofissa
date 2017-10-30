@@ -49,7 +49,10 @@ public class Usuario implements Serializable{
 	
 	@Transient
 	private String confirmacaoSenha;
-
+	
+	
+	private Long pontuacao;
+	
 	private String foto;
 	
 	@Column(name = "ativo")
@@ -224,8 +227,6 @@ public class Usuario implements Serializable{
 	}
 	
 	
-
-	
 	
 	public String getDescricaoProfissional() {
 		return descricaoProfissional;
@@ -250,6 +251,15 @@ public class Usuario implements Serializable{
 
 	public void setAreaAtuacao(AreaAtuacao areaAtuacao) {
 		this.areaAtuacao = areaAtuacao;
+	}
+	
+
+	public Long getPontuacao() {
+		return pontuacao;
+	}
+
+	public void setPontuacao(Long pontuacao) {
+		this.pontuacao = pontuacao;
 	}
 
 	@Override

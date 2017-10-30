@@ -1,5 +1,6 @@
 package br.com.buscaprofissa.repository.filter;
 
+import br.com.buscaprofissa.model.AreaAtuacao;
 import br.com.buscaprofissa.model.Categoria;
 import br.com.buscaprofissa.model.Cidade;
 
@@ -8,6 +9,7 @@ public class UsuarioFilter {
 	private Categoria categoria;
 	private Cidade cidade;
 	private String descricaoProfissional;
+	private AreaAtuacao areaAtuacao;
 	
 	
 	public Categoria getCategoria() {
@@ -27,6 +29,12 @@ public class UsuarioFilter {
 	}
 	public void setDescricaoProfissional(String descricaoProfissional) {
 		this.descricaoProfissional = descricaoProfissional;
+	}
+	public AreaAtuacao getAreaAtuacao() {
+		return areaAtuacao;
+	}
+	public void setAreaAtuacao(AreaAtuacao areaAtuacao) {
+		this.areaAtuacao = areaAtuacao;
 	}
 	
 	

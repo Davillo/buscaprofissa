@@ -201,6 +201,37 @@ public final class UsuarioController {
 		
 		
 	}
+	
+	@RequestMapping("/avaliar/{id}")
+	public String avaliar() {
+		return "internas/VisualizarPerfil";
+	}
+	
+	@PostMapping("/avaliar/{id}")
+	public ModelAndView avaliar( @PathVariable("id") Long id,@AuthenticationPrincipal UsuarioLogado usuarioLogado,
+			 RedirectAttributes attributes, Usuario user
+			) {
+		
+		Usuario usuario = usuarios.findOne(id);
+		Long pontuacao = usuario.getPontuacao();
+		usuario.setPontuacao(pontuacao += user.getPontuacao());
+		System.out.println("PONTUACAO DO FORM : "+user.getPontuacao());
+		System.out.println("Pontuacao do usuario : "+usuario.getPontuacao());
+		
+		try {
+			service.atualizar(usuario);
+			attributes.addFlashAttribute("mensagem", "Avaliado com sucesso!");
+			
+		
+		}catch (Exception e) {
+			System.out.println("ERROR");
+		}
+		
+		
+		 return new ModelAndView("redirect:/verPerfil/{id}");
+		
+		
+	}
 		
 	
 }

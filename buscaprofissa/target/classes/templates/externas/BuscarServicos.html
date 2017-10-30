@@ -36,9 +36,9 @@
 									<div class="row">
 
 										<div class="form-group col-sm-4">
-											<select id="area" class="form-control" required>
+											<select id="area" class="form-control" required th:field="*{areaAtuacao}">
 												<option value="">Selecione a Área de Atuação</option>
-												<option th:each="area : ${areas}" th:text="${area.nome}"
+												<option th:each="area : ${areas}"  th:text="${area.nome}"
 													th:value="${area.id}"></option>
 											</select>
 

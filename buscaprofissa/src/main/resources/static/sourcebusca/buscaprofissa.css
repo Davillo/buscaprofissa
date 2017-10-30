@@ -40,7 +40,9 @@
 	content: "*";
 }
 
-
+.label-perfil{
+	font-family: verdana;
+}
 
 .form-login{
 	margin-top:130px;

@@ -123,6 +123,7 @@
 							<div class="ibox">
 								<div class="ibox-title">
 									<h5>Dados da conta e perfil</h5>
+									
 
 									<div class="ibox-tools">
 										<a th:href="@{/meusdados/desativar}" onclick="desativar()"><i
@@ -132,6 +133,16 @@
 								</div>
 								<div class="ibox-content">
 									<h2>Meus dados</h2>
+									<div class="alert  alert-info  alert-dismissible"
+										role="alert">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+
+										<span> Matenha sempre seus dados atualizados!</span>
+									</div>
+									
 									<form method="POST" class="form-vertical"
 										th:action="@{/meusdadosSave}" th:object="${usuario}">
 

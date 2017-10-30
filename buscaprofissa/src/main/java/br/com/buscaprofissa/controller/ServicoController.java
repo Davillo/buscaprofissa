@@ -55,6 +55,9 @@ public class ServicoController {
 	}
 	
 	
+	
+	
+	
 	@GetMapping("/solicitacoes/aceitar/{id}")
 	public ModelAndView aceitar(@PathVariable("id") Long id,@AuthenticationPrincipal UsuarioLogado usuario
 			, UsuarioFilter usuarioFilter) {
