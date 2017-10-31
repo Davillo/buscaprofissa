@@ -181,9 +181,10 @@
 
 											
 											
-
+										
 											<div class="form-group  col-sm-5">
 												DATA <input type="text" class="control-label" required
+												th:classappend="${mesmoid} ? disabled"
 													id="dataVencimento" data-provide="datepicker"
 													data-date-format="dd/mm/yyyy" th:field="*{dataServico}"
 													data-date-language="pt-BR" data-date-autoclose="true"
@@ -191,7 +192,7 @@
 													data-date-orientation="bottom" />
 
 												<button type="submit" 
-													class="btn btn-primary">Solicitar serviço</button>
+													class="btn btn-primary" th:classappend="${mesmoid} ? disabled">Solicitar serviço</button>
 													
 													
 													
@@ -212,7 +213,7 @@
 													
 											</div>
 											
-											
+										
 										<form id="form-avaliar" th:action="@{/avaliar/{id}(id=${usuario.id})}" method="POST" th:object="${usuario}">	
 											<div class="col-sm-5"> DÊ uma nota para o profissional
 											<fieldset class="rating">
@@ -227,7 +228,9 @@
 										    <input type="radio" id="star1" name="rating" th:value="10" th:field="*{pontuacao}"/>
 										    <label for="star1">1 star</label>
 										</fieldset>
-										<button class="btn btn-primary" type="submit">Avaliar</button>
+										
+										<button class="btn btn-primary"  type="submit" th:classappend="${mesmoid} ? disabled">Avaliar</button>
+									
 										</div>
 										<div>
 										

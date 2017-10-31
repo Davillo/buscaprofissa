@@ -160,10 +160,15 @@ public final class UsuarioController {
 	}
 	
 	@GetMapping("/verPerfil/{id}")
-	public ModelAndView visualizarPerfil(@PathVariable("id") Long id, UsuarioFilter usuarioFilter) {
+	public ModelAndView visualizarPerfil(@PathVariable("id") Long id, UsuarioFilter usuarioFilter, @AuthenticationPrincipal UsuarioLogado usuarioLogado) {
+		
 		Usuario usuario = usuarios.findOne(id);
+		
 		ModelAndView mv = new ModelAndView("internas/VisualizarPerfil");
 		
+		if(usuarioLogado.getUsuario().getId().equals(usuario.getId())) {
+			mv.addObject("mesmoid", true);
+		}
 		mv.addObject("usuario", usuario);
 		
 		return mv;
