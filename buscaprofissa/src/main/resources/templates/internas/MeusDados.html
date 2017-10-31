@@ -211,6 +211,7 @@
 												
 												<input type="hidden" name="foto">
 												<input type="hidden" name="contentType">
+												<input type="hidden" name="urlFoto">
 												 <a><input
 													id="upload-select" type="file" accept=".jpg,.jpeg,.png" /></a>
 
@@ -340,16 +341,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 	<script th:src="@{/sourcetemplate/js/jquery-2.1.1.js}"></script>
 
 	<script th:src="@{/sourcebusca/uikit.min.js}"></script>
@@ -366,6 +357,7 @@
 					console.log('resposta', resposta);	
 					$('input[name=foto]').val(resposta.nome);
 					$('input[name=contentType]').val(resposta.contentType);
+					$('input[name=urlFoto]').val(resposta.urlFoto);
 				}
 				
 			};

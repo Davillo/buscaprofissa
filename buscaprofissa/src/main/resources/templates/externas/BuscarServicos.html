@@ -86,10 +86,13 @@
 
 										<tbody>
 											<tr th:each="usuario : ${pagina.conteudo}">
-
-
-												<td class="text-left"><img
+											<!-- <img
 													th:src="@{/fotos/thumbnail.{foto}(foto=${usuario.fotoOuMock})}"
+													class="img-circle" /> -->
+
+												<td class="text-left">
+												<img
+													th:src="${usuario.urlThumbnailFoto}"
 													class="img-circle" /></td>
 
 

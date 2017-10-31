@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.buscaprofissa.model.Usuario;
 import br.com.buscaprofissa.repository.Usuarios;
-import br.com.buscaprofissa.service.event.UsuarioSalvoEvent;
 import br.com.buscaprofissa.service.exception.EmailUsuarioJaCadastradoException;
 import br.com.buscaprofissa.service.exception.SenhaEConfirmacaoDiferentesException;
 
@@ -23,8 +22,7 @@ public class CadastroUsuarioService {
 		@Autowired
 		private PasswordEncoder passwordEncoder;
 		
-		@Autowired
-		private ApplicationEventPublisher publisher;
+		
 		
 	
 		
@@ -50,7 +48,6 @@ public class CadastroUsuarioService {
 		@Transactional
 		public void atualizar(Usuario usuario){
 			usuario.setAtivo(true);
-			publisher.publishEvent(new UsuarioSalvoEvent(usuario));
 			repository.saveAndFlush(usuario);
 		}
 		

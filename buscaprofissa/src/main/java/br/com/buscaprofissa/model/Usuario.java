@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -21,9 +22,11 @@ import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.thymeleaf.util.StringUtils;
 
+import br.com.buscaprofissa.repository.listener.UsuarioEntityListener;
 
 
 
+@EntityListeners(UsuarioEntityListener.class)
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable{
@@ -50,6 +53,8 @@ public class Usuario implements Serializable{
 	@Transient
 	private String confirmacaoSenha;
 	
+	@Transient
+	private String urlFoto;
 	
 	private Long pontuacao;
 	
@@ -78,7 +83,8 @@ public class Usuario implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 	
-	
+	@Transient
+	private String urlThumbnailFoto;
 	
 	public Date getDataServico() {
 		return dataServico;
@@ -113,12 +119,23 @@ public class Usuario implements Serializable{
 		this.id = id;
 	}
 	
-	//@PreUpdate
-//	private void preUpdate(){
 	
-	//	cpf = cpf.replaceAll("\\.|-|/", "");
-	//	}
 	
+	public String getUrlThumbnailFoto() {
+		return urlThumbnailFoto;
+	}
+
+	public void setUrlThumbnailFoto(String urlThumbnailFoto) {
+		this.urlThumbnailFoto = urlThumbnailFoto;
+	}
+
+	public String getUrlFoto() {
+		return urlFoto;
+	}
+
+	public void setUrlFoto(String urlFoto) {
+		this.urlFoto = urlFoto;
+	}
 
 	public String getNome() {
 		return nome;
