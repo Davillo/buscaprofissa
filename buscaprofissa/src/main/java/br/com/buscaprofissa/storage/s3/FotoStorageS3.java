@@ -46,7 +46,7 @@ public class FotoStorageS3 implements FotoStorage {
 				AccessControlList acl = new AccessControlList();
 				acl.grantPermission(GroupGrantee.AllUsers, Permission.Read);
 				
-				enviarFoto(novoNome, arquivo, acl);
+			//	enviarFoto(novoNome, arquivo, acl);
 				enviarThumbnail(novoNome, arquivo, acl);
 			} catch (IOException e) {
 				throw new RuntimeException("Erro salvando arquivo no S3", e);
@@ -80,7 +80,7 @@ public class FotoStorageS3 implements FotoStorage {
 		return null;
 	}
 	
-	private ObjectMetadata enviarFoto(String novoNome, MultipartFile arquivo, AccessControlList acl)
+/*	private ObjectMetadata enviarFoto(String novoNome, MultipartFile arquivo, AccessControlList acl)
 			throws IOException {
 		ObjectMetadata metadata = new ObjectMetadata();
 		metadata.setContentType(arquivo.getContentType());
@@ -88,7 +88,7 @@ public class FotoStorageS3 implements FotoStorage {
 		amazonS3.putObject(new PutObjectRequest(BUCKET, novoNome, arquivo.getInputStream(), metadata)
 					.withAccessControlList(acl));
 		return metadata;
-	}
+	}*/
 
 	private void enviarThumbnail(String novoNome, MultipartFile arquivo, AccessControlList acl)	throws IOException {
 		ByteArrayOutputStream os = new ByteArrayOutputStream();

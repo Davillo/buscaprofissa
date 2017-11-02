@@ -84,6 +84,8 @@ public final class UsuarioController {
 		
 		
 		try{
+		
+			
 			usuario.setAtivo(true);
 			usuario.setPontuacao(Long.valueOf(0));
 			service.salvar(usuario);
@@ -131,14 +133,12 @@ public final class UsuarioController {
 		try{
 			
 			usuario.setPontuacao(user.getUsuario().getPontuacao());
-			usuario.setUrlFoto(usuario.getUrlFoto());
-			usuario.setUrlThumbnailFoto(usuario.getUrlThumbnailFoto());
+			usuario.setAtivo(true);
 			usuario.setFoto(usuario.getFoto());
 			usuario.setContentType(usuario.getContentType());
-			user.getUsuario().setUrlFoto(usuario.getUrlFoto());
-			user.getUsuario().setUrlThumbnailFoto(usuario.getUrlThumbnailFoto());
-			user.getUsuario().setFoto(usuario.getFoto());
-			user.getUsuario().setContentType(usuario.getContentType());
+			
+			user.setUsuario(usuario);
+			
 			service.atualizar(usuario);
 			attributes.addFlashAttribute("mensagem", "Salvo com sucesso!");
 		}catch (DataInvalidaException e) {

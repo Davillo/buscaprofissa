@@ -80,6 +80,19 @@
 										<thead>
 											<tr>
 												<th class="text-center">Profissionais</th>
+												<th class="text-center">Nome</th>
+												<th class="text-center">
+							<a th:href="${pagina.urlOrdenada('pontuacao')}" th:remove="${pagina.vazia} ? tag">
+								<span>Pontuação</span>
+								<span class="dropup" th:remove="${pagina.descendente('pontuacao')} ? tag"
+										th:if="${pagina.ordenada('pontuacao')}">
+									<span class="caret"></span>
+								</span>
+							</a>
+							<i class="fa fa-star"></i>
+						</th>
+												<th class="text-center"></th>
+												<th class="text-center">Perfil<i class="fa fa-user"></i></th>
 
 											</tr>
 										</thead>
@@ -90,15 +103,16 @@
 													th:src="@{/fotos/thumbnail.{foto}(foto=${usuario.fotoOuMock})}"
 													class="img-circle" /> -->
 
-												<td class="text-left">
+												<td class="text-center">
 												<img
-													th:src="${usuario.urlThumbnailFoto}"
+													th:src="${usuario.fotoOuMock}"
 													class="img-circle" /></td>
 
 
-												<td th:text="|${usuario.nome} ${usuario.sobrenome}|"></td>
-
-
+												<td th:text="|${usuario.nome} ${usuario.sobrenome}|" class="text-center"></td>
+												
+												<td th:text="|${usuario.pontuacao} BuscaPontos| " class="text-center"></td>
+												
 												<td class="text-right"
 													th:text="${usuario.descricaoProfissional}"></td>
 

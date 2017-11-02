@@ -41,7 +41,7 @@
 								</span> <span class="text-muted text-xs block">
 										
 										
-									<img th:src="${#authentication.principal.usuario.urlThumbnailFoto}"
+									<img th:src="@{${#authentication.principal.usuario.fotoOuMock}}"
 									
 									class="img-circle"
 									
@@ -212,7 +212,6 @@
 												
 												<input type="hidden" th:field="*{foto}">
 												<input type="hidden" th:field="*{contentType}">
-												<input type="hidden" th:field="*{urlFoto}">
 												 <a><input
 													id="upload-select" type="file" accept=".jpg,.jpeg,.png" /></a>
 
@@ -358,7 +357,7 @@
 					console.log('resposta', resposta);	
 					$('input[name=foto]').val(resposta.nome);
 					$('input[name=contentType]').val(resposta.contentType);
-					$('input[name=urlFoto]').val(resposta.urlFoto);
+					
 				}
 				
 			};
@@ -369,7 +368,9 @@
 	</script>
 
 
-	<!-- Mainly scripts -->
+	<!-- Mainly scripts
+	$('input[name=urlFoto]').val(resposta.urlFoto);
+	 -->
 	
 	
 	<script th:src="@{/sourcebusca/combo-estado-cidade.js}"></script>

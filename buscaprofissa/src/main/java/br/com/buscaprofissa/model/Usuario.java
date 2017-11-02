@@ -26,7 +26,7 @@ import br.com.buscaprofissa.repository.listener.UsuarioEntityListener;
 
 
 
-@EntityListeners(UsuarioEntityListener.class)
+//@EntityListeners(UsuarioEntityListener.class)
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable{
@@ -53,8 +53,8 @@ public class Usuario implements Serializable{
 	@Transient
 	private String confirmacaoSenha;
 	
-	@Transient
-	private String urlFoto;
+	//@Transient
+	//private String urlFoto;
 	
 	private Long pontuacao;
 	
@@ -83,8 +83,8 @@ public class Usuario implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 	
-	@Transient
-	private String urlThumbnailFoto;
+	//	@Transient
+	//private String urlThumbnailFoto;
 	
 	public Date getDataServico() {
 		return dataServico;
@@ -121,21 +121,21 @@ public class Usuario implements Serializable{
 	
 	
 	
-	public String getUrlThumbnailFoto() {
-		return urlThumbnailFoto;
-	}
+//	public String getUrlThumbnailFoto() {
+//		return urlThumbnailFoto;
+//	}
 
-	public void setUrlThumbnailFoto(String urlThumbnailFoto) {
-		this.urlThumbnailFoto = urlThumbnailFoto;
-	}
+///	public void setUrlThumbnailFoto(String urlThumbnailFoto) {
+//		this.urlThumbnailFoto = urlThumbnailFoto;
+//	}
 
-	public String getUrlFoto() {
-		return urlFoto;
-	}
+	//public String getUrlFoto() {
+	//	return urlFoto;
+	//}
 
-	public void setUrlFoto(String urlFoto) {
-		this.urlFoto = urlFoto;
-	}
+	//public void setUrlFoto(String urlFoto) {
+//		this.urlFoto = urlFoto;
+//	}
 
 	public String getNome() {
 		return nome;
@@ -193,8 +193,8 @@ public class Usuario implements Serializable{
 		this.contentType = contentType;
 	}
 
-	public String getFotoOuMock(){
-		return !StringUtils.isEmpty(foto) ? foto : "usuario-mock.png";
+	public String getFotoOuMock(){																			
+		return !StringUtils.isEmpty(foto) ? "https://s3-sa-east-1.amazonaws.com/awintegrador/"+"thumbnail."+foto : "https://s3-sa-east-1.amazonaws.com/awintegrador/thumbnail.usuario-mock.png";
 	}
 	
 	
