@@ -41,7 +41,8 @@
 								</span> <span class="text-muted text-xs block">
 										
 										
-									<img th:src="@{/fotos/thumbnail.{foto}(foto=${#authentication.principal.usuario.fotoOuMock})}"
+									<img th:src="${#authentication.principal.usuario.urlThumbnailFoto}"
+									
 									class="img-circle"
 									
 									/>
@@ -209,9 +210,9 @@
 											<div class="form-group  col-sm-5">
 												<label class="control-label">Foto</label>
 												
-												<input type="hidden" name="foto">
-												<input type="hidden" name="contentType">
-												<input type="hidden" name="urlFoto">
+												<input type="hidden" th:field="*{foto}">
+												<input type="hidden" th:field="*{contentType}">
+												<input type="hidden" th:field="*{urlFoto}">
 												 <a><input
 													id="upload-select" type="file" accept=".jpg,.jpeg,.png" /></a>
 

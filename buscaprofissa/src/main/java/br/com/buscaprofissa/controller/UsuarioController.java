@@ -84,7 +84,8 @@ public final class UsuarioController {
 		
 		
 		try{
-		
+			usuario.setAtivo(true);
+			usuario.setPontuacao(Long.valueOf(0));
 			service.salvar(usuario);
 			
 		}catch (EmailUsuarioJaCadastradoException e) {
@@ -128,8 +129,17 @@ public final class UsuarioController {
 		}
 		
 		try{
+			
+			usuario.setPontuacao(user.getUsuario().getPontuacao());
+			usuario.setUrlFoto(usuario.getUrlFoto());
+			usuario.setUrlThumbnailFoto(usuario.getUrlThumbnailFoto());
+			usuario.setFoto(usuario.getFoto());
+			usuario.setContentType(usuario.getContentType());
+			user.getUsuario().setUrlFoto(usuario.getUrlFoto());
+			user.getUsuario().setUrlThumbnailFoto(usuario.getUrlThumbnailFoto());
+			user.getUsuario().setFoto(usuario.getFoto());
+			user.getUsuario().setContentType(usuario.getContentType());
 			service.atualizar(usuario);
-			user.setUsuario(usuario);
 			attributes.addFlashAttribute("mensagem", "Salvo com sucesso!");
 		}catch (DataInvalidaException e) {
 			result.rejectValue("dataNascimento", e.getMessage(),e.getMessage());
