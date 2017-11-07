@@ -25,7 +25,6 @@ import com.amazonaws.util.IOUtils;
 import br.com.buscaprofissa.storage.FotoStorage;
 import net.coobird.thumbnailator.Thumbnails;
 
-@Profile("prod")
 @Component
 public class FotoStorageS3 implements FotoStorage {
 	

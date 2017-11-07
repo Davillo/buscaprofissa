@@ -5,7 +5,6 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -22,11 +21,9 @@ import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.thymeleaf.util.StringUtils;
 
-import br.com.buscaprofissa.repository.listener.UsuarioEntityListener;
 
 
 
-//@EntityListeners(UsuarioEntityListener.class)
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable{
