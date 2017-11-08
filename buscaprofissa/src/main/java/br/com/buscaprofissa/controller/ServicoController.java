@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.buscaprofissa.controller.page.PageWrapper;
 import br.com.buscaprofissa.mail.Mailer;
@@ -40,16 +41,17 @@ public class ServicoController {
 	public ModelAndView solicitacoes(@AuthenticationPrincipal UsuarioLogado usuario
 			, UsuarioFilter usuarioFilter) {
 		ModelAndView mv = new ModelAndView("internas/Solicitacoes");
-		mv.addObject("servicos",servicos.findByUsuarioIdAndStatusOrderByDataServico(usuario.getUsuario().getId(), StatusSolicitacao.PENDENTE));
+		mv.addObject("servicos",servicos.findByUsuarioIdAndStatusOrderById(usuario.getUsuario().getId(), StatusSolicitacao.PENDENTE));
 		return mv;
 	}
 	
 	@GetMapping("/solicitacoes/recusar/{id}")
 	public ModelAndView recusar(@PathVariable("id") Long id,@AuthenticationPrincipal UsuarioLogado usuario
-			, UsuarioFilter usuarioFilter) {
+			, UsuarioFilter usuarioFilter,RedirectAttributes attributes) {
 		Servico servico = servicos.findOne(id);
 		service.recusar(servico);
 		
+		attributes.addFlashAttribute("mensagemRecusado","Serviço recusado!");
 		mailer.emailRecusarServico(servico);
 		return new ModelAndView("redirect:/solicitacoes");
 	}
@@ -60,10 +62,11 @@ public class ServicoController {
 	
 	@GetMapping("/solicitacoes/aceitar/{id}")
 	public ModelAndView aceitar(@PathVariable("id") Long id,@AuthenticationPrincipal UsuarioLogado usuario
-			, UsuarioFilter usuarioFilter) {
+			, UsuarioFilter usuarioFilter, RedirectAttributes attributes) {
 		Servico servico = servicos.findOne(id);
 		service.aceitar(servico);
 		
+		attributes.addFlashAttribute("mensagemAceito","Serviço aceito!");
 		mailer.emailAceitarServico(servico);
 		return new ModelAndView("redirect:/solicitacoes");
 	}
@@ -75,7 +78,7 @@ public class ServicoController {
 			@PageableDefault(size = 2) Pageable pageable, HttpServletRequest httpServletRequest
 			) {
 		ModelAndView mv = new ModelAndView("internas/Agenda");
-		PageWrapper<Servico> paginaWrapper = new PageWrapper<>(servicos.findByUsuarioIdAndStatusOrderByDataServico(usuario.getUsuario().getId(), StatusSolicitacao.ACEITO, pageable), httpServletRequest);
+		PageWrapper<Servico> paginaWrapper = new PageWrapper<>(servicos.findByUsuarioIdAndStatusOrderById(usuario.getUsuario().getId(), StatusSolicitacao.ACEITO, pageable), httpServletRequest);
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 		

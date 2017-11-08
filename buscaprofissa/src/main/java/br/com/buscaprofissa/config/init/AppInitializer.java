@@ -49,11 +49,6 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 		registration.setMultipartConfig(new MultipartConfigElement(""));				
 	}
 	
-	@Override
-	public void onStartup(ServletContext servletContext) throws ServletException {
-		// TODO Auto-generated method stub
-		super.onStartup(servletContext);
-		servletContext.setInitParameter("spring.profiles.default", "local");
-	}
+	
 
 }

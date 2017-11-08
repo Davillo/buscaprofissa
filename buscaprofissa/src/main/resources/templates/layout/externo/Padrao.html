@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>BuscaProfissa</title>
-
+<link th:href="@{/sourcebusca/css/buscaprofissa.css}" rel="stylesheet">
 
 <link th:href="@{/sourceindex/css/bootstrap.min.css}" rel="stylesheet">
 
@@ -24,13 +24,12 @@
 <link th:href="@{/sourceindex/css/full-slider.css}" rel="stylesheet">
 <link th:href="@{/sourceindex/css/logo-nav.css}" rel="stylesheet">
 
-<link th:href="@{/sourcebusca/buscaprofissa.css}" rel="stylesheet">
 <link th:href="@{/sourcetemplate/font-awesome/css/font-awesome.css}" rel="stylesheet">
 
 <link rel="shortcut icon" th:href="@{/images/favicon.png}" />
 </head>
 <body>
-
+	
 	<div th:replace="layout/externo/BarraNavegacao :: barranavegacao"></div>
 	<div layout:fragment="conteudo"></div>
 	<div th:replace="layout/externo/Rodape :: rodape"></div>

@@ -13,7 +13,7 @@ import br.com.buscaprofissa.model.StatusSolicitacao;
 @Repository
 public interface Servicos extends JpaRepository<Servico, Long> {
 
-	public Page<Servico> findByUsuarioIdAndStatusOrderByDataServico(Long id,StatusSolicitacao aceito,Pageable pageable);
+	public Page<Servico> findByUsuarioIdAndStatusOrderById(Long id,StatusSolicitacao aceito,Pageable pageable);
 	public List<Servico> findByUsuarioOrderByDataServico(Long id);
-	public List<Servico> findByUsuarioIdAndStatusOrderByDataServico(Long id, StatusSolicitacao solicitacao);
+	public List<Servico> findByUsuarioIdAndStatusOrderById(Long id, StatusSolicitacao solicitacao);
 }

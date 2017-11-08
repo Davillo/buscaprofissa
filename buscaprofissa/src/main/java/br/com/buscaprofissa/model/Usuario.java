@@ -50,8 +50,6 @@ public class Usuario implements Serializable{
 	@Transient
 	private String confirmacaoSenha;
 	
-	//@Transient
-	//private String urlFoto;
 	
 	private Long pontuacao;
 	
@@ -66,28 +64,22 @@ public class Usuario implements Serializable{
 	private String descricaoProfissional;
 
 	@Column(name = "data_nascimento")
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private Date dataNascimento; 
+	private String dataNascimento; 
 	
 	private String telefone;
 	
 	@Transient
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private Date dataServico;
+	private String dataServico;
 	
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 	
-	//	@Transient
-	//private String urlThumbnailFoto;
-	
-	public Date getDataServico() {
+
+	public String getDataServico() {
 		return dataServico;
 	}
 
-	public void setDataServico(Date dataServico) {
+	public void setDataServico(String dataServico) {
 		this.dataServico = dataServico;
 	}
 
@@ -117,23 +109,6 @@ public class Usuario implements Serializable{
 	}
 	
 	
-	
-//	public String getUrlThumbnailFoto() {
-//		return urlThumbnailFoto;
-//	}
-
-///	public void setUrlThumbnailFoto(String urlThumbnailFoto) {
-//		this.urlThumbnailFoto = urlThumbnailFoto;
-//	}
-
-	//public String getUrlFoto() {
-	//	return urlFoto;
-	//}
-
-	//public void setUrlFoto(String urlFoto) {
-//		this.urlFoto = urlFoto;
-//	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -194,7 +169,6 @@ public class Usuario implements Serializable{
 		return !StringUtils.isEmpty(foto) ? "https://s3-sa-east-1.amazonaws.com/awintegrador/"+"thumbnail."+foto : "https://s3-sa-east-1.amazonaws.com/awintegrador/thumbnail.usuario-mock.png";
 	}
 	
-	
 	@ManyToOne
 	@JoinColumn(name = "id_categoria")
 	private Categoria categoria;
@@ -207,11 +181,11 @@ public class Usuario implements Serializable{
 		this.cpf = cpf;
 	}
 	
-	public Date getDataNascimento() {
+	public String getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 

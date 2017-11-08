@@ -10,12 +10,11 @@ public class SecurityInitializer extends AbstractSecurityWebApplicationInitializ
 
 	@Override
 	protected void beforeSpringSecurityFilterChain(ServletContext servletContext) {
-		FilterRegistration.Dynamic characterEncondingFilter = servletContext.addFilter("encondingFilter", 
+		FilterRegistration.Dynamic characterEncodingFilter = servletContext.addFilter("encodingFilter",
 				new CharacterEncodingFilter());
-			
-		characterEncondingFilter.setInitParameter("encoding", "UTF-8");
-		characterEncondingFilter.setInitParameter("forceEncoding", "true");
-		characterEncondingFilter.addMappingForUrlPatterns(null, false, "/*");
+		characterEncodingFilter.setInitParameter("encoding", "UTF-8");
+		characterEncodingFilter.setInitParameter("forceEncoding", "true");
+		characterEncodingFilter.addMappingForUrlPatterns(null, false, "/*");
 	}
 	
 }

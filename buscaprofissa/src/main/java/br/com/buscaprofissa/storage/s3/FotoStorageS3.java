@@ -79,7 +79,7 @@ public class FotoStorageS3 implements FotoStorage {
 		return null;
 	}
 	
-/*	private ObjectMetadata enviarFoto(String novoNome, MultipartFile arquivo, AccessControlList acl)
+		/*	private ObjectMetadata enviarFoto(String novoNome, MultipartFile arquivo, AccessControlList acl)
 			throws IOException {
 		ObjectMetadata metadata = new ObjectMetadata();
 		metadata.setContentType(arquivo.getContentType());
@@ -87,7 +87,7 @@ public class FotoStorageS3 implements FotoStorage {
 		amazonS3.putObject(new PutObjectRequest(BUCKET, novoNome, arquivo.getInputStream(), metadata)
 					.withAccessControlList(acl));
 		return metadata;
-	}*/
+		}*/
 
 	private void enviarThumbnail(String novoNome, MultipartFile arquivo, AccessControlList acl)	throws IOException {
 		ByteArrayOutputStream os = new ByteArrayOutputStream();

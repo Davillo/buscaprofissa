@@ -80,19 +80,17 @@ public final class UsuarioController {
 		if(result.hasErrors()){
 			return cadastro(usuario,usuarioFilter);
 		}
-		
-		
+
 		
 		try{
 		
-			
 			usuario.setAtivo(true);
 			usuario.setPontuacao(Long.valueOf(0));
 			service.salvar(usuario);
 			
 		}catch (EmailUsuarioJaCadastradoException e) {
 			result.rejectValue("email", e.getMessage(),e.getMessage());
-			return cadastro(usuario, usuarioFilter);
+			return cadastro(usuario,usuarioFilter);
 		}catch(SenhaEConfirmacaoDiferentesException e){
 			result.rejectValue("senha", e.getMessage(), e.getMessage());
 			return cadastro(usuario,usuarioFilter);
@@ -141,10 +139,7 @@ public final class UsuarioController {
 			
 			service.atualizar(usuario);
 			attributes.addFlashAttribute("mensagem", "Salvo com sucesso!");
-		}catch (DataInvalidaException e) {
-			result.rejectValue("dataNascimento", e.getMessage(),e.getMessage());
-			return meusdados( user, usuarioFilter);
-		}catch(CpfInvalidoException e) {
+		} catch(CpfInvalidoException e) {
 			result.rejectValue("cpf", e.getMessage(), e.getMessage());
 		}
 		

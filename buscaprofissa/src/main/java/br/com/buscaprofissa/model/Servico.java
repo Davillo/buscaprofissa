@@ -40,9 +40,8 @@ public class Servico implements Serializable {
 	
 	private String nomeCliente;
 	
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private Date dataServico;
+	
+	private String dataServico;
 	
 	
 	
@@ -58,11 +57,11 @@ public class Servico implements Serializable {
 		this.emailCliente = emailCliente;
 	}
 
-	public Date getDataServico() {
+	public String getDataServico() {
 		return dataServico;
 	}
 
-	public void setDataServico(Date dataServico) {
+	public void setDataServico(String dataServico) {
 		this.dataServico = dataServico;
 	}
 
