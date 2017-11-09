@@ -9,14 +9,87 @@ layout:decorate="layout/externo/Padrao">
 
 <head>
 
-   <link th:href="@{/sourcebusca/buscaprofissa.css}" rel="stylesheet">
    
 
     <title>BuscaProfissa | Cadastro</title>
+	
+	
+   <script>
 
-   
+function Trim(str){
+	return str.replace(/^\s+|\s+$/g,"");
+}
+
+function empty( val ) {
+
+        if (val === undefined)
+        return true;
+
+    if (typeof (val) == 'function' || typeof (val) == 'number' || typeof (val) == 'boolean' || Object.prototype.toString.call(val) === '[object Date]')
+        return false;
+
+    if (val == null || val.length === 0)       
+        return true;
+
+    if (typeof (val) == "object") {
+       
+
+        var r = true;
+
+        for (var f in val)
+            r = false;
+
+        return r;
+    }
+
+    return false;
+}
+		
+	function desativar() {
+		alert('Conta desativada!');
+	}
+
+	
+	function verifica(dados) {
+		
+	
+		
+		
+		if (empty(Trim(dados.nome.value))) {
+			alert("O nome é um campo obrigatório!");
+			return (false);
+		}
+		
+		if (empty(Trim(dados.sobrenome.value))) {
+			alert("O sobrenome é um campo obrigatório!");
+			return (false);
+		}
+		
+	
+		if (empty(Trim(dados.email.value))) {
+			alert("O email é um campo obrigatório!");
+			return (false);
+		}
+		
+		if (empty(Trim(dados.senha.value))) {
+			alert("A senha é um campo obrigatório!");
+			return (false);
+		}
+		
+		if (empty(Trim(dados.confirmacaoSenha.value))) {
+			alert("A confirmação da senha é um campo obrigatório!");
+			return (false);
+		}
+		
+
+		return (true);
+	}
+	
+</script>
 
 </head>
+
+
 	<body>
 	<div layout:fragment="conteudo" align="center" id="conteudoExterno">
     <div class="form-control conteudoMeio">
@@ -25,31 +98,30 @@ layout:decorate="layout/externo/Padrao">
             <h3>Cadastro de novo usuário</h3>
             	
 				
-            <form class="m-t" role="form" th:action="@{/cadastro}" method="POST" th:object="${usuario}">
+            <form class="m-t" role="form" th:action="@{/cadastro}" onsubmit="return(verifica(this))" id="cadastro" method="POST" th:object="${usuario}">
          		
          			
 				<buscaprofissa:message/>
          		
                 <div class="form-group" buscaprofissa:classforerror="nome">
-                    <input type="text" class="form-control" th:field="*{nome}"  required placeholder="Nome" >
+                    <input type="text" class="form-control" th:field="*{nome}" id="nome"   placeholder="Nome" >
                 </div>
                 <div class="form-group" buscaprofissa:classforerror="sobrenome" >
-                    <input type="text" class="form-control" th:field="*{sobrenome}" required placeholder="Sobrenome">
+                    <input type="text" class="form-control" th:field="*{sobrenome}" id="sobrenome" placeholder="Sobrenome">
                 </div>
                 <div class="form-group" buscaprofissa:classforerror="email">
-                    <input type="text" class="form-control" th:field="*{email}" required  placeholder="E-mail">
+                    <input type="text" class="form-control" th:field="*{email}" id="email"  placeholder="E-mail">
                 </div>
                  <div class="form-group" buscaprofissa:classforerror="senha">
-                    <input type="password" class="form-control" th:field="*{senha}" required placeholder="Senha">
+                    <input type="password" class="form-control" th:field="*{senha}" id="senha"  placeholder="Senha">
                 </div>
                  <div class="form-group">
-                    <input type="password" class="form-control" th:field="*{confirmacaoSenha}" required placeholder="Confirmação de senha" >
+                    <input type="password" class="form-control" th:field="*{confirmacaoSenha}" id="confirmacaoSenha"  placeholder="Confirmação de senha" >
                 </div>
                 
              
                 <button type="submit" class="btn btn-primary block full-width m-b">Efetuar Cadastro</button>
 
-                <p class="text-muted text-center"><small>Já possui conta?</small></p>
                 <a class="btn  btn-white btn-block" th:href="@{/login}">Login</a>
             </form>
         </div>

@@ -1,7 +1,6 @@
 package br.com.buscaprofissa.controller;
 
 
-import java.util.Date;
 
 import javax.validation.Valid;
 
@@ -32,7 +31,6 @@ import br.com.buscaprofissa.security.UsuarioLogado;
 import br.com.buscaprofissa.service.CadastroServicoService;
 import br.com.buscaprofissa.service.CadastroUsuarioService;
 import br.com.buscaprofissa.service.exception.CpfInvalidoException;
-import br.com.buscaprofissa.service.exception.DataInvalidaException;
 import br.com.buscaprofissa.service.exception.EmailUsuarioJaCadastradoException;
 import br.com.buscaprofissa.service.exception.ErroEnviandoEmailException;
 import br.com.buscaprofissa.service.exception.SenhaEConfirmacaoDiferentesException;
@@ -77,6 +75,7 @@ public final class UsuarioController {
 	
 	@RequestMapping(value = "/cadastro", method = RequestMethod.POST)
 	public ModelAndView cadastrar(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes, UsuarioFilter usuarioFilter){
+		
 		if(result.hasErrors()){
 			return cadastro(usuario,usuarioFilter);
 		}
@@ -97,7 +96,7 @@ public final class UsuarioController {
 		}
 		
 		attributes.addFlashAttribute("mensagem","Salvo com sucesso!");
-		return new ModelAndView("redirect:/cadastro");
+		return new ModelAndView("redirect:/login");
 		
 	}
 

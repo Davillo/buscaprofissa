@@ -63,7 +63,7 @@ public class LoginController {
 	
 
 	@PostMapping("/recuperarSenha")
-	public ModelAndView alterar(UsuarioFilter usuarioFilter, @Valid Usuario usuario, BindingResult result,
+	public ModelAndView alterar(UsuarioFilter usuarioFilter,  Usuario usuario, BindingResult result,
 			RedirectAttributes attributes) {
 		ModelAndView mv = new ModelAndView("externas/recuperarSenha");
 			

@@ -26,7 +26,58 @@
 	
 	<link th:href="@{/sourcebusca/css/avaliacao.css}"rel="stylesheet">
 
+ <script>
 
+function Trim(str){
+	return str.replace(/^\s+|\s+$/g,"");
+}
+
+function empty( val ) {
+
+        if (val === undefined)
+        return true;
+
+    if (typeof (val) == 'function' || typeof (val) == 'number' || typeof (val) == 'boolean' || Object.prototype.toString.call(val) === '[object Date]')
+        return false;
+
+    if (val == null || val.length === 0)       
+        return true;
+
+    if (typeof (val) == "object") {
+       
+
+        var r = true;
+
+        for (var f in val)
+            r = false;
+
+        return r;
+    }
+
+    return false;
+}
+	
+	function verifica(servico) {
+		
+		if (empty(Trim(servico.dataServico.value))) {
+			alert("A data do serviço é um campo obrigatório para uma solicitação!");
+			return (false);
+		}
+	
+	
+	
+		return (true);
+	}
+	
+	
+	
+	function habilitar(){
+		btnAvaliar.disabled = false;
+		
+	}
+	
+	
+</script>
 </head>
 
 <body>
@@ -52,9 +103,7 @@
 							<ul class="dropdown-menu animated fadeInRight m-t-xs">
 
 
-								<li><a href="contacts.html">Contatos</a></li>
-								<li class="divider"></li>
-								<li><a href="login.html">Logout</a></li>
+								<li><a th:href="@{/logout}">Logout</a></li>
 							</ul>
 						</div>
 						<div class="logo-element">BP</div>
@@ -127,7 +176,7 @@
 								<div class="ibox-content">
 
 									<form th:action="@{/verPerfil/{id}(id=${usuario.id})}"
-										method="POST" th:object="${usuario}">
+										method="POST" th:object="${usuario}" id="servico" onsubmit="return(verifica(servico))">
 										<buscaprofissa:message />
 										<div class="row">
 										
@@ -183,9 +232,9 @@
 											
 										
 											<div class="form-group  col-sm-5">
-												DATA <input type="text" class="control-label" required
+												DATA <input type="text" class="control-label" 
 												th:classappend="${mesmoid} ? disabled"
-													id="dataVencimento" data-provide="datepicker"
+													id="dataServico" data-provide="datepicker"
 													data-date-format="dd/mm/yyyy" th:field="*{dataServico}"
 													data-date-language="pt-BR" data-date-autoclose="true"
 													data-date-today-highlight="true"
@@ -194,10 +243,7 @@
 												<button type="submit" 
 													class="btn btn-primary" th:classappend="${mesmoid} ? disabled">Solicitar serviço</button>
 													
-													
-													
-										
-									
+											
 											</div>
 											
 											
@@ -214,22 +260,23 @@
 											</div>
 											
 										
-										<form id="form-avaliar" th:action="@{/avaliar/{id}(id=${usuario.id})}" method="POST" th:object="${usuario}">	
-											<div class="col-sm-5"> DÊ uma nota para o profissional
+										<form id="avaliar" onsubmit="return(verifica(avaliar))" th:action="@{/avaliar/{id}(id=${usuario.id})}" method="POST" th:object="${usuario}">	
+											<div class="col-sm-5"> 	Nota para esse profissional  
 											<fieldset class="rating">
-										    <input type="radio" id="star5" name="rating" th:value="50" th:field="*{pontuacao}" />
+										
+										    <input type="radio" id="star5" name="rating" th:value="50" onclick="habilitar();" th:field="*{pontuacao}" />
 										    <label for="star5">5 stars</label>
-										    <input type="radio" id="star4" name="rating" th:value="40" th:field="*{pontuacao}" />
+										    <input type="radio" id="star4" name="rating" th:value="40" onclick="habilitar();" th:field="*{pontuacao}" />
 										    <label for="star4">4 stars</label>
-										    <input type="radio" id="star3" name="rating" th:value="30"  th:field="*{pontuacao}"/>
+										    <input type="radio" id="star3" name="rating" th:value="30" onclick="habilitar();" th:field="*{pontuacao}"/>
 										    <label for="star3">3 stars</label>
-										    <input type="radio" id="star2" name="rating" th:value="20" th:field="*{pontuacao}"/>
+										    <input type="radio" id="star2" name="rating" th:value="20"onclick="habilitar();" th:field="*{pontuacao}"/>
 										    <label for="star2">2 stars</label>
-										    <input type="radio" id="star1" name="rating" th:value="10" th:field="*{pontuacao}"/>
+										    <input type="radio" id="star1" name="rating" th:value="10"onclick="habilitar();" th:field="*{pontuacao}"/>
 										    <label for="star1">1 star</label>
 										</fieldset>
 										
-										<button class="btn btn-primary"  type="submit" th:classappend="${mesmoid} ? disabled">Avaliar</button>
+										<button class="btn btn-primary" id="btnAvaliar" type="submit" th:classappend="${mesmoid} ? disabled" disabled>Avaliar</button>
 									
 										</div>
 										<div>

@@ -7,6 +7,7 @@ import org.thymeleaf.dialect.AbstractProcessorDialect;
 import org.thymeleaf.processor.IProcessor;
 import org.thymeleaf.standard.StandardDialect;
 
+import br.com.buscaprofissa.thymeleaf.processor.ClassForErrorAttributeTagProcessor;
 import br.com.buscaprofissa.thymeleaf.processor.MessageElementTagProcessor;
 
 public class BuscaProfissaDialect extends AbstractProcessorDialect {
@@ -19,6 +20,7 @@ public class BuscaProfissaDialect extends AbstractProcessorDialect {
 	public Set<IProcessor> getProcessors(String dialectPrefix) {
 		final Set<IProcessor> processadores = new HashSet<>();
 		processadores.add(new MessageElementTagProcessor(dialectPrefix));
+		processadores.add(new ClassForErrorAttributeTagProcessor(dialectPrefix));
 		return processadores;
 	}
 

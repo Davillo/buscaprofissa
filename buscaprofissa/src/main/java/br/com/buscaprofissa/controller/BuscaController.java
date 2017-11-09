@@ -1,6 +1,5 @@
 package br.com.buscaprofissa.controller;
 
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,7 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,7 +34,7 @@ public class BuscaController {
 	
 	@RequestMapping("/buscar")
 	public ModelAndView viewBusca(UsuarioFilter usuarioFilter,BindingResult result
-			,@PageableDefault(size=2) Pageable pageable, HttpServletRequest httpServletRequest){
+			,@PageableDefault(size=3) Pageable pageable, HttpServletRequest httpServletRequest){
 		
 		ModelAndView mv = new ModelAndView("externas/BuscarServicos");
 		

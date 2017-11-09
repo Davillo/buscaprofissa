@@ -28,7 +28,7 @@
 
 
 .form-cadastro-inicial{
-	margin-top:130px;
+	margin-top:190px;
 	width: 300px;
 	align:center;
 	height: 500px;
@@ -45,7 +45,7 @@
 }
 
 .form-login{
-	margin-top:130px;
+	margin-top:190px;
 	width: 300px;
 	align:center;
 	height: 400px;
@@ -61,7 +61,7 @@
 }
 
 td{
-	font-size: 20px;
+	font-size: 15px;
 }
 
 .bp-field-action__icon{

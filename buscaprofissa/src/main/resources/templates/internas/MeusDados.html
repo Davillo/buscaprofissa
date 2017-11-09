@@ -21,10 +21,98 @@
 
 </head>
 <script>
+
+function Trim(str){
+	return str.replace(/^\s+|\s+$/g,"");
+}
+
+function empty( val ) {
+
+        if (val === undefined)
+        return true;
+
+    if (typeof (val) == 'function' || typeof (val) == 'number' || typeof (val) == 'boolean' || Object.prototype.toString.call(val) === '[object Date]')
+        return false;
+
+    if (val == null || val.length === 0)       
+        return true;
+
+    if (typeof (val) == "object") {
+       
+
+        var r = true;
+
+        for (var f in val)
+            r = false;
+
+        return r;
+    }
+
+    return false;
+}
+		
 	function desativar() {
 		alert('Conta desativada!');
 	}
+
+	
+	function verifica(dados) {
+		
+		if(empty(Trim(dados.dataNascimento.value))) {
+			alert("A data de nascimento é um campo obrigatório!");
+			return (false);
+		}
+		
+		
+		if (empty(Trim(dados.nome.value))) {
+			alert("O nome é um campo obrigatório!");
+			return (false);
+		}
+		
+		if (empty(Trim(dados.sobrenome.value))) {
+			alert("O sobrenome é um campo obrigatório!");
+			return (false);
+		}
+		
+		if (empty(Trim(dados.cpf.value))) {
+			alert("O CPF é um campo obrigatório!");
+			return (false);
+		}
+		
+		if (empty(Trim(dados.email.value))) {
+			alert("O email é um campo obrigatório!");
+			return (false);
+		}
+		
+		if (empty(Trim(dados.telefone.value))) {
+			alert("O telefone é um campo obrigatório!");
+			return (false);
+		}
+		
+		if (empty(Trim(dados.sexo.value))) {
+			alert("O sexo é obrigatório!");
+			return (false);
+		}
+		
+		
+		if (empty(Trim(dados.estado.value))) {
+			alert("O estado é obrigatório!");
+			return (false);
+		}
+		
+		if (empty(Trim(dados.cidade.value))) {
+			alert("A cidade é obrigatória!");
+			return (false);
+		}
+		
+	
+		return (true);
+	}
+	
 </script>
+
+
+
 <body>
 
 	<div id="wrapper">
@@ -34,27 +122,20 @@
 				<ul class="nav" id="side-menu">
 					<li class="nav-header">
 						<div class="dropdown profile-element">
-						
-							 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-								<span class="clear"> <span class="block m-t-xs"> <strong
+
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#"> <span
+								class="clear"> <span class="block m-t-xs"> <strong
 										class="font-bold"></strong>
-								</span> <span class="text-muted text-xs block">
-										
-										
-									<img th:src="@{${#authentication.principal.usuario.fotoOuMock}}"
-									
-									class="img-circle"
-									
-									/>
+								</span> <span class="text-muted text-xs block"> <img
+										th:src="@{${#authentication.principal.usuario.fotoOuMock}}"
+										class="img-circle" />
 								</span>
 							</span>
 							</a>
 							<ul class="dropdown-menu animated fadeInRight m-t-xs">
 
 
-								<li><a href="contacts.html">Contatos</a></li>
-								<li class="divider"></li>
-								<li><a href="login.html">Logout</a></li>
+								<li><a th:href="@{/logout}">Logout</a></li>
 							</ul>
 						</div>
 						<div class="logo-element">IN+</div>
@@ -62,21 +143,21 @@
 					<li><a th:href="@{/}"><i class="fa fa-th-large"></i> <span
 							class="nav-label">Dashboard</span> </a></li>
 
-			
+
 					<li><a th:href="@{/index}"><i class="fa fa-home"></i> <span
 							class="nav-label">Início</span> </a></li>
-					
+
 
 					<li><a th:href="@{/meusdados}"><i class="fa fa-files-o"></i>
 							<span class="nav-label">Meus dados</span></a></li>
-							
+
 					<li><a th:href="@{/agenda}"><i class="fa fa-calendar"></i>
 							<span class="nav-label">Agenda</span></a></li>
-							
-							<li><a th:href="@{/solicitacoes}"><i class="fa fa-bell"></i>
+
+					<li><a th:href="@{/solicitacoes}"><i class="fa fa-bell"></i>
 							<span class="nav-label">Solicitações</span></a></li>
-							<li><a th:href="@{/buscar}"><i class="fa fa-search"></i>
-							<span class="nav-label">Buscar Profissionais</span></a></li>
+					<li><a th:href="@{/buscar}"><i class="fa fa-search"></i> <span
+							class="nav-label">Buscar Profissionais</span></a></li>
 
 				</ul>
 			</div>
@@ -87,21 +168,23 @@
 				<nav class="navbar navbar-static-top" role="navigation"
 					style="margin-bottom: 0">
 					<div class="navbar-header">
-            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-           
-            <form role="search" class="navbar-form-custom" method="GET" th:action="@{/buscar}"
-            th:object="${usuarioFilter}" 
-            >
-                <div class="form-group">
-                    <input type="text" placeholder="Busque profissionais" th:field="*{descricaoProfissional}" class="form-control" name="top-search" id="top-search">
-                </div>
-            </form>
-        </div>
+						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+							href="#"><i class="fa fa-bars"></i> </a>
+
+						<form role="search" class="navbar-form-custom" method="GET"
+							th:action="@{/buscar}" th:object="${usuarioFilter}">
+							<div class="form-group">
+								<input type="text" placeholder="Busque profissionais"
+									th:field="*{descricaoProfissional}" class="form-control"
+									name="top-search" id="top-search">
+							</div>
+						</form>
+					</div>
 					<ul class="nav navbar-top-links navbar-right">
 
-					
 
-					
+
+
 
 						<li><a th:href="@{/logout}"> <i class="fa fa-sign-out"></i>
 								Sair
@@ -124,7 +207,7 @@
 							<div class="ibox">
 								<div class="ibox-title">
 									<h5>Dados da conta e perfil</h5>
-									
+
 
 									<div class="ibox-tools">
 										<a th:href="@{/meusdados/desativar}" onclick="desativar()"><i
@@ -134,8 +217,7 @@
 								</div>
 								<div class="ibox-content">
 									<h2>Meus dados</h2>
-									<div class="alert  alert-info  alert-dismissible"
-										role="alert">
+									<div class="alert  alert-info  alert-dismissible" role="alert">
 										<button type="button" class="close" data-dismiss="alert"
 											aria-label="Close">
 											<span aria-hidden="true">&times;</span>
@@ -143,8 +225,8 @@
 
 										<span> Matenha sempre seus dados atualizados!</span>
 									</div>
-									
-									<form method="POST" class="form-vertical"
+
+									<form method="POST" id="dados" onsubmit="return(verifica(this))" class="form-vertical"
 										th:action="@{/meusdadosSave}" th:object="${usuario}">
 
 										<buscaprofissa:message />
@@ -158,15 +240,13 @@
 											<div class="form-group  col-sm-5">
 												<label for="nome" class="control-label">Nome : </label> <input
 													type="text" class="form-control" th:field="*{nome}"
-													id="nome" required />
+													id="nome"  />
 											</div>
 
 											<div class="form-group  col-sm-5">
 												<label for="sobrenome" class="control-label">Sobrenome
 													: </label> <input type="text" class="form-control"
-													th:field="*{sobrenome}" required
-													id="sobrenome"
-													 />
+													th:field="*{sobrenome}"  id="sobrenome" />
 											</div>
 										</div>
 
@@ -174,8 +254,7 @@
 											<div class="form-group  col-sm-5">
 												<label for="cpf" class="control-label">CPF</label> <input
 													type="text" th:field="*{cpf}" class="form-control" id="cpf"
-													data-mask="000.000.000-00" maxlength="14"
-													required
+													data-mask="000.000.000-00" maxlength="14" 
 													placeholder="Digite seu CPF" />
 											</div>
 
@@ -183,7 +262,6 @@
 												<label for="dataNascimento" class="control-label">Data
 													de nascimento</label> <input type=text class="form-control"
 													id="dataNascimento" th:field="*{dataNascimento}"
-													required
 													data-mask="00/00/0000" maxlength="10"
 													placeholder="Digite sua data de nascimento" />
 											</div>
@@ -199,57 +277,57 @@
 
 											<div class="form-group  col-sm-5">
 												<label for="telefone" class="control-label">Telefone/Celular</label>
-												<input type="text" class="form-control" id="telefone"
-													th:field="*{telefone}" data-mask="(00) 0000-0000"
-													maxlength="15" placeholder="Digite seu telefone" required />
+												<input type="text" class="form-control" 
+													th:field="*{telefone}" data-mask="(00) 00000-0000"
+													maxlength="15" placeholder="Digite seu telefone" id="telefone" />
 											</div>
 										</div>
 
 
 										<div class="row">
 											<div class="form-group  col-sm-5">
-												<label class="control-label">Foto</label>
-												
-												<input type="hidden" th:field="*{foto}">
-												<input type="hidden" th:field="*{contentType}">
-												 <a><input
+												<label class="control-label">Foto</label> <input
+													type="hidden" th:field="*{foto}"> <input
+													type="hidden" th:field="*{contentType}"> <a><input
 													id="upload-select" type="file" accept=".jpg,.jpeg,.png" /></a>
 
 											</div>
 
 
 											<div class="form-group  col-sm-5">
-												<label for="sexo" class="control-label">Sexo</label> <select id="sexo"
-													
-													class="form-control m-b" th:field="*{sexo}" required>
+												<label for="sexo" class="control-label">Sexo</label> <select
+													id="sexo" class="form-control m-b" th:field="*{sexo}">
 													<option value="">Selecione...</option>
 													<option th:each="sexo : ${sexos}" th:value="${sexo}"
 														th:text="${sexo.descricao}"></option>
 												</select>
 											</div>
 
-										
+
 
 											<div>
 												<div class="form-group  col-sm-5">
-													<label for="estado" class="control-label">Estado</label>
-													 <select id="estado" class="form-control" th:field="*{endereco.estado}">
-						                    <option value="">Selecione o estado</option>
-						                    <option th:each="estado : ${estados}" th:value="${estado.id}" th:text="${estado.nome}"></option>
-						                </select>
-										</div>
+													<label for="estado" class="control-label">Estado</label> <select
+														id="estado" class="form-control"
+														th:field="*{endereco.estado}">
+														<option value="">Selecione o estado</option>
+														<option th:each="estado : ${estados}"
+															th:value="${estado.id}" th:text="${estado.nome}"></option>
+													</select>
+												</div>
 
 												<div class="form-group  col-sm-5">
-													<label for="cidade" class="control-label">Cidade</label>
-														 <select id="cidade" class="form-control"
-														  th:field="*{endereco.cidade}">
-	                 						
-	                  			  <option th:each="cidade : ${cidades}" th:value="${cidade.id}" th:text="${cidade.nome}"></option>
-	             						   </select>
+													<label for="cidade" class="control-label">Cidade</label> <select
+														id="cidade" class="form-control"
+														th:field="*{endereco.cidade}">
+
+														<option th:each="cidade : ${cidades}"
+															th:value="${cidade.id}" th:text="${cidade.nome}"></option>
+													</select>
 												</div>
 											</div>
-											
-										
+
+
 
 
 											<input type="hidden" class="form-control" name="senha"
@@ -261,11 +339,10 @@
 
 
 
-											
+
 
 											<div class="form-group  col-sm-5">
-												<label for="area">Área de atuação</label> 
-												<select id="area"
+												<label for="area">Área de atuação</label> <select id="area"
 													class="form-control" th:field="*{areaAtuacao}">
 													<option value="">Selecione a área</option>
 													<option th:each="area : ${areas}" th:value="${area.id}"
@@ -274,10 +351,8 @@
 											</div>
 
 											<div class="form-group  col-sm-5">
-												<label for="categoria">Categorias</label>
-
-												<select id="categoria" class="form-control" 
-													th:field="*{categoria}">
+												<label for="categoria">Categorias</label> <select
+													id="categoria" class="form-control" th:field="*{categoria}">
 													<option value="">Selecione a categoria</option>
 													<option th:each="categoria : ${categorias}"
 														th:value="${categoria.id}" th:text="${categoria.nome}"></option>
@@ -288,20 +363,22 @@
 											</div>
 
 
-	
-										
-										
-										<div class="form-group  col-sm-10">
-												<label for="descricao" class="control-label">Descrição profissional</label>
 
-												
-												<textarea rows="7" cols="100" th:field="*{descricaoProfissional}" class="form-control">
+
+
+											<div class="form-group  col-sm-10">
+												<label for="descricao" class="control-label">Descrição
+													profissional</label>
+
+
+												<textarea rows="7" cols="100"
+													th:field="*{descricaoProfissional}" class="form-control">
 												
 												</textarea>
 
 
 											</div>
-										
+
 
 										</div>
 
@@ -353,13 +430,13 @@
 				filelimit : 1,
 				allow : '*.(jpg|jpeg|png)',
 				action : '/buscaprofissa/fotos',
-				complete: function(resposta){
-					console.log('resposta', resposta);	
+				complete : function(resposta) {
+					console.log('resposta', resposta);
 					$('input[name=foto]').val(resposta.nome);
 					$('input[name=contentType]').val(resposta.contentType);
-					
+
 				}
-				
+
 			};
 
 			UIkit.uploadSelect($('#upload-select'), settings);
@@ -371,18 +448,21 @@
 	<!-- Mainly scripts
 	$('input[name=urlFoto]').val(resposta.urlFoto);
 	 -->
-	
-	
+
+
 	<script th:src="@{/sourcebusca/combo-estado-cidade.js}"></script>
 	<script th:src="@{/sourcebusca/combo-area-categoria.js}"></script>
 	<script th:src="@{/sourcetemplate/js/bootstrap.js}"></script>
-	
-	<script th:src="@{/sourcetemplate/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
-	<script th:src="@{/sourcetemplate/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+
+	<script
+		th:src="@{/sourcetemplate/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+	<script
+		th:src="@{/sourcetemplate/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
 	<script th:src="@{/sourcetemplate/js/inspinia.js}"></script>
 	<script th:src="@{/sourcetemplate/js/plugins/pace/pace.min.js}"></script>
 	<script th:src="@{/sourcebusca/locastyle.js}"></script>
-	<script th:src="@{/sourcetemplate/js/plugins/peity/jquery.peity.min.js}"></script>
+	<script
+		th:src="@{/sourcetemplate/js/plugins/peity/jquery.peity.min.js}"></script>
 	<script th:src="@{/sourcetemplate/js/demo/peity-demo.js}"></script>
 
 </body>

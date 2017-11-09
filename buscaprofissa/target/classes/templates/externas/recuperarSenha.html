@@ -8,10 +8,87 @@ xmlns:buscaprofissa="http://buscaprofissa.com.br"
 <head>
 
 
-    <title>BuscaProfissa | Login</title>
+    <title>BuscaProfissa | Recuperação de senha</title>
 
-  <link th:href="@{/sourcebusca/buscaprofissa.css}" rel="stylesheet">
+
   
+  <script>
+
+function Trim(str){
+	return str.replace(/^\s+|\s+$/g,"");
+}
+
+function empty( val ) {
+
+        if (val === undefined)
+        return true;
+
+    if (typeof (val) == 'function' || typeof (val) == 'number' || typeof (val) == 'boolean' || Object.prototype.toString.call(val) === '[object Date]')
+        return false;
+
+    if (val == null || val.length === 0)       
+        return true;
+
+    if (typeof (val) == "object") {
+       
+
+        var r = true;
+
+        for (var f in val)
+            r = false;
+
+        return r;
+    }
+
+    return false;
+}
+		
+	function desativar() {
+		alert('Conta desativada!');
+	}
+
+	
+	function verifica(dados) {
+		
+	
+		
+		
+	
+	
+		if (empty(Trim(dados.email.value))) {
+			alert("O email é um campo obrigatório!");
+			return (false);
+		}
+		
+
+		if (empty(Trim(dados.cpf.value))) {
+			alert("O CPF é um campo obrigatório!");
+			return (false);
+		}
+		
+		
+		if (empty(Trim(dados.senha.value))) {
+			alert("A senha é um campo obrigatório!");
+			return (false);
+		}
+		
+		if (empty(Trim(dados.confirmacaoSenha.value))) {
+			alert("A confirmação da senha é um campo obrigatório!");
+			return (false);
+		}
+		
+		
+		
+		
+		
+		
+		
+	
+	
+		return (true);
+	}
+	
+</script>
 
 </head>
 
@@ -28,7 +105,7 @@ xmlns:buscaprofissa="http://buscaprofissa.com.br"
             
           
               </div>
-            <form class="m-t" role="form" method="POST" th:action="@{/recuperarSenha}" th:object="${usuario}">
+            <form class="m-t" role="form" method="POST" th:action="@{/recuperarSenha}" onsubmit="return(verifica(this))" th:object="${usuario}">
             <buscaprofissa:message/>
                 <div class="form-group">
                     <input type="text" id="email" class="form-control" th:field="*{email}" placeholder="E-mail">
@@ -41,16 +118,17 @@ xmlns:buscaprofissa="http://buscaprofissa.com.br"
                  <div class="form-group">
                     <input type="password" id="senha" class="form-control" th:field="*{senha}" placeholder="Nova senha">
                 </div>
-               
+                 <div class="form-group">
+                    <input type="password" class="form-control" th:field="*{confirmacaoSenha}"  placeholder="Confirmação de senha" id="">
+                </div>
+                
+                 
                 
                 <button type="submit" class="btn btn-primary block full-width m-b">Recuperar</button>
 
-				
-                <p class="text-muted text-center text-busca"><small>Não tem uma conta?</small></p>
                
                 <a class="btn btn-blue block full-width m-b" th:href="@{/cadastro}">Criar uma conta</a>
                 
-                 <p class="text-muted text-center text-busca"><small>Esqueceu a senha?</small></p>
                    <a class="btn btn-blue block full-width m-b" th:href="@{/recuperarSenha}">Recuperar senha</a>
             </form>
         </div>
