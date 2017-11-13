@@ -1,5 +1,6 @@
 package br.com.buscaprofissa.config;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,8 +12,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 import br.com.buscaprofissa.security.AppUserDetailsService;
 
@@ -28,7 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 
 	}
-
+	
+	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring()
@@ -42,8 +45,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/buscar/**")
 		.antMatchers("http://localhost:9090/buscaprofissa/fotos/**")
 		.antMatchers("/novaSenha")
-		.antMatchers("ws://localhost:9090/buscaprofissa/chat/**")
 		.antMatchers("/recuperarSenha")
+		.antMatchers("/sobre")
+		.antMatchers("/RecuperarSenhaCodigo")
 		.antMatchers("/cadastro");
 	}
 
@@ -59,16 +63,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 		.and()
-	.exceptionHandling().accessDeniedPage("/403")
+	.exceptionHandling().accessDeniedPage("/500")
 	.and()
 	.sessionManagement()
 	.maximumSessions(1)
 	.expiredUrl("/login");
+		
+	CharacterEncodingFilter filter = new CharacterEncodingFilter();
+	filter.setEncoding("UTF-8"); 
+	filter.setForceEncoding(true); 
+	http.addFilterBefore(filter, CsrfFilter.class);
 	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-
+	
+	
 }

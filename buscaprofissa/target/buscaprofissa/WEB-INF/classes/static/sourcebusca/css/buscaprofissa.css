@@ -1,0 +1,83 @@
+
+.container-areas{
+	
+	width: calc(100%);
+	align:center;
+	margin: auto;
+	margin-right: 500px;
+	margin-top: 50px;
+	background-color: white;
+	
+}
+
+.container-pesquisa{
+	margin-top: 600px;
+}
+
+#conteudoCategorias{
+	background-color: #F3F3F4;
+}
+
+.barraSuperior{
+	background-color: graytext;
+}
+
+.ulbarra{
+	margin-left: 0px;
+}
+
+
+.form-cadastro-inicial{
+	margin-top:190px;
+	width: 300px;
+	align:center;
+	height: 500px;
+	margin-bottom: 50px;
+	
+}
+
+.bp-required > .control-label:after {
+	content: "*";
+}
+
+.label-perfil{
+	font-family: verdana;
+}
+
+.form-login{
+	margin-top:190px;
+	width: 300px;
+	align:center;
+	height: 400px;
+}
+
+.rodape{
+	margin-top: 100px;
+	height: 100px;
+}
+
+.bp-glyphicon-large{
+	font-size: 18px;
+}
+
+td{
+	font-size: 15px;
+}
+
+.bp-field-action__icon{
+	margin: 6px 0 0 5px;
+}
+
+.text-busca{
+	font-family: arial;
+	font-weight: 400;
+}
+
+.conteudoMeio{
+	background-color: #F3F3F4;
+}
+
+
+
+
+

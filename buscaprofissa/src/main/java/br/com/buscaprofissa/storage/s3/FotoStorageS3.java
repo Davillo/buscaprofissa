@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -89,6 +90,7 @@ public class FotoStorageS3 implements FotoStorage {
 		return metadata;
 		}*/
 
+	
 	private void enviarThumbnail(String novoNome, MultipartFile arquivo, AccessControlList acl)	throws IOException {
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		Thumbnails.of(arquivo.getInputStream()).size(160, 160).toOutputStream(os);

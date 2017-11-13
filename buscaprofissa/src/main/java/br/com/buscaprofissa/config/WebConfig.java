@@ -55,6 +55,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
 		resolver.setTemplateEngine(templateEngine());
 		resolver.setCharacterEncoding("UTF-8");
+	
 		return resolver;
 	}
 
@@ -101,11 +102,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		conversionService.addConverter(new CidadeConverter());
 		conversionService.addConverter(new AreaAtuacaoConverter());
 		
-		//API JAVA 8 de DATAS
-		
-		DateTimeFormatterRegistrar dateTimeFormatter = new DateTimeFormatterRegistrar();
-		dateTimeFormatter.setDateFormatter(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-		dateTimeFormatter.registerFormatters(conversionService);
+	
 		
 		return conversionService;
 	}

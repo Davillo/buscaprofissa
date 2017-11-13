@@ -23,7 +23,7 @@ public class Mailer {
 			mensagem.setFrom("startupinnovatech@gmail.com");
 			mensagem.setTo(usuario.getEmail());
 			mensagem.setSubject("Solicitação de serviço no BuscaProfissa!");
-			mensagem.setText("Olá , " + usuario.getNome() + " o usuário "+usuarioLogado.getUsuario().getNome()+ " Solicita um serviço! \n"
+			mensagem.setText("Olá , " + usuario.getNome() + " o usuário "+usuarioLogado.getUsuario().getNome()+ " Solicita um serviço!"+"Acesse o link : www.buscaprofissa.net.br/buscaprofissa/login para aceitar ou recusar a solicitação."
 	
 					);
 			mailSender.send(mensagem);
@@ -54,5 +54,17 @@ public class Mailer {
 					);
 			mailSender.send(mensagem);
 	}
+	
+	
+	@Async
+	public void solicitarTrocaSenha(Usuario usuario) {
+			SimpleMailMessage mensagem = new SimpleMailMessage();
+			mensagem.setFrom("startupinnovatech@gmail.com");
+			mensagem.setTo(usuario.getEmail());
+			mensagem.setSubject("Troca de senha no BuscaProfissa!");
+			mensagem.setText("Seu código para troca de senha é : "+ usuario.getCodigo()+" informe na troca de senha para conseguir alterá-la!");
+			mailSender.send(mensagem);
+	}
+	
 	
 }

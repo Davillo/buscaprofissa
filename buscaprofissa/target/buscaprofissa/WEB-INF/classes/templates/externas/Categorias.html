@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/externo/Padrao">
+<head>
+
+
+
+<title>BuscaProfissa-Categorias</title>
+
+      
+
+</head>
+
+
+<div layout:fragment="conteudo" id="conteudoCategorias">
+
+
+	<!-- begin -->
+	<section class="py-5">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-auto container-areas">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>
+								BuscaProfissa -<small> Áreas de Atuação</small>
+							</h5>
+						</div>
+						<div class="ibox-content">
+
+							<div class="row">
+								<div class="col-lg-2">
+									<div class="panel panel-default">
+										<div class="panel-body text-center">
+											<a href="#assistencia" data-toggle="tooltip"
+												data-placement="right" title="Assistência técnica"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
+												th:src="@{images/categorias/assistenciatecnica.png}" /></a>
+										</div>
+
+									</div>
+								</div>
+								<div class="col-lg-2">
+									<div class="panel panel-default">
+										<div class="panel-body text-center">
+											<a href="#aulas" data-toggle="tooltip" data-placement="right"
+												title="Aulas"> <img vspace="15px" hspace="15px"
+												width="100px" height="100px"
+												th:src="@{images/categorias/aulas.png}" />
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-2">
+									<div class="panel panel-default">
+										<div class="panel-body text-center">
+											<a href="#automovel" data-toggle="tooltip"
+												data-placement="right" title="Automóvel"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
+												th:src="@{images/categorias/autos.png}" />
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-2">
+									<div class="panel panel-default">
+										<div class="panel-body text-center">
+											<a href="#construcao" data-toggle="tooltip"
+												data-placement="right" title="Construção e reforma"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
+												th:src="@{images/categorias/construcaoereforma.png}" />
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-2">
+									<div class="panel panel-default">
+										<div class="panel-body text-center">
+											<a href="#colsultoria" data-toggle="tooltip"
+												data-placement="right" title="Consultoria e Projetos"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
+												th:src="@{images/categorias/consultoriaeprojetos.png}" />
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-2">
+									<div class="panel panel-default">
+										<div class="panel-body text-center">
+											<a href="#esporte" data-toggle="tooltip"
+												data-placement="right" title="Esportes"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
+												th:src="@{images/categorias/esportes.png}" />
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-2">
+									<div class="panel panel-default">
+										<div class="panel-body text-center">
+											<a href="#eventos" data-toggle="tooltip"
+												data-placement="right" title="Eventos"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
+												th:src="@{images/categorias/eventos.png}" />
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-2">
+									<div class="panel panel-default">
+										<div class="panel-body text-center">
+											<a href="#fotografia" data-toggle="tooltip"
+												data-placement="right" title="Fotografia"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
+												th:src="@{images/categorias/fotografia.png}" />
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-2">
+									<div class="panel panel-default">
+
+										<div class="panel-body text-center">
+											<a href="#modaebeleza" data-toggle="tooltip"
+												data-placement="right" title="Moda e Beleza"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
+												th:src="@{images/categorias/modaebeleza.png}" />
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-2">
+									<div class="panel panel-default">
+
+										<div class="panel-body text-center">
+											<a href="#saude" data-toggle="tooltip" data-placement="right"
+												title="Saúde"> <img vspace="15px" hspace="15px"
+												width="100px" height="100px"
+												th:src="@{images/categorias/saude.png}" />
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-2">
+									<div class="panel panel-default">
+
+										<div class="panel-body text-center">
+											<a href="#domesticos" data-toggle="tooltip"
+												data-placement="right" title="Serviços Domésticos"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
+												th:src="@{images/categorias/servicosdomesticos.png}" />
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-2">
+									<div class="panel panel-default">
+
+										<div class="panel-body text-center">
+											<a href="#tecnologia" data-toggle="tooltip"
+												data-placement="right" title="Tecnologia"> <img
+												vspace="15px" hspace="15px" width="100px" height="100px"
+												th:src="@{images/categorias/tecnologia.png}" />
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</section>
+	<!-- end -->
+	<div class="container-fluid mt-30 ibox-content">
+		<div class=" container mt-30">
+			<div class="row">
+				<div class="ibox-title col-lg-12">
+					<h3 id="assistencia" style="text-align: center">Assistência
+						Técnica</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Alarmes / CFTV (42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Aquecedor (5)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Ar Condicionado (40)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Cerva Elétrica (42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">DVD / Blue-ray (42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Forno Elétrico (42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Impressora(42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Lava Roupa(42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Micro-ondas (42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Servidores Linux / Windows (42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Televisão(42)</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Antena (4)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Aquecimento Solar (2)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Camera Foto / Filmadora (4)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Computador Desktop (42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Filtro de Agua (42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Geladeira / Freezer / Frigobar
+							(42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Infraestrutura de Redes (42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Liquidificador / Processador de
+							Alimentos(42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Notebook / Laptop(42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Tablet(42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Video Game(42)</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Aparelho de som (6)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Alarmes / CFTV (42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Celular (27)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Cortina e Persiana (42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Fogão / Cooktop (42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Home Theater(42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Lava Louça (42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Maquina de Costura (42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Seca Roupa (42)</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Telefonia PABX (42)</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class=" container mt-30">
+
+
+			<div class="row">
+				<div class="ibox-title col-lg-12">
+					<h3 id="aulas" style="text-align: center">Aulas</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Artes </a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Dança</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Idiomas </a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Programação</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Concursos</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Ensino Fundamental</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Informática Básica</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Tatuagem</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Culinaria</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Ensino Médio </a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Música</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class=" container mt-30">
+			<div class="row">
+				<div class="ibox-title col-lg-12">
+					<h3 id="automovel" style="text-align: center">Automóvel</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Alarmes - Veículos</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Funilaria / Pintura</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Mecânico</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Ar Condicionado</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Guincheiro / Reboque de
+							Veiculos</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Som Automotivo</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Auto Escola</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Lavador</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Troca de Óleo</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class=" container mt-30">
+
+			<div class="row">
+				<div class="ibox-title col-lg-12">
+					<h3 id="construcao" style="text-align: center">Construção e
+						Reforma</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Arquiteto</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Encanador</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Jardinagem</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Montador de Móveis</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Pedreiro</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Serralheiro</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Vidraceiro</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Carpinteiro</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Gesseiro</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Marceneiro</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Mudanças/Carretos</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Pintor</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Soldador</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Eletricista</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Impermeabilizador</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Mestre de Obras</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Paisagista</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Restarador de Móveis</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Toldos</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class=" container mt-30">
+
+
+			<div class="row">
+				<div class="ibox-title col-lg-12">
+					<h3 id="category-5" style="text-align: center">Design e
+						Tecnologia</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Analista de T.I</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Edição de Audio e Video</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Materias Promocionais</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Programador</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Criação de Web Site</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Edição de Fotos</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Modelagem 2D / 3D</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Web Design</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Designer de Imóveis</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Markting Digital</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Produção de Conteúdo</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class=" container mt-30">
+
+
+			<div class="row">
+				<div class="ibox-title col-lg-12">
+					<h3 id="esporte" style="text-align: center">Esporte</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Artes Marciais</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Futebol</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Skate</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Vôlei</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Basquete</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Natação</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Surfe</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Crossfit</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Personal Trainer</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Tênis</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class=" container mt-30">
+			<div class="row">
+				<div class="ibox-title col-lg-12">
+					<h3 id="eventos" style="text-align: center">Eventos</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Artista Circense</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Cerimonialista</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">DJ</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Garcom/Copeiro</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Recepcionista</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Bandas</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Churrasqueiro</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Doce e Confeitaria</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Produtor</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Segurança</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Buffet</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Decorador</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Filmagem</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Promotor</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class=" container mt-30">
+			<div class="row">
+				<div class="ibox-title col-lg-12">
+					<h3 id="modaebeleza" style="text-align: center">Moda e Beleza</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Alfaiate</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Costureira</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Manicure</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Pedicure</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Barbeiro</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Depilação</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Maquiador</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Cabeleireira</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Esteticista</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Modelista</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class=" container mt-30">
+			<div class="row">
+				<div class="ibox-title col-lg-12">
+					<h3 id="saude" style="text-align: center">Saúde</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Acompanhante de Idoso</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Enfermeiro</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Massagem</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Obstetra</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Yoga</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Acupuntura</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Fisioterapeuta</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Meditação</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Pilates</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Dentista</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Fonoaudioólogo</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Nutricionista</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Psicologo</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class=" container mt-30">
+
+
+			<div class="row">
+				<div class="ibox-title col-lg-12">
+					<h3 id="domesticos" style="text-align: center">Serviços
+						Domesticos</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Adestrador</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Banho e Tosa - Animais</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Copeiro</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Dedetizador</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Lavadeira</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Veterinario</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Auto Escola - Instrutor</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Caseiro</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Cozinheiro</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Diarista</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Motoboy</a>
+					</div>
+				</div>
+				<div class="ibox-content col-lg-4">
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Babá</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Chaveiro</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Cuidador de Cães</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Guarda-Costas</a>
+					</div>
+					<div class="alert alert-info">
+						<a class="alert-link" href="#">Motorista Particular</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</html>

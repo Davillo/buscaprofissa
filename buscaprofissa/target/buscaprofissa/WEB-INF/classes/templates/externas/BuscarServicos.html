@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/externo/Padrao"
+	xmlns:buscaprofissa="http://buscaprofissa.com.br">
+<head>
+
+
+
+<title>BuscaProfissa-Buscar Serviços</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+</head>
+
+
+<div layout:fragment="conteudo" id="conteudoCategorias">
+
+
+	<!-- begin -->
+	<section class="py-5">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-auto container-areas">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>
+								BuscaProfissa -<small> Buscar Profissionais</small>
+							</h5>
+						</div>
+						<div class="ibox-content">
+
+							<div class="container-fluid">
+								<form method="GET" class="form-vertical"
+									th:object="${usuarioFilter}">
+									<div class="row">
+
+										<div class="form-group col-sm-4">
+											<select id="area" class="form-control"
+												th:field="*{areaAtuacao}">
+												<option value="">Selecione a Área de Atuação</option>
+												<option th:each="area : ${areas}" th:text="${area.nome}"
+													th:value="${area.id}"></option>
+											</select>
+
+										</div>
+
+										<div class="form-group col-sm-4">
+											<select id="categoria" class="form-control"
+												th:field="*{categoria}">
+												<option value="">Selecione a categoria</option>
+												<option th:each="categoria : ${categorias}"
+													th:text="${categoria.nome}" th:value="${categoria.id}"></option>
+											</select>
+
+										</div>
+
+										<div class="form-group col-sm-4">
+											<select id="categoria" class="form-control"
+												th:field="*{cidade}">
+												<option value="">Selecione a Cidade</option>
+												<option th:each="cidade : ${cidades}"
+													th:text="${cidade.nome}" th:value="${cidade.id}"></option>
+											</select>
+
+										</div>
+
+									</div>
+
+									<button type="submit" class="btn  btn-primary">Pesquisar</button>
+								</form>
+								<hr>
+								<div style="overflow-x: auto">
+									<table class="table  table-hover">
+										<thead>
+											<tr>
+												<th class="text-center">Profissionais</th>
+												<th class="text-center">Nome</th>
+												<th class="text-center"><a
+													th:href="${pagina.urlOrdenada('pontuacao')}"
+													th:remove="${pagina.vazia} ? tag"> <span>Pontuação</span>
+														<span class="dropup"
+														th:remove="${pagina.descendente('pontuacao')} ? tag"
+														th:if="${pagina.ordenada('pontuacao')}"> <span
+															class="caret"></span>
+													</span>
+												</a> <i class="fa fa-star"></i></th>
+												<th class="text-center">Descrição</th>
+												<th class="text-center">Perfil<i class="fa fa-user"></i></th>
+
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr th:each="usuario : ${pagina.conteudo}">
+
+												<td class="text-center"><img
+													th:src="${usuario.fotoOuMock}" class="img-circle" /></td>
+
+
+												<td th:text="|${usuario.nome} ${usuario.sobrenome}|"
+													class="text-center"></td>
+
+												<td th:text="|${usuario.pontuacao} Pontos|" class="text-center"></td>
+
+												<td class="text-center"
+													th:text="${usuario.descricaoProfissional}"></td>
+
+												<td class="text-center"><a
+													th:href="@{/verPerfil/{id}(id=${usuario.id})}"><button
+															type="button" class="btn btn-primary">VER PERFIL</button></a></td>
+											<tr th:if="${pagina.vazia}">
+												<td colspan="5">Nenhum profissional encontrado</td>
+											</tr>
+										</tbody>
+
+
+									</table>
+
+
+									<nav th:if="${not pagina.vazia}" align="center">
+										<ul class="pagination  pagination-sm"
+											th:with="paginaAtual=${pagina.atual}">
+											<li th:class="${pagina.primeira} ? disabled"><a
+												th:href="${pagina.urlParaPagina(paginaAtual - 1)}"
+												th:remove="${pagina.primeira} ? tag"><span>&laquo;</span></a></li>
+											<th:block th:each="p : ${#numbers.sequence(1, pagina.total)}"
+												th:with="numeroPagina=${p - 1}">
+												<li th:class="${paginaAtual == numeroPagina} ? active"><a
+													th:href="${pagina.urlParaPagina(numeroPagina)}">[[${p}]]</a></li>
+											</th:block>
+
+											<li th:class="${pagina.ultima} ? disabled"><a
+												th:href="${pagina.urlParaPagina(paginaAtual + 1)}"
+												th:remove="${pagina.ultima} ? tag"><span>&raquo;</span></a></li>
+										</ul>
+									</nav>
+
+								</div>
+
+							</div>
+
+
+						</div>
+
+
+
+
+					</div>
+
+
+				</div>
+
+			</div>
+
+
+
+		</div>
+
+
+	</section>
+
+
+</div>
+
+
+</html>

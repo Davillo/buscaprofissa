@@ -23,6 +23,12 @@ public class IndexController {
 		return mv;
 	}
 	
+	@RequestMapping("/sobre")
+	public ModelAndView sobre(UsuarioFilter usuarioFilter , BindingResult result) {
+		ModelAndView mv = new ModelAndView("externas/Sobre");
+		return mv;
+	}
+	
 	
 	
 	

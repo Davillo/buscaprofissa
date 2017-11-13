@@ -2,6 +2,8 @@ package br.com.buscaprofissa.controller;
 
 
 
+import java.util.UUID;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +32,6 @@ import br.com.buscaprofissa.repository.filter.UsuarioFilter;
 import br.com.buscaprofissa.security.UsuarioLogado;
 import br.com.buscaprofissa.service.CadastroServicoService;
 import br.com.buscaprofissa.service.CadastroUsuarioService;
-import br.com.buscaprofissa.service.exception.CpfInvalidoException;
 import br.com.buscaprofissa.service.exception.EmailUsuarioJaCadastradoException;
 import br.com.buscaprofissa.service.exception.ErroEnviandoEmailException;
 import br.com.buscaprofissa.service.exception.SenhaEConfirmacaoDiferentesException;
@@ -85,6 +86,7 @@ public final class UsuarioController {
 		
 			usuario.setAtivo(true);
 			usuario.setPontuacao(Long.valueOf(0));
+			usuario.setCodigo(UUID.randomUUID().toString());
 			service.salvar(usuario);
 			
 		}catch (EmailUsuarioJaCadastradoException e) {
@@ -103,7 +105,7 @@ public final class UsuarioController {
 	
 	@RequestMapping("/meusdados")
 	public ModelAndView meusdados(@AuthenticationPrincipal UsuarioLogado usuario,
-			UsuarioFilter usuarioFilter){
+			UsuarioFilter usuarioFilter, Usuario us){
 		Usuario user = usuario.getUsuario();
 		ModelAndView mv = new ModelAndView("internas/MeusDados");
 		mv.addObject("usuario", user);
@@ -120,17 +122,19 @@ public final class UsuarioController {
 	
 
 	@PostMapping("/meusdadosSave")
-	public ModelAndView salvarDados(@AuthenticationPrincipal UsuarioLogado user,Usuario  usuario, BindingResult result,UsuarioFilter usuarioFilter ,RedirectAttributes attributes){
+	public ModelAndView salvarDados(@AuthenticationPrincipal UsuarioLogado user
+			,@Valid Usuario  usuario, BindingResult result,UsuarioFilter usuarioFilter
+			,RedirectAttributes attributes){
 
 		if(result.hasErrors()){
-			return new ModelAndView("redirect:/meusdados");
-			
+			return meusdados(user, usuarioFilter,usuario);
 		}
 		
 		try{
 			
 			usuario.setPontuacao(user.getUsuario().getPontuacao());
 			usuario.setAtivo(true);
+			usuario.setCodigo(user.getUsuario().getCodigo());
 			usuario.setFoto(usuario.getFoto());
 			usuario.setContentType(usuario.getContentType());
 			
@@ -138,8 +142,9 @@ public final class UsuarioController {
 			
 			service.atualizar(usuario);
 			attributes.addFlashAttribute("mensagem", "Salvo com sucesso!");
-		} catch(CpfInvalidoException e) {
-			result.rejectValue("cpf", e.getMessage(), e.getMessage());
+		} catch(RuntimeException e) {
+			throw new RuntimeException();
+			
 		}
 		
 		

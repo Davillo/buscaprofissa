@@ -1,6 +1,7 @@
 package br.com.buscaprofissa.model;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -13,9 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.br.CPF;
+import org.hibernate.validator.constraints.Length;
 import org.thymeleaf.util.StringUtils;
 
 
@@ -38,7 +41,19 @@ public class Usuario implements Serializable{
 	//@NotBlank(message = "O sobrenome é obrigatório!")
 	private String sobrenome;
 	
-	@CPF(message = "Informe um CPF válido")
+	private String codigo;
+	
+	
+	
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+
 	private String cpf;
 	
 	@Email(message = "Informe um e-mail válido")
@@ -46,6 +61,7 @@ public class Usuario implements Serializable{
 	private String email;
 	
 	//@NotBlank(message = "A senha é obrigatória!")
+	@Size(min = 8, message = "Tamanho mínimo da senha deve ser 8 caracteres")
 	private String senha;
 	
 	@Transient

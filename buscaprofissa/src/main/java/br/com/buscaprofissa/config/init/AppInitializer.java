@@ -1,12 +1,12 @@
 package br.com.buscaprofissa.config.init;
 
 import javax.servlet.Filter;
+import javax.servlet.FilterRegistration;
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration.Dynamic;
 
-import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HttpPutFormContentFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -30,13 +30,10 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	protected Class<?>[] getServletConfigClasses() {
 		return new Class<?>[]{WebConfig.class,MailConfig.class};
 	}
-
 	@Override
 	protected Filter[] getServletFilters() {
 		HttpPutFormContentFilter httpPutFormContentFilter = new HttpPutFormContentFilter();
-	
-		return new Filter[] {httpPutFormContentFilter};
-		
+        return new Filter[] { httpPutFormContentFilter };
 	}
 	
 	@Override
@@ -49,6 +46,8 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 		registration.setMultipartConfig(new MultipartConfigElement(""));				
 	}
 	
+
 	
+
 
 }

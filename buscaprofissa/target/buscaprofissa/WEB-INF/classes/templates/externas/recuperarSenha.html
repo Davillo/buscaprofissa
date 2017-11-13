@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="layout/externo/Padrao"
+xmlns:buscaprofissa="http://buscaprofissa.com.br"
+>
+
+<head>
+
+
+    <title>BuscaProfissa | Recuperação de senha</title>
+
+
+  
+  <script>
+
+  function validarCPF(cpf) {  
+	    cpf = cpf.replace(/[^\d]+/g,'');    
+	    if(cpf == '') return false; 
+	    // Elimina CPFs invalidos conhecidos    
+	    if (cpf.length != 11 || 
+	        cpf == "00000000000" || 
+	        cpf == "11111111111" || 
+	        cpf == "22222222222" || 
+	        cpf == "33333333333" || 
+	        cpf == "44444444444" || 
+	        cpf == "55555555555" || 
+	        cpf == "66666666666" || 
+	        cpf == "77777777777" || 
+	        cpf == "88888888888" || 
+	        cpf == "99999999999")
+	            return false;       
+	    // Valida 1o digito 
+	    add = 0;    
+	    for (i=0; i < 9; i ++)       
+	        add += parseInt(cpf.charAt(i)) * (10 - i);  
+	        rev = 11 - (add % 11);  
+	        if (rev == 10 || rev == 11)     
+	            rev = 0;    
+	        if (rev != parseInt(cpf.charAt(9)))     
+	            return false;       
+	    // Valida 2o digito 
+	    add = 0;    
+	    for (i = 0; i < 10; i ++)        
+	        add += parseInt(cpf.charAt(i)) * (11 - i);  
+	    rev = 11 - (add % 11);  
+	    if (rev == 10 || rev == 11) 
+	        rev = 0;    
+	    if (rev != parseInt(cpf.charAt(10)))
+	        return false;       
+	    return true;   
+	}
+  
+  
+function Trim(str){
+	return str.replace(/^\s+|\s+$/g,"");
+}
+
+function empty( val ) {
+
+        if (val === undefined)
+        return true;
+
+    if (typeof (val) == 'function' || typeof (val) == 'number' || typeof (val) == 'boolean' || Object.prototype.toString.call(val) === '[object Date]')
+        return false;
+
+    if (val == null || val.length === 0)       
+        return true;
+
+    if (typeof (val) == "object") {
+       
+
+        var r = true;
+
+        for (var f in val)
+            r = false;
+
+        return r;
+    }
+
+    return false;
+}
+		
+	function desativar() {
+		alert('Conta desativada!');
+	}
+
+	
+	function verifica(dados) {
+		
+	
+		
+		
+	
+	
+		if (empty(Trim(dados.email.value))) {
+			alert("O email é um campo obrigatório!");
+			return (false);
+		}
+		
+
+		if (empty(Trim(dados.cpf.value))) {
+			alert("O CPF é um campo obrigatório!");
+			return (false);
+		}
+		
+		
+		if (empty(Trim(dados.senha.value))) {
+			alert("A senha é um campo obrigatório!");
+			return (false);
+		}
+		
+		if (empty(Trim(dados.confirmacaoSenha.value))) {
+			alert("A confirmação da senha é um campo obrigatório!");
+			return (false);
+		}
+		
+		
+		var cpf = Trim(dados.cpf.value);
+		
+		
+		if(validarCPF(cpf) == false){
+			alert("Cpf inválido!!");
+			return (false);
+		}
+		
+		
+		
+		
+	
+	
+		return (true);
+	}
+	
+</script>
+
+</head>
+
+	<div layout:fragment="conteudo" align="center" id="containerCentro">
+    <div class="form-control conteudoMeio">
+        <div class="form-login">
+          
+          
+          <div class="text-busca">	
+            <h3>Recuperação de senha</h3>
+           
+          
+            
+            
+          
+              </div>
+            <form class="m-t" role="form" method="POST" th:action="@{/recuperarSenha}" onsubmit="return(verifica(this))" th:object="${usuario}">
+            <buscaprofissa:message/>
+                <div class="form-group">
+                    <input type="text" id="email" class="form-control" th:field="*{email}" placeholder="E-mail">
+                </div>
+                
+                 <div class="form-group">
+                    <input type="text" id="cpf" class="form-control" th:field="*{cpf}" data-mask="000.000.000-00" placeholder="CPF">
+                </div>
+                
+                 <div class="form-group">
+                    <input type="password" id="senha" class="form-control" th:field="*{senha}" placeholder="Nova senha">
+                </div>
+                 <div class="form-group">
+                    <input type="password" class="form-control" th:field="*{confirmacaoSenha}"  placeholder="Confirmação de senha" id="">
+                </div>
+                
+                 
+                
+                <button type="submit" class="btn btn-primary block full-width m-b">Recuperar</button>
+
+               
+                <a class="btn btn-blue block full-width m-b" th:href="@{/cadastro}">Criar uma conta</a>
+                
+                   <a class="btn btn-blue block full-width m-b" th:href="@{/recuperarSenha}">Recuperar senha</a>
+            </form>
+        </div>
+    </div>
+	</div>
+	
+
+
+</html>

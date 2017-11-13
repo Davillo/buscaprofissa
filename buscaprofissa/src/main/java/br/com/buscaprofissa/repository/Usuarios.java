@@ -12,6 +12,7 @@ import br.com.buscaprofissa.repository.helper.usuario.UsuariosQueries;
 public interface Usuarios extends JpaRepository<Usuario, Long>, UsuariosQueries {
 
 	public Optional<Usuario> findByEmailIgnoreCase(String email);
-	public Usuario findByEmailAndCpf(String email,String cnpj);
+	public Usuario findByEmail(String email);
+	public Usuario findByCodigo(String codigo);
 	
 }

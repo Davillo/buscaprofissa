@@ -1,53 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorate="layout/externo/Padrao">
+	layout:decorate="layout/externo/Padrao">
 
 <head>
 
 
-    <title>BuscaProfissa | Login</title>
+<title>BuscaProfissa | Login</title>
 
-  
+
 
 </head>
 
-	<div layout:fragment="conteudo" align="center" id="containerCentro">
-    <div class="form-control conteudoMeio">
-        <div class="form-login">
-          
-          
-          <div class="text-busca">	
-            <h3>Bem-vindo ao BuscaProfissa</h3>
-            <p>Faça seu login e busque profissionais capacitados ou divulgue seu serviço  
-            </p>
-          
-            
-            
-            <p th:if="${#bools.isTrue(param.error)}">
-            <font color="red">E-mail ou Senha incorretos!</font>
-            </p>
-              </div>
-            <form class="m-t" role="form" method="POST" th:action="@{/login}">
-                <div class="form-group">
-                    <input type="text" id="email" class="form-control" name="username" placeholder="E-mail">
-                </div>
-                <div class="form-group">
-                    <input type="password" id="senha" class="form-control" name="password" placeholder="Senha">
-                </div>
-                
-                <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+<div layout:fragment="conteudo" align="center" id="containerCentro">
+	<div class="form-control conteudoMeio">
+		<div class="form-login">
 
-				
-               
-                <a class="btn btn-blue block full-width m-b" th:href="@{/cadastro}">Criar uma conta</a>
-                
-                   <a class="btn btn-blue block full-width m-b" th:href="@{/recuperarSenha}">Recuperar senha</a>
-            </form>
-        </div>
-    </div>
+
+			<div class="text-busca">
+				<h3>Bem-vindo ao BuscaProfissa</h3>
+				<p>Faça seu login e busque profissionais capacitados ou divulgue
+					seu serviço</p>
+
+				<div class="alert  alert-success  alert-dismissible" role="alert"
+					th:if="${not #strings.isEmpty(mensagem)}" th:fragment="alert">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+
+					<span th:text="${mensagem}"></span>
+				</div>
+
+				<p th:if="${#bools.isTrue(param.error)}">
+					<font color="red">E-mail ou Senha incorretos!</font>
+				</p>
+			</div>
+			<form class="m-t" role="form" method="POST" th:action="@{/login}">
+				<div class="form-group">
+					<input type="text" id="email" class="form-control" name="username"
+						placeholder="E-mail">
+				</div>
+				<div class="form-group">
+					<input type="password" id="senha" class="form-control"
+						name="password" placeholder="Senha">
+				</div>
+
+				<button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+
+
+				<a class="btn btn-blue block full-width m-b" th:href="@{/cadastro}">Criar
+					uma conta</a> <a class="btn btn-blue block full-width m-b"
+					th:href="@{/recuperarSenha}">Recuperar senha</a>
+			</form>
+		</div>
 	</div>
-	
+</div>
+
 
 
 </html>

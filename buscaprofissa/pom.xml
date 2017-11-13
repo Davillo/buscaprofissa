@@ -85,8 +85,11 @@
 				</configuration>
 			</plugin>
 			
-		
 		</plugins>
+		
+		
+   <finalName>buscaprofissa</finalName>
+
 	</build>
 
 	<dependencyManagement>

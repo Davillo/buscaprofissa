@@ -5,7 +5,8 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" th:href="@{/images/favicon.png}" />
 <title>BuscaProfissa | Solicitações</title>
@@ -36,7 +37,7 @@
 										class="font-bold"></strong>
 								</span> <span class="text-muted text-xs block"> <img
 										th:src="@{${#authentication.principal.usuario.fotoOuMock}}"
-										class="img-circle" />
+										class="img-thumbnail img-responsive" />
 								</span>
 							</span>
 							</a>
@@ -179,16 +180,19 @@
 
 
 													<td class="text-center" th:text="${servico.nomeCliente}"></td>
-													<td class="text-center"><a class="btn btn-link btn-xs"
+													<td class="text-center"><a class="btn btn-sm btn-danger"
 														data-toggle="modal" title="Recusar" rel="tooltip"
 														data-placement="top"
 														th:href="@{/solicitacoes/recusar/{id}(id=${servico.id})}">
-															<span class="glyphicon glyphicon-remove"></span>
-													</a> <a class="btn btn-link btn-xs"
+															<!-- <span class="glyphicon glyphicon-remove"></span> -->
+														Recusar
+														<i class="glyphicon glyphicon-remove"></i>
+													</a> <a class="btn btn-sm btn-success"
 														th:href="@{/solicitacoes/aceitar/{id}(id=${servico.id})}"
 														title="Aceitar" rel="tooltip" data-placement="top">
 
-															<span class="glyphicon glyphicon-check"></span>
+															Aceitar<!-- <span class="glyphicon glyphicon-check"></span> -->
+																<i class="glyphicon glyphicon-ok"></i>
 													</a></td>
 													<td class="text-center"><span class="label"
 														th:text="${servico.status.descricao}"
