@@ -1,18 +1,24 @@
 package br.com.buscaprofissa.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.buscaprofissa.repository.filter.UsuarioFilter;
+import br.com.buscaprofissa.security.UsuarioLogado;
 
 @Controller
 public class IndexController {
 	
 	@RequestMapping("/index")
-	public ModelAndView index(UsuarioFilter usuarioFilter , BindingResult result){
+	public ModelAndView index(UsuarioFilter usuarioFilter , BindingResult result, @AuthenticationPrincipal UsuarioLogado usuario){
+		
 		ModelAndView mv = new ModelAndView("externas/Index");
+		
+		
+		
 		return mv;
 		
 	}
