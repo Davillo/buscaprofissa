@@ -111,6 +111,10 @@ public class LoginController {
 	public ModelAndView alterarSenha(Usuario usuario,RedirectAttributes attributes, BindingResult result, UsuarioFilter usuarioFilter) {
 		ModelAndView mv = new ModelAndView("externas/RecuperarSenhaCodigo");
 		
+		if(usuario.getSenha().length()<8){
+			attributes.addFlashAttribute("mensagemErro", "A senha deve ter pelo menos 8 caracteres!");
+			return new ModelAndView("redirect:/RecuperarSenhaCodigo");
+		}
 		Usuario user = usuarios.findByCodigo(usuario.getCodigo());
 		
 		if(user == null) {
@@ -126,7 +130,7 @@ public class LoginController {
 		
 		
 		
-		return new ModelAndView("redirect:/RecuperarSenhaCodigo");
+		return new ModelAndView("redirect:/login");
 		
 		
 		
