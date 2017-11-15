@@ -56,28 +56,28 @@ function empty( val ) {
 		
 		
 		if (empty(Trim(dados.nome.value))) {
-			alert("O nome é um campo obrigatório!");
+			alert("O nome deve ser informado!");
 			return (false);
 		}
 		
 		if (empty(Trim(dados.sobrenome.value))) {
-			alert("O sobrenome é um campo obrigatório!");
+			alert("O sobrenome deve ser informado!");
 			return (false);
 		}
 		
 	
 		if (empty(Trim(dados.email.value))) {
-			alert("O email é um campo obrigatório!");
+			alert("O email deve ser informado!");
 			return (false);
 		}
 		
 		if (empty(Trim(dados.senha.value))) {
-			alert("A senha é um campo obrigatório!");
+			alert("A senha deve ser informada!");
 			return (false);
 		}
 		
 		if (empty(Trim(dados.confirmacaoSenha.value))) {
-			alert("A confirmação da senha é um campo obrigatório!");
+			alert("A senha deve ser confirmada!");
 			return (false);
 		}
 		
@@ -95,7 +95,7 @@ function empty( val ) {
     <div class="form-control conteudoMeio">
         <div class="form-cadastro-inicial">
            
-            <h3>Cadastro de novo usuário</h3>
+            <h3>Novo Cadastro</h3>
             	
 				
             <form class="m-t" role="form" th:action="@{/cadastro}" onsubmit="return(verifica(this))" id="cadastro" method="POST" th:object="${usuario}">

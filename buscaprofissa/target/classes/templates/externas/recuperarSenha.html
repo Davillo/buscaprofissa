@@ -8,7 +8,7 @@ xmlns:buscaprofissa="http://buscaprofissa.com.br"
 <head>
 
 
-    <title>BuscaProfissa | Recuperação de senha</title>
+    <title>BuscaProfissa | Recuperar senha</title>
 
 
   
@@ -51,7 +51,7 @@ function empty( val ) {
 		
 	
 		if (empty(Trim(dados.email.value))) {
-			alert("O email é um campo obrigatório!");
+			alert("O email deve ser informado!");
 			return (false);
 		}
 		
@@ -70,7 +70,7 @@ function empty( val ) {
           
           
           <div class="text-busca">	
-            <h3>Recuperação de senha</h3>
+            <h3>Recuperar senha</h3>
            
           
             
@@ -95,7 +95,7 @@ function empty( val ) {
                
                  
                 
-                <button type="submit" class="btn btn-primary block full-width m-b">Solicitar código de recuperação</button>
+                <button type="submit" class="btn btn-primary block full-width m-b">Solicitar chave de troca de senha</button>
 
                
                 <a class="btn btn-blue block full-width m-b" th:href="@{/cadastro}">Criar uma conta</a>

@@ -7,7 +7,7 @@
 
 
 
-<title>BuscaProfissa-Buscar Serviços</title>
+<title>BuscaProfissa | Buscar profissionais</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -39,7 +39,7 @@
 										<div class="form-group col-sm-4">
 											<select id="area" class="form-control"
 												th:field="*{areaAtuacao}">
-												<option value="">Selecione a Área de Atuação</option>
+												<option value="">Selecione a ramo de trabalho</option>
 												<option th:each="area : ${areas}" th:text="${area.nome}"
 													th:value="${area.id}"></option>
 											</select>
@@ -79,14 +79,14 @@
 												<th class="text-center">Nome</th>
 												<th class="text-center"><a
 													th:href="${pagina.urlOrdenada('pontuacao')}"
-													th:remove="${pagina.vazia} ? tag"> <span>Pontuação</span>
+													th:remove="${pagina.vazia} ? tag"> <span>BuscaPontos</span>
 														<span class="dropup"
 														th:remove="${pagina.descendente('pontuacao')} ? tag"
 														th:if="${pagina.ordenada('pontuacao')}"> <span
 															class="caret"></span>
 													</span>
 												</a> <i class="fa fa-star"></i></th>
-												<th class="text-center">Descrição</th>
+												<th class="text-center">Detalhamento</th>
 												<th class="text-center">Perfil<i class="fa fa-user"></i></th>
 
 											</tr>

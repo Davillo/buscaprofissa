@@ -61,7 +61,7 @@ function empty( val ) {
 	function verifica(servico) {
 		
 		if (empty(Trim(servico.dataServico.value))) {
-			alert("A data do serviço é um campo obrigatório para uma solicitação!");
+			alert("Para solicitar um chamado para um profissional deve-se informar a data!");
 			return (false);
 		}
 	
@@ -114,7 +114,7 @@ function empty( val ) {
 
 			
 					<li><a th:href="@{/index}"><i class="fa fa-home"></i> <span
-							class="nav-label">Início</span> </a></li>
+							class="nav-label">Inicio</span> </a></li>
 					
 
 					<li><a th:href="@{/meusdados}"><i class="fa fa-files-o"></i>
@@ -124,7 +124,7 @@ function empty( val ) {
 							<span class="nav-label">Agenda</span></a></li>
 							
 							<li><a th:href="@{/solicitacoes}"><i class="fa fa-bell"></i>
-							<span class="nav-label">Solicitações</span></a></li>
+							<span class="nav-label">Chamados</span></a></li>
 							<li><a th:href="@{/buscar}"><i class="fa fa-search"></i>
 							<span class="nav-label">Buscar Profissionais</span></a></li>
 
@@ -254,8 +254,8 @@ function empty( val ) {
 											
 											
 											<div class="col-sm-5">
-												<label id="descricao">Descrição
-													profissional: </label> <label
+												<label id="descricao">Detalhamento
+													do profissional: </label> <label
 													th:text="${usuario.descricaoProfissional}"></label>
 													
 											</div>
