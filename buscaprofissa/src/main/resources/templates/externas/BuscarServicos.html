@@ -39,7 +39,7 @@
 										<div class="form-group col-sm-4">
 											<select id="area" class="form-control"
 												th:field="*{areaAtuacao}">
-												<option value="">Selecione a ramo de trabalho</option>
+												<option value="">Selecione o ramo de trabalho</option>
 												<option th:each="area : ${areas}" th:text="${area.nome}"
 													th:value="${area.id}"></option>
 											</select>
